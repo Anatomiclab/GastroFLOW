@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-csv_data=pd.read_csv(r"/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Network_result/Internal_cross10_report_pos_.csv")
+csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv")
 print(csv_data)
 pred=np.asarray(csv_data['ID'])
 pred_diag=np.asarray(csv_data['predict'])
@@ -11,14 +11,14 @@ pred_cut=pred.copy()
 for i in range(pred.shape[0]):
     pred_cut[i]=pred[i].split("_")[0]
 
-csv_data=pd.read_csv(r"/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/801010/final_training_gt.csv")
+csv_data=pd.read_csv(r"801010/final_training_gt.csv")
 gt=np.asarray(csv_data['id'])
 gt_diag=np.asarray(csv_data['diagnosis'])
 
 
 count=0
 
-#f=open("Ex2_internal/Pairwise_Ex2_stage2.txt",'w')
+
 f=[]
 f_properties=["GT: ","Full Pred: ","Pred Score: ","Pred Diagnosis: ","GT Diagnosis: ", "TP", "FP", "TN", "FN"]
 
@@ -61,7 +61,7 @@ print(f)
 #f.remove([])
 
 
-csv_data=pd.read_csv(r"/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Network_result/Internal_cross10_requireTile_.csv")
+csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")
 #Diagnosis
 print(csv_data)
 #print(np.asarray(csv_data['ID']))

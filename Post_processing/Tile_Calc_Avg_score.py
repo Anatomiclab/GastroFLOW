@@ -7,7 +7,7 @@ res_time=time.time()
 
 
 
-folder_path=r"Network//"
+folder_path=r"Network_result//"
 
 csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500_nocut.csv")
 pred=np.asarray(csv_data['id'])

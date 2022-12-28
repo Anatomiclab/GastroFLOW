@@ -246,4 +246,3 @@ for a in range(750):
 
 
 result_B.to_csv(f"./{name}/SummaryOfPerformance.csv", index=False)
-    
