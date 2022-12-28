@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # !/usr/bin/env python
 # coding: utf-8
 
@@ -23,7 +24,7 @@ print("######Running Start###############")
 stage1_1_start = time.time()
 print("Stage1_1 Start time: ", stage1_1_start)
 
-ref_data = pd.read_csv("801010/train_cross10.csv")
+ref_data = pd.read_csv("./trainingdata.csv")
 
 print(tf.config.list_physical_devices('GPU'))
 from sklearn.preprocessing import StandardScaler
@@ -32,6 +33,8 @@ sc = StandardScaler()
 ref_X = ref_data.iloc[:, 1:42].values
 Id = ref_data.iloc[:, 0].values
 ref_X = sc.fit_transform(ref_X)
+np.save("X_train_norm.npy",ref_X)
+np.save("X_train_id.npy",Id)
 
 stage1_1_end = time.time()
 print("Stage1_1 end time: ", stage1_1_end)
@@ -41,7 +44,7 @@ print("Stage1_1 time: ", stage1_1_end - stage1_1_start)
 def read(model_path):
     model = keras.models.load_model(model_path)
 
-    data = pd.read_csv("801010/test_cross10.csv")
+    data = pd.read_csv("EX1_EX2_SlideData.csv")
 
     X = data.iloc[:, 1:42].values
     Id = data.iloc[:, 0].values
@@ -98,6 +101,7 @@ for root, _, name in walk(path):
         else:
             result[f] = report.loc[:, 'Score']
 
+
 stage1_2_end = time.time()
 print("Stage1_2 end time: ", stage1_2_end)
 print("Stage1_2 time: ", stage1_2_end - stage1_2_start)
@@ -143,10 +147,10 @@ report_neg = result.loc[result['predict'] == 'False']
 report_pos = result.loc[result['predict'] == 'Positive']
 
 
-posName = 'Internal_cross10_report_pos_' +  '.csv'
-negName = 'Internal_cross10_requireTile_' + '.csv'
+posName = 'EX1_EX2_report_pos_' +  '.csv'
+negName = 'EX1_EX2_requireTile_' + '.csv'
 
-# pd.to_numeric(df.Col, errors='coerce')
+
 
 report_pos2 = report_pos.copy()
 report_pos2.sort_values(by='Score', ascending=False, inplace=True)

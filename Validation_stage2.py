@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 30 22:14:20 2020
-
-@author: Ivan
-"""
 
 # !/usr/bin/env python
 # coding: utf-8
@@ -22,7 +17,7 @@ from os import walk
 import time
 import math
 
-thershold = 0.5  # Tested from 0.005 to 0.5 with 0.005 intervals
+thershold = 0.5  # Tested from 0.1 to 0.5 with 0.1 intervals
 
 print("######Running Start###############")
 
@@ -38,204 +33,21 @@ sc = StandardScaler()
 ref_X = ref_data.iloc[:, 1:42].values
 Id = ref_data.iloc[:, 0].values
 ref_X = sc.fit_transform(ref_X)
-np.save("X_train_norm.npy",ref_X)
-np.save("X_train_id.npy",Id)
-
-stage1_1_end = time.time()
-print("Stage1_1 end time: ", stage1_1_end)
-print("Stage1_1 time: ", stage1_1_end - stage1_1_start)
 
 
-def read(model_path):
-    model = keras.models.load_model(model_path)
-
-    data = pd.read_csv("/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/EX1_EX2_SlideData.csv")
-
-    X = data.iloc[:, 1:42].values
-    Id = data.iloc[:, 0].values
-
-    X = sc.transform(X)
-
-
-    Y_pre = model.predict(X).reshape(len(data.index), )
-
-    result = pd.DataFrame({'id': Id, 'pre_probi': Y_pre})
-    columns = ['ID', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'Score', 'PredictDiagnosis']
-    report = pd.DataFrame(columns=columns)
-
-    for index, row in result.iterrows():
-        newString = ''
-        if '-' in row[0]:
-            newString = row[0][:row[0].rfind('-')]
-        elif '.' in row[0]:
-            newString = row[0][:row[0].rfind('.')]
-
-        result.loc[index, 'id'] = newString
-    ID = result['id']
-
-    for c in ID.unique():
-        s = result.loc[result['id'] == c, 'pre_probi']
-
-        pre = all(i >= .5 for i in list(s))
-
-        series = [c] + list(s)
-
-        if len(series) != 10:
-            for count in range(10 - len(series)):
-                series = series + ['NA']
-        if len(series) == 10:
-            series = series + [float(max(s))] + [pre]
-            ap = pd.Series(series, index=columns)
-        report = report.append(ap, ignore_index=True)
-    """
-    for c in ID:
-        s = result.loc[result['id'] == c, 'pre_probi']
-
-        pre = all(i >= .5 for i in list(s))
-
-        series = [c] + list(s)
-
-        if len(series) != 7:
-            for count in range(7 - len(series)):
-                series = series + ['NA']
-        if len(series) == 7:
-            series = series + [float(max(s))] + [pre]
-            ap = pd.Series(series, index=columns)
-        report = report.append(ap, ignore_index=True)
-    """
-    return (report)
-
-
-
-path = r'/home/htihe/Gastric_Flow_verify/model_file/'
-
-stage1_2_start = time.time()
-print("Stage1_2 Start time: ", stage1_2_start)
-
-result = pd.DataFrame()
-for root, _, name in walk(path):
-    for f in name:
-        report = read(root + f)
-        if result.shape == (0, 0):
-            result = report.loc[:, ['ID', 'Score']]
-            result.columns = ['ID', f]
-        else:
-            result[f] = report.loc[:, 'Score']
-
-#result.to_csv("/home/htihe/datadisk/Alex code/Training_tile_csv/result/"+ "Slide_raw_result_rev3.csv")
-
-stage1_2_end = time.time()
-print("Stage1_2 end time: ", stage1_2_end)
-print("Stage1_2 time: ", stage1_2_end - stage1_2_start)
-
-stage1_3_start = time.time()
-print("Stage1_3 Start time: ", stage1_3_start)
-
-result['predict'] = 'Error'
-result['Score'] = 10000000
-for index, row in result.iterrows():
-    List = list(row[1:-2])
-    # print(len(List))
-    booleanList = []
-    for ele in List:
-        if ele >= .5:
-            booleanList = booleanList + [True]
-        else:
-            booleanList = booleanList + [False]
-    count = sum(booleanList * 1)
-
-    avg = float(sum(row[1:-2])) / (len(row[1:-2]))
-    result.loc[index, 'Score'] = avg
-
-    if count >= 6:
-        result.loc[index, 'predict'] = 'Positive'
-    elif count < 6:
-        result.loc[index, 'predict'] = 'False'
-    else:
-        result.loc[index, 'predict'] = 'Error'
-
-#print(result)
-
-result_stage1=result.copy()
-
-stage1_3_end = time.time()
-print("Stage1_3 end time: ", stage1_3_end)
-print("Stage1_3 time: ", stage1_3_end - stage1_3_start)
-
-stage1_4_start = time.time()
-print("Stage1_4 Start time: ", stage1_4_start)
-
-report_neg = result.loc[result['predict'] == 'False']
-report_pos = result.loc[result['predict'] == 'Positive']
-
-#posName = 'report_pos_' + path[3:-2] + '.csv'
-#negName = 'requireTile_' + path[3:-2] + '.csv'
-posName = 'EX1_EX2_report_pos_' +  '.csv'
-negName = 'EX1_EX2_requireTile_' + '.csv'
-
-# pd.to_numeric(df.Col, errors='coerce')
-
-report_pos2 = report_pos.copy()
-# report_pos2.Score=pd.to_numeric(report_pos2.Score, errors='coerce')
-report_pos2.sort_values(by='Score', ascending=False, inplace=True)
-report_neg2 = report_neg.copy()
-# report_neg2.Score=pd.to_numeric(report_neg2.Score, errors='coerce')
-report_neg2.sort_values(by='Score', ascending=False, inplace=True)
-# report_neg2.sort_naturally('overall_league_position')
-
-report_pos.sort_values(by='Score', ascending=False)
-report_neg.sort_values(by='Score', ascending=False)
-
-
-
-
-report_pos2.to_csv("/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Network_result/" + posName)
-report_neg2.to_csv("/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Network_result/" + negName)
-
-stage1_4_end = time.time()
-print("Stage1_4 end time: ", stage1_4_end)
-print("Stage1_4 time: ", stage1_4_end - stage1_4_start)
-
-
-path = r'/home/htihe/Gastric_Flow_verify/model_file/'
+path = r'model_file/'
 
 stage2_1_start = time.time()
 print("Stage2_1 Start time: ", stage2_1_start)
 
 
-data = pd.read_csv("/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/ex1_ex2_tiledata_500.csv")
-#data = pd.read_csv("/home/htihe/Alex code/code/3. Validation/3.2 External Validation 1/TileData.csv")
+data = pd.read_csv("ex1_ex2_tiledata_500.csv")
 
 X = data.iloc[:, 1:42].values
 Id = data.iloc[:, 0].values
 stage2_1_end = time.time()
 print("Stage2_1 end time: ", stage2_1_end)
 print("Stage2_1 time: ", stage2_1_end - stage2_1_start)
-"""
-
-new_x=[]
-new_id=[]
-
-
-stage2_ext_start = time.time()
-print("Stage2_ext Start time: ", stage2_ext_start)
-
-for i in range(Id.shape[0]):
-    for j in range(report_neg['ID'].shape[0]):
-        #print(i,Id[i].split("-s")[0])
-        #print(j,list(report_pos['ID'])[j].split("-s")[0])
-        if Id[i].split("-s")[0]==list(report_neg['ID'])[j].split("-s")[0]:
-            new_x.append(X[i])
-            new_id.append(Id[i])
-
-X=np.asarray(new_x)
-Id=np.asarray(new_id)
-
-
-stage2_ext_end = time.time()
-print("Stage2_ext end time: ", stage2_ext_start)
-print("Stage2_ext time: ", stage2_ext_end - stage2_ext_start)
-"""
 
 X = sc.transform(X)
 
@@ -254,7 +66,7 @@ for root, _, name in walk(path):
             table = pd.DataFrame({'id': Id, f: Y_pre})
         else:
             table[f] = Y_pre
-    table.to_csv("/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")
+    table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")
 
 stage2_2_end = time.time()
 print("Stage2_2 end time: ", stage2_2_end)
