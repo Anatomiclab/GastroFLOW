@@ -1,0 +1,14 @@
+Network Result will be:
+(in Network Folder)
+Report_Pos.csv, Require_tile.csv, TileData(Score of all models)
+
+To Run Stage1 Result: Slide_Stage1_Generation
+
+To Run Stage2 Result: Tile_Calc_Avg_score->Tile_Case_Split_ver2->Tile_Case_Sort->Tile_Case_Combine_ver1->Tile_Case_Stage2_generation
+
+To Run Stage1+2 Result:
+Temporary Solution:
+(To Run Stage2 Result)->Slide_Tile_Filter_Temporary_Solution->Slide_Tile_Stage1_2_generation
+
+Generate AUC Score: AUC.py(Before Calculate the P/N)
+
