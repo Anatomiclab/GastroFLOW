@@ -126,7 +126,7 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
  
 #### Post-Processing for generating Triage List
 
-After predicting the slides and tiled data, to generate the triage list for analysis, please follow the steps below:
+After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
 
 * **Cross-Validation**
 
@@ -138,17 +138,39 @@ Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"
 
 Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
 
-Line 64: `data = pd.read_csv("EX1_EX2_SlideData.csv")`
+Line 64: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
+Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 **Script outputs**:
 
-* **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
+* **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
-* **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
+
+* **External Validation**
+
+* **Only Slide Data**
+
+Use script: `Post_processing\Slide_Stage1_generation.py`
+
+**Modified Line(please fill the path after running the prediction.)**:
+
+Line 8: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))`
+
+Line 18: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
+
+Line 67: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 124: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
+
+**Script outputs**:
+
+* **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+
 
 
 
