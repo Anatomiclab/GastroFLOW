@@ -84,6 +84,4 @@ final=pd.DataFrame(columns=f_properties,data=f2)
 final.to_csv(r"stage1_2_result/EX1_2_stage1_2_test_PN_"+str(threshold)+".csv")
 
 end_time=time.time()
-print("Total Time: ",end_time-start_time
-
-       )
+print("Total Time: ",end_time-start_time)
