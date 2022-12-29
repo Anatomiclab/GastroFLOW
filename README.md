@@ -157,19 +157,69 @@ Use script: `Post_processing\Slide_Stage1_generation.py`
 
 **Modified Line(please fill the path after running the prediction.)**:
 
-Line 8: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))`
+Line 8: `csv_data=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")`
 
-Line 18: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
+Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")`
 
-Line 67: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")`
+Line 67: `csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 124: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
+Line 124: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 
 **Script outputs**:
 
-* **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+* **EX1_EX2__.csv**: *.csv* file which contains the triage list for External test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+
+
+* **Only Tile Data**
+
+Please follow the steps below:
+
+Step 1: Run script: `Post_processing\Tile_Calc_Avg_score.py`
+
+**Modified Line(please fill the path after running the prediction.)**:
+
+Line 10,12: `folder_path=r"Network_result//"`,`csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500_nocut.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 42: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
+
+**Script outputs**:
+
+* **avgscore.csv**: *.csv* file which contains the average predicted score of 11 models for each tile data.
+
+Step 2: Run script: `Post_processing\Tile_Case_split_ver2.py`
+
+**Modified Line(please fill the path after running the Step1.)**:
+
+Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"EX1_2_tiledata_500.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 82,83,87: `shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)`
+
+**Script outputs**:
+
+* **Folder of Case**: *.csv* file which contains the predicted result of tiled data corresponding to each cases.
+
+Step 3: Run script: `Post_processing\Tile_Case_Sort.py`
+
+**Modified Line(please fill the path after running the Step2.)**:
+
+Line 15: `for filename in glob.glob(r"case_split/*"):`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 12,13: `shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)`
+
+**Script outputs**:
+
+* **Folder of Case**: *.csv* file which contains the predicted result of tiled data corresponding to each cases, after this step, the score will be sorted in decreasing order.
+
+
+
 
 
 
