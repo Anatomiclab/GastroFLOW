@@ -151,7 +151,7 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 **External Validation**
 
-* **Only Slide Data**
+**Only Slide Data**
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
@@ -172,7 +172,7 @@ Line 124: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 * **EX1_EX2__.csv**: *.csv* file which contains the triage list for External test data based on slide data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 
-* **Only Tile Data**
+**Only Tile Data**
 
 Please follow the steps below:
 
@@ -248,7 +248,7 @@ Line 80: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+"_n
 
 
 
-* **Slide and Tile Data**
+**Slide and Tile Data**
 
 Before the step, please run the step **Only Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
 
@@ -284,4 +284,6 @@ Line 84: `final.to_csv(r"stage1_2_result/EX1_2_stage1_2_test_PN_"+str(threshold)
 
 * **EX1_2_.csv**: *.csv* file which contains the triage list for External test data based on slide and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
+
+### Generation of Contour Line and Heatmap
 
