@@ -128,7 +128,7 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
 
-* **Cross-Validation**
+**Cross-Validation**
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
@@ -149,9 +149,9 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 * **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 
-* **External Validation**
+**External Validation**
 
-*** **Only Slide Data**
+* **Only Slide Data**
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
