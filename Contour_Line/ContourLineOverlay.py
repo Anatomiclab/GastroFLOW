@@ -60,8 +60,8 @@ for file in f:
     plt.gca().invert_yaxis()
     #levels=[.5*maxZ,.8*maxZ]
     print(maxZ)
-    img = plt.contour(X, Y, Z / maxZ) # 0.9,0.75
-    #img=plt.contour(X, Y, Z/maxZ,levels=[0.5,0.8])
+    img = plt.contour(X, Y, Z / maxZ,levels=[0.75,0.9]) # 0.9,0.75
+    #img=plt.contour(X, Y, Z/maxZ)
     #plt.clabel(img,inline=True,fontsize=20)
     #plt.savefig(r'./Contour_line//2line_'+file.replace('csv','png'))
     plt.close()

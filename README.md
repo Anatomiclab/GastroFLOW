@@ -8,15 +8,15 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 * Cross-Validation Data:
 
-`https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw`
+[Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
 
 * External Validation Data:
 
-`https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EQFpIguoZMpHgaCPkJpEEokBTdYUON7_JTXRQa046HFEKQ`
+[External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EQFpIguoZMpHgaCPkJpEEokBTdYUON7_JTXRQa046HFEKQ)
 
 * Retrospctive:
 
-`https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA`
+[Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
 ### Network Training
@@ -124,7 +124,31 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 * **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
 
  
+#### Post-Processing for generating Triage List
 
+After predicting the slides and tiled data, to generate the triage list for analysis, please follow the steps below:
+
+* **Cross-Validation**
+
+Use script: `Post_processing\Slide_internal_Stage1_generation.py`
+
+**Modified Line(please fill the path after downloading the Internal Data.)**:
+
+Line 4: `ref_data = pd.read_csv("./trainingdata.csv")`
+
+Line 14: `data = pd.read_csv("EX1_EX2_SlideData.csv")`
+
+Line 64: `data = pd.read_csv("EX1_EX2_SlideData.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
+
+**Script outputs**:
+
+* **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
+
+* **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
 
 
 
