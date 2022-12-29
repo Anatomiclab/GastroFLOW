@@ -2,9 +2,7 @@
 
 This repository provides training and testing scripts for the article "Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system".
 
-## Gastric Classification Network
-
-### Data for Cross-Validation, External Validation
+## Data for Cross-Validation, External Validation
 
 * Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
 
@@ -13,7 +11,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 * Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
-### Network Training
+## Network Training
 
 To train a model, use script `ModelTraining.py`.
 
@@ -37,7 +35,7 @@ Line 72: `data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")`
 
 * **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
 
-### Cross-Validation
+## Cross-Validation
 
 In order to validate the performance of integrated model in Cross-Validation, use script `Validation_internal.py`
 
@@ -57,9 +55,9 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 * **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
 
-### External Validation
+## External Validation
 
-#### Network Prediction
+### Network Prediction
 
 In order to validate the performance of integrated model in External Validation, it divides into three parts:
 
@@ -128,11 +126,11 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 * **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
 
  
-#### Post-Processing for generating Triage List
+### Post-Processing for generating Triage List
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
 
-**Cross-Validation**
+* **Cross-Validation**
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
@@ -153,7 +151,7 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 * **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 
-**External Validation**
+* **External Validation**
 
 **Only Slide Data**
 
@@ -174,6 +172,7 @@ Line 124: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 **Script outputs**:
 
 * **EX1_EX2__.csv**: *.csv* file which contains the triage list for External test data based on slide data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+
 
 
 **Only Tile Data**
@@ -252,6 +251,7 @@ Line 80: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+"_n
 
 
 
+
 **Slide and Tile Data**
 
 Before the step, please run the step **Only Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
@@ -289,13 +289,14 @@ Line 84: `final.to_csv(r"stage1_2_result/EX1_2_stage1_2_test_PN_"+str(threshold)
 * **EX1_2_.csv**: *.csv* file which contains the triage list for External test data based on slide and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 
-### Generation of Contour Line and Heatmap
 
-#### Data for generating contour line and heatmap
+## Generation of Contour Line and Heatmap
+
+### Data for generating contour line and heatmap
 
 Pass
 
-#### Step before generating contour line and heatmap
+### Step before generating contour line and heatmap
 
 Before generating the maps, please run the script `Contour_Line\AppendingPreductionToCells.py` first.
 
@@ -313,7 +314,7 @@ Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'`
 
 * **EX1_2_.csv**: *.csv* file which contains the result based on the provided cellular features.
 
-#### Generating contour line
+### Generating contour line
 
 Run the script `Contour_Line\ContourLineOverlay.py`.
 
@@ -333,7 +334,7 @@ Line 101: `img2.save('./ExportImage2/'+file.replace('csv','png'))`
 
 * **Contour Line.png**: *.png* file which contains the combination of grayscale WSI image and contour lines.
 
-#### Generating Heatmap
+### Generating Heatmap
 
 Run the script `Contour_Line\HeatMap.py`.
 
@@ -354,9 +355,9 @@ Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
 * **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.
 
 
-### Others
+## Others
 
-#### AUC Generation
+### AUC Generation
 
 If you want to generate the corresponding AUC score, please run the script `Post_processing\AUC.py`.
 
