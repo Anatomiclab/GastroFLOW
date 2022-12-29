@@ -61,7 +61,7 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 In order to validate the performance of integrated model in External Validation, it divides into three parts:
 
-* **Only Slide Data**
+**Only Slide Data**
 
 Use script: `Validation_stage1.py`
 
@@ -83,7 +83,7 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
-* **Only Tile Data**
+**Only Tile Data**
 
 Use script: `Validation_stage2.py`
 
@@ -103,7 +103,7 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
-* **Slide and Tile Data**
+**Slide and Tile Data**
 
 Use script: `Validation_stage1_2.py`
 
@@ -126,11 +126,11 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 * **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
 
  
-### Post-Processing for generating Triage List
+## Post-Processing for generating Triage List
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
 
-* **Cross-Validation**
+### Cross-Validation
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
@@ -151,7 +151,7 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 * **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 
-* **External Validation**
+### External Validation
 
 **Only Slide Data**
 
@@ -175,7 +175,7 @@ Line 124: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 
 
 
-**Only Tile Data**
+### Only Tile Data
 
 Please follow the steps below:
 
@@ -252,7 +252,7 @@ Line 80: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+"_n
 
 
 
-**Slide and Tile Data**
+### Slide and Tile Data
 
 Before the step, please run the step **Only Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
 
