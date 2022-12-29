@@ -63,7 +63,7 @@ In order to validate the performance of integrated model in External Validation,
 
 Use script: `Validation_stage1.py`
 
-**Modified Line(please fill the path after downloading the Internal Data.)**:
+**Modified Line(please fill the path after downloading the External Data.)**:
 
 Line 27: `ref_data = pd.read_csv("./trainingdata.csv")`
 
@@ -85,7 +85,7 @@ After generate the predicted result, to generate the triage list of result, plea
 
 Use script: `Validation_stage2.py`
 
-**Modified Line(please fill the path after downloading the Internal Data.)**:
+**Modified Line(please fill the path after downloading the External Data.)**:
 
 Line 27: `ref_data = pd.read_csv("./trainingdata.csv")`
 
@@ -105,7 +105,7 @@ After generate the predicted result, to generate the triage list of result, plea
 
 Use script: `Validation_stage1_2.py`
 
-**Modified Line(please fill the path after downloading the Internal Data.)**:
+**Modified Line(please fill the path after downloading the External Data.)**:
 
 Line 27: `ref_data = pd.read_csv("./trainingdata.csv")`
 
@@ -132,11 +132,11 @@ After predicting the slides and tiled data, to generate the triage list for anal
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
-**Modified Line(please fill the path after downloading the Internal Data.)**:
+**Modified Line(please fill the path after running the prediction.)**:
 
-Line 4: `ref_data = pd.read_csv("./trainingdata.csv")`
+Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))`
 
-Line 14: `data = pd.read_csv("EX1_EX2_SlideData.csv")`
+Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
 
 Line 64: `data = pd.read_csv("EX1_EX2_SlideData.csv")`
 
