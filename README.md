@@ -151,7 +151,7 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 * **External Validation**
 
-* **Only Slide Data**
+*** **Only Slide Data**
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
