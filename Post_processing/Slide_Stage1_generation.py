@@ -21,7 +21,6 @@ gt_diag=np.asarray(csv_data['Diagnosis'])
 
 count=0
 
-#f=open("Ex2_internal/Pairwise_Ex2_stage2.txt",'w')
 f=[]
 f_properties=["GT: ","Full Pred: ","Pred Score: ","Pred Diagnosis: ","GT Diagnosis: ", "TP", "FP", "TN", "FN"]
 
@@ -67,9 +66,6 @@ print(f)
 csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")
 #Diagnosis
 print(csv_data)
-#print(np.asarray(csv_data['ID']))
-#print(np.sort(np.asarray(csv_data['ID'])))
-#pred=np.sort(np.asarray(csv_data['ID']))
 pred=np.asarray(csv_data['ID'])
 pred_diag=np.asarray(csv_data['predict'])
 pred_score=np.asarray(csv_data['Score'])

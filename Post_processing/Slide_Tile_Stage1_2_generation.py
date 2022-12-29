@@ -21,15 +21,13 @@ gt_diag=np.asarray(csv_data['Diagnosis'])
 
 count=0
 
-#f=open("Ex2_internal/Pairwise_Ex2_stage2.txt",'w')
+
 f=[]
 f_properties=["GT: ","Full Pred: ","Pred Score: ","Pred Diagnosis: ","GT Diagnosis: ", "TP", "FP", "TN", "FN"]
 
 for j in range(gt.shape[0]):
     f.append([])
     for i in range(pred_cut.shape[0]):
-        #print(pred[i])
-        #print(gt[j])
         print("Pair: ",i,"  ",j)
         if pred_cut[i].replace("%20"," ")==gt[j] and len(f[j])==0:
 

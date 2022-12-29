@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jul 30 00:10:54 2020
-
-@author: chunyinwong
-"""
 
 import tensorflow as tf
 from tensorflow import keras

@@ -33,9 +33,6 @@ for filename in glob.glob(r"case_split_Sorted/*"):
     for i in range(int(threshold*csv_data.shape[0])):
             avg_score+=float(csv_data["Avg Score"][i])
 
-    #print(threshold*csv_data.shape[0])
-
-    #print(csv_data['id'][1])
     if positive_counter>int(threshold*csv_data.shape[0]):
         final_list[count].append(csv_data['id'][5].split("_")[0])
         final_list[count].append(str(float(avg_score/(int(threshold*csv_data.shape[0])))))
