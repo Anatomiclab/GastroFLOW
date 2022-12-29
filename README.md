@@ -57,11 +57,9 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 ## External Validation
 
-### Network Prediction
-
 In order to validate the performance of integrated model in External Validation, it divides into three parts:
 
-**Only Slide Data**
+### Only Slide Data
 
 Use script: `Validation_stage1.py`
 
@@ -83,7 +81,7 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
-**Only Tile Data**
+### Only Tile Data
 
 Use script: `Validation_stage2.py`
 
@@ -103,7 +101,7 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
-**Slide and Tile Data**
+### Slide and Tile Data
 
 Use script: `Validation_stage1_2.py`
 
