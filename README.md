@@ -6,32 +6,36 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 ### Data for Cross-Validation, External Validation
 
-* Cross-Validation Data:
+* Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
 
-[Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
+* External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EQFpIguoZMpHgaCPkJpEEokBTdYUON7_JTXRQa046HFEKQ)
 
-* External Validation Data:
-
-[External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EQFpIguoZMpHgaCPkJpEEokBTdYUON7_JTXRQa046HFEKQ)
-
-* Retrospctive:
-
-[Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
+* Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
 ### Network Training
 
 To train a model, use script `ModelTraining.py`.
 
+**Modified Line(please fill the path for the training data.)**:
+
+Line 197: `data = pd.read_csv("2.2 Model Building/trainingdata.csv")`
+
 **Script outputs**:
 
 * **(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5**: *.h5* file which is the model checkpoint after training.
 
+* **SummaryOfPerformance.csv**: *.csv* file which is the performance of model in different rounds.
+
 To find the optimized parameters of model using Talos, use script `talos_tunning.py`
+
+**Modified Line(please fill the path for the training data.)**:
+
+Line 72: `data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")`
 
 **Script outputs**:
 
-* **(tuningtime).csv**: *.csv* file which contains the finding parameters and the corresponding loss value and validation metrics.
+* **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
 
 ### Cross-Validation
 
@@ -286,4 +290,81 @@ Line 84: `final.to_csv(r"stage1_2_result/EX1_2_stage1_2_test_PN_"+str(threshold)
 
 
 ### Generation of Contour Line and Heatmap
+
+#### Data for generating contour line and heatmap
+
+Pass
+
+#### Step before generating contour line and heatmap
+
+Before generating the maps, please run the script `Contour_Line\AppendingPreductionToCells.py` first.
+
+**Modified Line(please fill the path for your WSI image and extracted cellular features.)**:
+
+Line 25: `path=r'./Contour_Line/ExtractedData/'`
+
+Line 30: `ref_data = pd.read_csv("./trainingdata.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'`
+
+**Script outputs**:
+
+* **EX1_2_.csv**: *.csv* file which contains the result based on the provided cellular features.
+
+#### Generating contour line
+
+Run the script `Contour_Line\ContourLineOverlay.py`.
+
+**Modified Line(please fill the path for your WSI image.)**:
+
+Line 69: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')`
+
+**Modified Line(please fill the path after running the step before generation.)**:
+
+Line 17: `path=r'./PredictedData/'`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 101: `img2.save('./ExportImage2/'+file.replace('csv','png'))`
+
+**Script outputs**:
+
+* **Contour Line.png**: *.png* file which contains the combination of grayscale WSI image and contour lines.
+
+#### Generating Heatmap
+
+Run the script `Contour_Line\HeatMap.py`.
+
+**Modified Line(please fill the path for your WSI image.)**:
+
+Line 70: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")`
+
+**Modified Line(please fill the path after running the step before generation.)**:
+
+Line 20: `path=r'./Contour_Line/PredictedData/'`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
+
+**Script outputs**:
+
+* **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.
+
+
+### Others
+
+#### AUC Generation
+
+If you want to generate the corresponding AUC score, please run the script `Post_processing\AUC.py`.
+
+**Modified Line(please fill the path for the generated triage list.)**:
+
+Line 8: `for filename in glob.glob(r"ForAUC\\*\\*"):`
+
+AUC scores will print in the console.
+
+
 

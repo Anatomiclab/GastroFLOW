@@ -14,7 +14,7 @@ from PIL import ImageDraw, ImageFont
 from os import walk
 
 f=[]
-path=r'/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/PredictedData/TN//'
+path=r'./PredictedData/'
 for _,_,files in walk(path):
     for i in files:
         if i[-3:]=='csv':
@@ -66,7 +66,7 @@ for file in f:
     #plt.savefig(r'./Contour_line//2line_'+file.replace('csv','png'))
     plt.close()
     
-    img2 = Image.open(r'/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/original/TN/'+file.replace('csv','png')).convert('L').convert('RGB')
+    img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')
     draw = ImageDraw.Draw(img2)
     i=0
     #print(img.collections)
@@ -98,6 +98,6 @@ for file in f:
     sizeX=img2.size[0]
     sizeY=img2.size[1]
     draw1 = ImageDraw.Draw(img2)    
-    img2.save('/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/ExportImage2/TN/'+file.replace('csv','png'))
+    img2.save('./ExportImage2/'+file.replace('csv','png'))
 
 

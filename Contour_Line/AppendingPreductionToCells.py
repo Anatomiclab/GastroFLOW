@@ -22,18 +22,18 @@ import os
 
 file=[]
 from os import walk
-path=r'/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/ExtractedData/TN/'
+path=r'./Contour_Line/ExtractedData/'
 for (dirpath, dirnames, filenames) in walk(path):
     for f in filenames:
         if f[-3:] == 'txt':
             file.append(f)
-ref_data = pd.read_csv("/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/trainingdata.csv")
+ref_data = pd.read_csv("./trainingdata.csv")
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 ref_X = ref_data.iloc[:, 1:42].values
 ref_X=sc.fit_transform(ref_X)
 
-path_model=r'/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/model_file//'
+path_model=r'./model_file//'
 for root,_,name in walk(path_model):
     model0 = keras.models.load_model(root+name[0])
     model1 = keras.models.load_model(root+name[1])
@@ -50,7 +50,7 @@ for root,_,name in walk(path_model):
 for f in file:
     filename=f
     
-    name='/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/PredictedData/TN/'+filename[:-4]+'.csv'
+    name='./PredictedData/'+filename[:-4]+'.csv'
     dataname=path+filename
     
     data = pd.read_csv(dataname, sep='\t',encoding="ISO-8859–1")

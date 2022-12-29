@@ -17,7 +17,7 @@ from matplotlib.collections import PatchCollection
 from matplotlib import cm
 
 f=[]
-path=r'/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/PredictedData/FN//'
+path=r'./Contour_Line/PredictedData/'
 for _,_,files in walk(path):
     for i in files:
         if i[-3:]=='csv':
@@ -67,7 +67,7 @@ for file in f:
     lvl_lookup = dict(zip(img.collections, img.levels))
     
     
-    img2 = Image.open(r'/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/original/FN/'+file.replace('csv','png')).convert("RGBA")
+    img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")
     canva = Image.new("RGBA", img2.size,'#FFFFFF00')
     draw = ImageDraw.Draw(canva, "RGBA")
 
@@ -83,7 +83,7 @@ for file in f:
                 else:
                     pass
     img2.paste(canva,None,canva)
-    img2.save('/home/htihe/Gastric_Flow_verify/Gastric_Flow/Code_Integration/Contour_Line/ExportHeatmap/FN/'+file.replace('csv','png'))
+    img2.save('./ExportHeatmap/'+file.replace('csv','png'))
     plt.close()
 
 
