@@ -11,6 +11,80 @@ This repository provides training and testing scripts for the article "Prioritiz
 * Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
+## Machine Learning Algorithms
+
+We provide the running scripts of machine learning algorithms in Cross-Validation and External dataset.
+
+### Cross-Validation
+
+To run the machine learning algorithms in Cross-Validation, please follow the steps below: 
+
+**Step 1**: run `machinelearn_internal.py`
+
+**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+
+Line 111,114,131: `folder_path=r"Network_result//"`,`data = pd.read_csv(Train_data_path+'train_cross10.csv')`,`data2 = pd.read_csv(Train_data_path+'test_cross10.csv')`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 112: `Result_path=""`
+
+**Script outputs**:
+
+* **(Machine Learning Algorithm).csv**: *.csv* file which contains the predicted results of machine learning models for internal data.
+
+**Step 2**: run `Machine_learning_internal_generation.py`
+
+**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+
+Line 4,17: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")`,`csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
+
+**Script outputs**:
+
+* **(Machine Learning Algorithm).csv**: *.csv* file which contains the triage list of machine learning models for internal data. 
+
+In this section, it does not contain the scores. If you want to generate the score for calculating AUC or finding priorities, please turn to section **External Dataset, Internal Dataset for Score**.
+
+### External Dataset, Internal Dataset for Score
+
+To run the machine learning algorithms in External Dataset, or generating the score in Internal Dataset, please follow the steps below: 
+
+**Step 1**: run `machinelearn_external_score.py`
+
+**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+
+Line 116,135,277,279: `data = pd.read_csv('trainingdata.csv')`,`data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')`,`data = pd.read_csv('data/EX1_EX2_SlideData.csv')`, `ref_data = pd.read_csv("data/GroundTruth_ex1_2_noex_nodup.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 114: `result_path="external/"`
+
+**Script outputs**:
+
+* **(Machine Learning Algorithm).csv**: *.csv* file which contains the predicted results of machine learning models for external data.
+
+**Step 2**: run `Machine_learning_external_generation.py`
+
+**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+
+Line 4,13,63: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")`, `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")`
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
+
+**Script outputs**:
+
+* **(Machine Learning Algorithm).csv**: *.csv* file which contains the triage list of machine learning models for external data. 
+
+
+
+
+
 ## Network Training
 
 To train a model, use script `ModelTraining.py`.
