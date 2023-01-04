@@ -15,7 +15,7 @@ pred_cut=pred.copy()
 for i in range(pred.shape[0]):
     pred_cut[i]=pred[i].split("_")[0]
 
-csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")
+csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")
 gt=np.asarray(csv_data['ID'])
 gt_diag=np.asarray(csv_data['Diagnosis'])
 

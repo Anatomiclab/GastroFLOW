@@ -40,7 +40,7 @@ Line 92: `save_path = "Feature/"  //CHANGE sve path here`
 
 ## Generation of Tile data for training and validation
 
-After using QuPath to generate the cellular features, if you want to generate the tile data for the GastroFlow training and validation, please follow the steps below:
+After using QuPath to generate the cellular features, if you want to generate the tile data for the GastrolFlow training and validation, please follow the steps below:
 
 **Step 1**: run `QuPath_Script\stage_2.py`
 
@@ -127,7 +127,7 @@ To run the machine learning algorithms in External Dataset, or generating the sc
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
-Line 116,135,277,279: `data = pd.read_csv('trainingdata.csv')`,`data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')`,`data = pd.read_csv('data/EX1_EX2_SlideData.csv')`, `ref_data = pd.read_csv("data/GroundTruth_ex1_2_noex_nodup.csv")`
+Line 116,135,277,279: `data = pd.read_csv('trainingdata.csv')`,`data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')`,`data = pd.read_csv('data/EX1_EX2_SlideData.csv')`, `ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -141,7 +141,7 @@ Line 114: `result_path="external/"`
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
-Line 4,13,63: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")`, `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")`
+Line 4,13,63: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`, `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -201,11 +201,14 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 * **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
 
+
+
 ## External Validation
 
 In order to validate the performance of integrated model in External Validation, it divides into three parts:
 
-### Only Slide Data
+
+### GCNet with Slide Data
 
 Use script: `Validation_stage1.py`
 
@@ -227,7 +230,8 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
-### Only Tile Data
+
+### GCNet with Tile Data
 
 Use script: `Validation_stage2.py`
 
@@ -239,15 +243,16 @@ Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
+Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
 
 **Script outputs**:
 
-* **"EX1_EX2_tiledata_500_nocut.csv"**: *.csv* file which contains the predicted result of Tiled Data.
+* **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data.
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
-### Slide and Tile Data
+
+### GastrolFlow
 
 Use script: `Validation_stage1_2.py`
 
@@ -259,7 +264,7 @@ Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
+Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
 
 **Script outputs**:
 
@@ -273,6 +278,7 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500_nocut.csv")`
 ## Post-Processing for generating Triage List
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
+
 
 ### Cross-Validation
 
@@ -297,7 +303,7 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 ### External Validation
 
-**Only Slide Data**
+**GCNet with Slide Data**
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
@@ -305,7 +311,7 @@ Use script: `Post_processing\Slide_Stage1_generation.py`
 
 Line 8: `csv_data=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")`
 
-Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")`
+Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`
 
 Line 67: `csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")`
 
@@ -329,7 +335,7 @@ Please follow the steps below:
 
 **Modified Line(please fill the path after running the prediction.)**:
 
-Line 10,12: `folder_path=r"Network_result//"`,`csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500_nocut.csv")`
+Line 10,12: `folder_path=r"Network_result//"`,`csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -389,11 +395,11 @@ Line 56,60: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_c
 
 **Modified Line(please fill the path after running the Step4.)**:
 
-Line 9,19: `csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+"_nocut.csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")`
+Line 9,19: `csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 80: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+"_nocut.csv")`
+Line 80: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+".csv")`
 
 **Script outputs**:
 
@@ -430,7 +436,7 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 **Modified Line(please fill the path after running the Step4.)**:
 
-Line 8,18: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/EX1_2_500_"+str(threshold)+".csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")`
+Line 8,18: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/EX1_2_500_"+str(threshold)+".csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -466,7 +472,7 @@ Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'`
 
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the result based on the provided cellular features.
+* **EX1_2_.csv**: *.csv* file which contains the network output result based on the provided cellular features.
 
 ### Generating contour line
 
@@ -513,7 +519,7 @@ Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
 
 We calculate the running time of using the scripts with our provided data in external dataset. Please note that, based on different environment, the time will be slightly different.
 
-| The Stage of the System  | Running Time  |
+| The Stage of the System  | Running Time(s)  |
 | ------------- | ------------- |
 | Network Running Time (External Validation(Only Slide Data))  | 8.5837  |
 | Network Running Time (External Validation(Only Tile Data))  | 36.2036  |

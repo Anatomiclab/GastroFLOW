@@ -6,7 +6,7 @@ start_time=time.time()
 
 threshold=0.2
 
-csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+"_nocut.csv")
+csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv")
 print(csv_data)
 pred=np.asarray(csv_data['id'])
 pred_diag=np.asarray(csv_data['diagnosis'])
@@ -16,7 +16,7 @@ pred_cut=pred.copy()
 for i in range(pred.shape[0]):
     pred_cut[i]=pred[i].split("_")[0]
 
-csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2_noex_nodup.csv")
+csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")
 gt=np.asarray(csv_data['ID'])
 gt_diag=np.asarray(csv_data['Diagnosis'])
 
@@ -75,7 +75,7 @@ for i in range(len(f)):
         f2.append(f[i])
 
 final=pd.DataFrame(columns=f_properties,data=f2)
-final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+"_nocut.csv")
+final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+".csv")
 
 end_time=time.time()
 print("Total Time: ",end_time-start_time)
