@@ -38,7 +38,7 @@ Line 92: `save_path = "Feature/"  //CHANGE sve path here`
 
 * **(WSI cellular features).txt**: *.txt* file which contains the extracted 41 features for data.
 
-## Generation of Tile data for training and validation
+## Generation of tile data for training and validation
 
 After using QuPath to generate the cellular features, if you want to generate the tile data for the GastrolFlow training and validation, please follow the steps below:
 
