@@ -5,7 +5,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 ## Content
 
-[Using QuPath to generate the WSI images and cellular features](#Using QuPath to generate the WSI images and cellular features)
+[Using QuPath to generate the WSI images and cellular features](#Using-QuPath-to-generate-the-WSI-images-and-cellular-features)
 
 
 
