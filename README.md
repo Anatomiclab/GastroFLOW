@@ -23,7 +23,8 @@ For extracting the images, use QuPath script `QuPath_Script\ImagesExport.groovy`
 
 **Modified Line(please fill the path for saving the extracted images)**:
 
-Line 7: `path="images/" // Please Change the Path`
+Line 7: `path="images/" // Please Change the Path`  **(Path for saving the extracted images)**
+
 
 **Script outputs**:
 
@@ -35,7 +36,7 @@ For extracting the cellular feature, use QuPath script `QuPath_Script\CellularFe
 
 **Modified Line(please fill the path for saving the extracted features)**:
 
-Line 92: `save_path = "Feature/"  //CHANGE sve path here`
+Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the extracted features)**
 
 **Script outputs**:
 
@@ -49,25 +50,25 @@ After using QuPath to generate the cellular features, if you want to generate th
 
 **Modified Line(please fill the path for the path of cellular features of slides)**:
 
-Line 9: `ex1 = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"`
+Line 9: `ex1 = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path for the cellular features of slides from QuPath)**
 
 **Modified Line(please fill the path for the path of saving)**:
 
-Line 17: `saving_path="./Training_tile/"`
+Line 17: `saving_path="./Training_tile/"` **(Immediate path for saving the tile data)**
 
 **Setting of the range of tile ratio**:
 
-Line 10: `tile_ratio = [500]`
+Line 10: `tile_ratio = [500]` **(The extracted tile is 500*500)**
 
 **Step 2**: run `QuPath_Script\tile.py`
 
 **Modified Line(please fill the path for the path of step 1 saving path)**:
 
-Line 9: `ex1 = "./Training_tile/RAW_TXT-SET_20200520/"`
+Line 9: `ex1 = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill the immediate path in Step 1)**
 
 **Modified Line(please fill the path for the path of saving)**:
 
-Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=False)`
+Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=False)` **(Fill the path for saving the final tile data)**
 
 **Script outputs**:
 
