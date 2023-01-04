@@ -2,6 +2,9 @@
 
 This repository provides training and testing scripts for the article "Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system".
 
+
+
+
 ## Using QuPath to generate the WSI images and cellular features
 
 We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI images and cellular features for training and validation.
@@ -81,9 +84,13 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 * Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
+
+
 ## Machine Learning Algorithms
 
 We provide the running scripts of machine learning algorithms in Cross-Validation and External dataset.
+
+
 
 ### Cross-Validation
 
@@ -118,6 +125,9 @@ Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 * **(Machine Learning Algorithm).csv**: *.csv* file which contains the triage list of machine learning models for internal data. 
 
 In this section, it does not contain the scores. If you want to generate the score for calculating AUC or finding priorities, please turn to section **External Dataset, Internal Dataset for Score**.
+
+
+
 
 ### External Dataset, Internal Dataset for Score
 
@@ -166,6 +176,8 @@ Line 72: `data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")`
 * **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
 
 
+
+
 ## Network Training
 
 To train a model, use script `ModelTraining.py`.
@@ -179,6 +191,8 @@ Line 197: `data = pd.read_csv("2.2 Model Building/trainingdata.csv")`
 * **(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5**: *.h5* file which is the model checkpoint after training.
 
 * **SummaryOfPerformance.csv**: *.csv* file which is the performance of model in different rounds.
+
+
 
 
 ## Cross-Validation
@@ -203,9 +217,12 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 
 
+
+
 ## External Validation
 
 In order to validate the performance of integrated model in External Validation, it divides into three parts:
+
 
 
 ### GCNet with Slide Data
@@ -231,6 +248,7 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
 
+
 ### GCNet with Tile Data
 
 Use script: `Validation_stage2.py`
@@ -250,6 +268,7 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
 * **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data.
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
+
 
 
 ### GastrolFlow
@@ -274,10 +293,12 @@ Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
 
 * **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
 
+
  
 ## Post-Processing for generating Triage List
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
+
 
 
 ### Cross-Validation
@@ -299,6 +320,8 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 **Script outputs**:
 
 * **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+
+
 
 
 ### External Validation
@@ -324,6 +347,8 @@ Line 124: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 * **EX1_EX2__.csv**: *.csv* file which contains the triage list for External test data based on slide data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 To generate **the prioritization of cases**, please use Excel function to do.
+
+
 
 
 
@@ -452,9 +477,17 @@ To generate **the prioritization of cases**, please use Excel function to do.
 
 ## Generation of Contour Line and Heatmap
 
+
+
 ### Data for generating contour line and heatmap
 
-Pass
+We provide the sample data for validating the scripts.
+
+The data could be downloaded at [Link](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EWBA6U-ko-lMj87PIzjnvsABwwcXOw5_L2JeYgBNFElYMg).
+
+Please note that, we provide both WSI images and corresponding cellular features. Therefore, you could directly run the following steps.
+
+
 
 ### Step before generating contour line and heatmap
 
@@ -464,8 +497,6 @@ Before generating the maps, please run the script `Contour_Line\AppendingPreduct
 
 Line 25: `path=r'./Contour_Line/ExtractedData/'`
 
-Line 30: `ref_data = pd.read_csv("./trainingdata.csv")`
-
 **Modified Line(please fill the path for saving the results.)**:
 
 Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'`
@@ -473,6 +504,9 @@ Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'`
 **Script outputs**:
 
 * **EX1_2_.csv**: *.csv* file which contains the network output result based on the provided cellular features.
+
+
+
 
 ### Generating contour line
 
@@ -494,6 +528,8 @@ Line 101: `img2.save('./ExportImage2/'+file.replace('csv','png'))`
 
 * **Contour Line.png**: *.png* file which contains the combination of grayscale WSI image and contour lines.
 
+
+
 ### Generating Heatmap
 
 Run the script `Contour_Line\HeatMap.py`.
@@ -513,6 +549,8 @@ Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
 **Script outputs**:
 
 * **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.
+
+
 
 
 ## Running time
