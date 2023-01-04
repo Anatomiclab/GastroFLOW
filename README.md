@@ -32,7 +32,7 @@ Line 7: `path="images/" // Please Change the Path`  **(Path for saving the extra
 
 ### Extract the cellular features
 
-For extracting the cellular feature, use QuPath script `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy` .
+For extracting the cellular feature, use QuPath script`QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy`.
 
 **Modified Line(please fill the path for saving the extracted features)**:
 
@@ -101,11 +101,15 @@ To run the machine learning algorithms in Cross-Validation, please follow the st
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
-Line 111,114,131: `folder_path=r"Network_result//"`,`data = pd.read_csv(Train_data_path+'train_cross10.csv')`,`data2 = pd.read_csv(Train_data_path+'test_cross10.csv')`
+Line 111: `Train_data_path="801010/"` **(Fill the root path of the internal data)**
+
+Line 116, `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Fill the file name of the training data)**
+
+Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 112: `Result_path=""`
+Line 112: `Result_path=""` **(Fill the path for saving the result)**
 
 **Script outputs**:
 
@@ -115,11 +119,13 @@ Line 112: `Result_path=""`
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
-Line 4,17: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")`,`csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
+Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Fill the path of the predicted result in the Step 1)**
+
+Line 17: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the path of the ground truth)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
+Line 76: `final.to_csv(r"internal_result/K-SVM.csv")` **(Fill the path for saving the result)**
 
 **Script outputs**:
 
