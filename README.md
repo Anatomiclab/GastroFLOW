@@ -13,6 +13,52 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Generation of tile data for training and validation](#generation-of-tile-data-for-training-and-validation)
 
+[Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
+
+[Machine Learning Algorithms](#machine-learning-algorithms)
+
+* [Cross-Validation](#cross-validation)
+
+* [External Dataset, Internal Dataset for Score](#external-dataset-internal-dataset-for-score)
+
+[Finding the optimized parameters for models using Talos](#finding-the-optimized-parameters-for-models-using-talos)
+
+[Network Training](#network-training)
+
+[Cross-Validation](#cross-validation-1)
+
+[External Validation](#external-validation-1)
+
+* [GCNet with Slide Data](#gcnet-with-slide-data)
+
+* [GCNet with Tile Data](#gcnet-with-tile-data)
+
+* [GastrolFlow](#gastrolflow)
+
+[Post-Processing for generating Triage List](#post-processing-for-generating-triage-list)
+
+* [Cross-Validation](#cross-validation-2)
+
+* [External Validation](#external-validation-2)
+
+* [GCNet with Slide Data](#gcnet-with-slide-data-1)
+
+* [GCNet with Tile Data](#gcnet-with-tile-data-1)
+
+* [GastrolFlow](#gastrolflow-1)
+
+[Generation of Contour Line and Heatmap](#generation-of-contour-line-and-heatmap)
+
+* [Data for generating contour line and heatmap](#data-for-generating-contour-line-and-heatmap)
+
+* [Step before generating contour line and heatmap](#step-before-generating-contour-line-and-heatmap)
+
+* [Generating contour line](#generating-contour-line)
+
+* [Generating Heatmap](#generating-heatmap)
+
+[Running time](#running-time)
+
 
 
 ## Using QuPath to generate the WSI images and cellular features
@@ -188,7 +234,7 @@ Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
 
 
-## Finding the Optimized parameters for models using Talos
+## Finding the optimized parameters for models using Talos
 
 To find the optimized parameters of model using Talos, use script `talos_tunning.py`
 
@@ -352,7 +398,7 @@ Line 121: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 ### External Validation
 
-**GCNet with Slide Data**
+#### GCNet with Slide Data
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
@@ -378,7 +424,7 @@ To generate **the prioritization of cases**, please use Excel function to do.
 
 
 
-### Only Tile Data
+#### GCNet with Tile Data
 
 Please follow the steps below:
 
@@ -465,7 +511,7 @@ To generate **the prioritization of cases**, please use Excel function to do.
 
 
 
-### Slide and Tile Data
+#### GastrolFlow
 
 Before the step, please run the step **Only Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
 
