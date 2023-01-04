@@ -2,6 +2,20 @@
 
 This repository provides training and testing scripts for the article "Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system".
 
+## Using QuPath to generate the data
+
+We use the QuPath(0.2.0-m8)[Link](https://qupath.github.io/) to generate the WSI images and Cellular features for training and validation.
+
+The capture of working space is shown below:
+
+[Image]()
+
+If you want to extract the WSI images and features using own data, please follow the steps below:
+
+
+
+
+
 ## Data for Cross-Validation, External Validation
 
 * Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
