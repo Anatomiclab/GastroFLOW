@@ -4,7 +4,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 ## Using QuPath to generate the data
 
-We use the QuPath(0.2.0-m8)[Link](https://qupath.github.io/) to generate the WSI images and Cellular features for training and validation.
+We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI images and cellular features for training and validation.
 
 The capture of working space is shown below:
 
@@ -12,6 +12,29 @@ The capture of working space is shown below:
 
 If you want to extract the WSI images and features using own data, please follow the steps below:
 
+### Extract the WSI Images
+
+For extracting the images, use QuPath script `QuPath_Script\ImagesExport.groovy`.
+
+**Modified Line(please fill the path for saving the extracted images)**:
+
+Line 7: `path="images/" // Please Change the Path`
+
+**Script outputs**:
+
+* **(WSI Images).png**: *.png* file which are the extracted WSI images corresponded with scn files.
+
+### Extract the cellular features
+
+For extracting the cellular feature, use QuPath script `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy` .
+
+**Modified Line(please fill the path for saving the extracted features)**:
+
+Line 92: `save_path = "Feature/"  //CHANGE sve path here`
+
+**Script outputs**:
+
+* **(WSI cellular features).txt**: *.txt* file which contains the extracted 41 features for data.
 
 
 
