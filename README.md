@@ -3,6 +3,11 @@
 This repository provides training and testing scripts for the article "Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system".
 
 
+## Content
+
+[Using QuPath to generate the WSI images and cellular features](##Using QuPath to generate the WSI images and cellular features)
+
+
 
 
 ## Using QuPath to generate the WSI images and cellular features
