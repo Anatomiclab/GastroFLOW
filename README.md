@@ -8,7 +8,7 @@ We use the QuPath(0.2.0-m8)[Link](https://qupath.github.io/) to generate the WSI
 
 The capture of working space is shown below:
 
-[Image](Figure_readme\Figure_QuPath.png)
+[Image](Figure_QuPath.png)
 
 If you want to extract the WSI images and features using own data, please follow the steps below:
 
