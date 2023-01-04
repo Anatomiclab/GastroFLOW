@@ -2,7 +2,7 @@
 
 This repository provides training and testing scripts for the article "Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system".
 
-## Using QuPath to generate the data
+## Using QuPath to generate the WSI images and cellular features
 
 We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI images and cellular features for training and validation.
 
@@ -38,6 +38,37 @@ Line 92: `save_path = "Feature/"  //CHANGE sve path here`
 
 * **(WSI cellular features).txt**: *.txt* file which contains the extracted 41 features for data.
 
+## Generation of Tile data for training and validation
+
+After using QuPath to generate the cellular features, if you want to generate the tile data for the GastroFlow training and validation, please follow the steps below:
+
+**Step 1**: run `QuPath_Script\stage_2.py`
+
+**Modified Line(please fill the path for the path of cellular features of slides)**:
+
+Line 9: `ex1 = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"`
+
+**Modified Line(please fill the path for the path of saving)**:
+
+Line 17: `saving_path="./Training_tile/"`
+
+**Setting of the range of tile ratio**:
+
+Line 10: `tile_ratio = [500]`
+
+**Step 2**: run `QuPath_Script\tile.py`
+
+**Modified Line(please fill the path for the path of step 1 saving path)**:
+
+Line 9: `ex1 = "./Training_tile/RAW_TXT-SET_20200520/"`
+
+**Modified Line(please fill the path for the path of saving)**:
+
+Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=False)`
+
+**Script outputs**:
+
+* **(WSI cellular features)_tiledata.csv**: *.csv* file which contains the extracted 41 features for tile data.
 
 
 
@@ -286,6 +317,8 @@ Line 124: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 
 * **EX1_EX2__.csv**: *.csv* file which contains the triage list for External test data based on slide data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
+To generate **the prioritization of cases**, please use Excel function to do.
+
 
 
 ### Only Tile Data
@@ -366,6 +399,8 @@ Line 80: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+"_n
 
 * **EX1_2_.csv**: *.csv* file which contains the triage list for External test data based on tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
+To generate **the prioritization of cases**, please use Excel function to do.
+
 
 
 
@@ -404,6 +439,8 @@ Line 84: `final.to_csv(r"stage1_2_result/EX1_2_stage1_2_test_PN_"+str(threshold)
 **Script outputs**:
 
 * **EX1_2_.csv**: *.csv* file which contains the triage list for External test data based on slide and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+
+To generate **the prioritization of cases**, please use Excel function to do.
 
 
 
@@ -472,4 +509,18 @@ Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
 * **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.
 
 
+## Running time
 
+We calculate the running time of using the scripts with our provided data in external dataset. Please note that, based on different environment, the time will be slightly different.
+
+| The Stage of the System  | Running Time  |
+| ------------- | ------------- |
+| Network Running Time (External Validation(Only Slide Data))  | 8.5837  |
+| Network Running Time (External Validation(Only Tile Data))  | 36.2036  |
+| Network Running Time (External Validation(Slide and Tile Data))  | 23.5408  |
+| Post-Processing Time (External Validation(Only Slide Data))  | 0.4937  |
+| Post-Processing Time (External Validation(Only Tile Data))  | 21.6656  |
+| Post-Processing Time (External Validation(Slide and Tile Data))  | 9.4012  |
+| Total Time (External Validation(Only Slide Data))  | 9.0774  |
+| Total Time (External Validation(Only Tile Data))  | 57.8692  |
+| Total Time (External Validation(Slide and Tile Data))  | 32.942  |
