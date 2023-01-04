@@ -194,7 +194,7 @@ def run(X, Y, Id_n, data, input_model=None):
     return(result, analysis)
 
 
-data = pd.read_csv("2.2 Model Building/trainingdata.csv")
+data = pd.read_csv("trainingdata.csv")
 data = data.drop_duplicates(keep='first')
 data = data.reindex(np.random.permutation(data.index))
 data.info()

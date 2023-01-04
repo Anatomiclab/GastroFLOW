@@ -276,7 +276,7 @@ for i in range(6):
 
     data = pd.read_csv('data/EX1_EX2_SlideData.csv')
     data.info()
-    ref_data = pd.read_csv("data/GroundTruth_ex1_2_noex_nodup.csv")
+    ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")
 
     X = data.iloc[:, 1:42].values
     Id = data.iloc[:, 0].values

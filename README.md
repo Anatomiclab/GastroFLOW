@@ -109,7 +109,7 @@ Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Fill the 
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 112: `Result_path=""` **(Fill the path for saving the result)**
+Line 112: `Result_path=""`
 
 **Script outputs**:
 
@@ -125,7 +125,7 @@ Line 17: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the pat
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 76: `final.to_csv(r"internal_result/K-SVM.csv")` **(Fill the path for saving the result)**
+Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
 **Script outputs**:
 
@@ -144,7 +144,11 @@ To run the machine learning algorithms in External Dataset, or generating the sc
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
-Line 116,135,277,279: `data = pd.read_csv('trainingdata.csv')`,`data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')`,`data = pd.read_csv('data/EX1_EX2_SlideData.csv')`, `ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")`
+Line 116: `data = pd.read_csv('trainingdata.csv')` **(Fill the path of the training data)**
+
+Line 277: `data = pd.read_csv('data/EX1_EX2_SlideData.csv')` **(Fill the path of the features of slides in external validation dataset)**
+
+Line 279: `ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -158,7 +162,11 @@ Line 114: `result_path="external/"`
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
-Line 4,13,63: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`, `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")`
+Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Fill the path of the result for the slides model predicted positive)**
+
+Line 13: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
+
+Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -176,7 +184,7 @@ To find the optimized parameters of model using Talos, use script `talos_tunning
 
 **Modified Line(please fill the path for the training data.)**:
 
-Line 72: `data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")`
+Line 72: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the training data)**
 
 **Script outputs**:
 
@@ -191,7 +199,7 @@ To train a model, use script `ModelTraining.py`.
 
 **Modified Line(please fill the path for the training data.)**:
 
-Line 197: `data = pd.read_csv("2.2 Model Building/trainingdata.csv")`
+Line 197: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the training data)**
 
 **Script outputs**:
 
@@ -208,9 +216,9 @@ In order to validate the performance of integrated model in Cross-Validation, us
 
 **Modified Line(please fill the path after downloading the Internal Data.)**:
 
-Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")`
+Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")` **(Fill the file name of the training data)**
 
-Line 44: `data = pd.read_csv("801010/test_cross10.csv")`
+Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -238,9 +246,9 @@ Use script: `Validation_stage1.py`
 
 **Modified Line(please fill the path after downloading the External Data.)**:
 
-Line 27: `ref_data = pd.read_csv("./trainingdata.csv")`
+Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
 
-Line 47: `data = pd.read_csv("EX1_EX2_SlideData.csv")`
+Line 47: `data = pd.read_csv("EX1_EX2_SlideData.csv")` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -262,9 +270,9 @@ Use script: `Validation_stage2.py`
 
 **Modified Line(please fill the path after downloading the External Data.)**:
 
-Line 27: `ref_data = pd.read_csv("./trainingdata.csv")`
+Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
 
-Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")`
+Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -284,9 +292,9 @@ Use script: `Validation_stage1_2.py`
 
 **Modified Line(please fill the path after downloading the External Data.)**:
 
-Line 27: `ref_data = pd.read_csv("./trainingdata.csv")`
-
-Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")`
+Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+ 
+Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -314,11 +322,12 @@ Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
 **Modified Line(please fill the path after running the prediction.)**:
 
-Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))`
+Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))` **(Fill the path of the result for the slides model predicted positive)**
 
-Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")`
+Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
-Line 64: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")`
+Line 64: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
+
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -339,11 +348,11 @@ Use script: `Post_processing\Slide_Stage1_generation.py`
 
 **Modified Line(please fill the path after running the prediction.)**:
 
-Line 8: `csv_data=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")`
+Line 8: `csv_data=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")` **(Fill the path of the result for the slides model predicted positive)**
 
-Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`
+Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
-Line 67: `csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")`
+Line 67: `csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -367,11 +376,13 @@ Please follow the steps below:
 
 **Modified Line(please fill the path after running the prediction.)**:
 
-Line 10,12: `folder_path=r"Network_result//"`,`csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500.csv")`
+Line 10: `folder_path=r"Network_result//"` **(Fill the path of the predicted result after running the network prediction)**
+
+Line 12: `csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500.csv")` **(Fill the filename of the predicted result after running the network prediction)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 42: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
+Line 42: `final.to_csv(r"avg_score//"+"EX1_2_tiledata_500.csv")` **("avg_score//" is immediate path)**
 
 **Script outputs**:
 
@@ -381,11 +392,11 @@ Line 42: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
 
 **Modified Line(please fill the path after running the Step1.)**:
 
-Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"EX1_2_tiledata_500.csv")`
+Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"EX1_2_tiledata_500.csv")` **(Fill the immediate path in step 1)** 
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 82,83,87: `shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)`
+Line 82,83,87: `shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)` **("case_split//" is immediate path)**
 
 **Script outputs**:
 
@@ -395,11 +406,11 @@ Line 82,83,87: `shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",ex
 
 **Modified Line(please fill the path after running the Step2.)**:
 
-Line 15: `for filename in glob.glob(r"case_split/*"):`
+Line 15: `for filename in glob.glob(r"case_split/*"):` **(Fill the immediate path in step 2)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 12,13: `shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)`
+Line 12,13: `shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)` **("case_split_Sorted//" is immediate path)**
 
 **Script outputs**:
 
@@ -413,11 +424,11 @@ Line 9: `threshold=0.2`
 
 **Modified Line(please fill the path after running the Step3.)**:
 
-Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):`
+Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):` **(Fill the immediate path in step 3)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 56,60: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_csv(r"Final_Tile_Stage2//EX1_2_" + str(siz) +"_"+str(threshold)+ ".csv", index=False)`
+Line 56,60: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_csv(r"Final_Tile_Stage2//EX1_2_" + str(siz) +"_"+str(threshold)+ ".csv", index=False)` **("Final_Tile_Stage2//" is immediate path)**
 
 **Script outputs**:
 
@@ -427,7 +438,9 @@ Line 56,60: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_c
 
 **Modified Line(please fill the path after running the Step4.)**:
 
-Line 9,19: `csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`
+Line 9: `csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 4)**
+
+Line 19: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`  **(Fill the path of ground truth in external dataset)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -454,11 +467,15 @@ Then, please follow the steps:
 
 **Modified Line(please fill the path after running the Step3.)**:
 
-Line 7,10,20: `stage1_csv=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")`,`stage1_csv_pos=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")`,`filename=r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv"`
+Line 7: `stage1_csv=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
+
+Line 10: `stage1_csv_pos=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")`**(Fill the path of the result for the slides model predicted positive)**
+
+Line 20: `filename=r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv"` **(Fill the path of the result for the tile data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],index=False)`
+Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],index=False)` **("Final_Tile_Stage1_2//" is immediate path)**
 
 **Script outputs**:
 
@@ -468,7 +485,9 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 **Modified Line(please fill the path after running the Step4.)**:
 
-Line 8,18: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/EX1_2_500_"+str(threshold)+".csv")`,`csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`
+Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/EX1_2_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 1)**
+
+Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of ground truth in external dataset)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -506,12 +525,12 @@ Before generating the maps, please run the script `Contour_Line\AppendingPreduct
 
 **Modified Line(please fill the path for your WSI image and extracted cellular features.)**:
 
-Line 25: `path=r'./Contour_Line/ExtractedData/'`
+Line 25: `path=r'./Contour_Line/ExtractedData/'` **(Fill the path of the extracted cellular features)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'`
-
+Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'` **(Fill the path for saving the network result)**
+ 
 **Script outputs**:
 
 * **EX1_2_.csv**: *.csv* file which contains the network output result based on the provided cellular features.
@@ -525,15 +544,15 @@ Run the script `Contour_Line\ContourLineOverlay.py`.
 
 **Modified Line(please fill the path for your WSI image.)**:
 
-Line 69: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')`
+Line 69: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')` **(Fill the path of the extracted WSI images)**
 
 **Modified Line(please fill the path after running the step before generation.)**:
 
-Line 17: `path=r'./PredictedData/'`
+Line 17: `path=r'./PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 101: `img2.save('./ExportImage2/'+file.replace('csv','png'))`
+Line 101: `img2.save('./ExportImage2/'+file.replace('csv','png'))` **(Fill the path for saving the images with contour lines)**
 
 **Script outputs**:
 
@@ -547,15 +566,15 @@ Run the script `Contour_Line\HeatMap.py`.
 
 **Modified Line(please fill the path for your WSI image.)**:
 
-Line 70: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")`
+Line 70: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")` **(Fill the path of the extracted WSI images)**
 
 **Modified Line(please fill the path after running the step before generation.)**:
 
-Line 20: `path=r'./Contour_Line/PredictedData/'`
+Line 20: `path=r'./Contour_Line/PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
+Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))` **(Fill the path for saving the images with heatmap)**
 
 **Script outputs**:
 

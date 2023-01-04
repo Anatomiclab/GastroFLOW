@@ -69,7 +69,7 @@ p={
        }
 
 #read and clean data
-data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")
+data = pd.read_csv("trainingdata.csv")
 data = data.drop_duplicates(keep='first')
 data = data.reindex(np.random.permutation(data.index))
 data.info()
