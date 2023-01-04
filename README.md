@@ -487,6 +487,10 @@ The data could be downloaded at [Link](https://connectpolyu-my.sharepoint.com/:u
 
 Please note that, we provide both WSI images and corresponding cellular features. Therefore, you could directly run the following steps.
 
+Sample of WSI images is shown below:
+
+![Image](Sample_WSI.png)
+
 
 
 ### Step before generating contour line and heatmap
