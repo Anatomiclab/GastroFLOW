@@ -7,6 +7,11 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Using QuPath to generate the WSI images and cellular features](#Using-QuPath-to-generate-the-WSI-images-and-cellular-features)
 
+* [Extract the WSI Images](#extract-the-wsi-images)
+
+* [Extract the cellular features](#extract-the-cellular-features)
+
+[Generation of tile data for training and validation](#generation-of-tile-data-for-training-and-validation)
 
 
 
