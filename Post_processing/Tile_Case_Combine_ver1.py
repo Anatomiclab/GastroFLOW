@@ -7,7 +7,7 @@ import time
 
 
 threshold=0.2
-siz=500
+
 
 final_list=[]
 count=0

@@ -10,6 +10,8 @@ The capture of working space is shown below:
 
 ![Image](Figure_QuPath.png)
 
+To run the scripts, please open the script editor via `Automate->Show script editor` and load the script for running.
+
 If you want to extract the WSI images and features using own data, please follow the steps below:
 
 ### Extract the WSI Images
@@ -120,6 +122,17 @@ Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
 
 
+## Finding the Optimized parameters for models using Talos
+
+To find the optimized parameters of model using Talos, use script `talos_tunning.py`
+
+**Modified Line(please fill the path for the training data.)**:
+
+Line 72: `data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")`
+
+**Script outputs**:
+
+* **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
 
 
 ## Network Training
@@ -136,15 +149,6 @@ Line 197: `data = pd.read_csv("2.2 Model Building/trainingdata.csv")`
 
 * **SummaryOfPerformance.csv**: *.csv* file which is the performance of model in different rounds.
 
-To find the optimized parameters of model using Talos, use script `talos_tunning.py`
-
-**Modified Line(please fill the path for the training data.)**:
-
-Line 72: `data = pd.read_csv("2.1 Hyperparameter Tuning/trainingdata.csv")`
-
-**Script outputs**:
-
-* **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
 
 ## Cross-Validation
 
@@ -332,6 +336,10 @@ Line 12,13: `shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sor
 
 **Step 4**: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
 
+**The threshold for prediction**
+
+Line 9: `threshold=0.2`
+
 **Modified Line(please fill the path after running the Step3.)**:
 
 Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):`
@@ -342,7 +350,7 @@ Line 56,60: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_c
 
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the number of positive tiles corresponding to each cases and the predicted label of cases.
+* **EX1_2_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the minimum number of positive tile to become the suspicious positive, the actual number of positive tile and the diagnosis.
 
 **Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
 
@@ -462,19 +470,6 @@ Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))`
 **Script outputs**:
 
 * **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.
-
-
-## Others
-
-### AUC Generation
-
-If you want to generate the corresponding AUC score, please run the script `Post_processing\AUC.py`.
-
-**Modified Line(please fill the path for the generated triage list.)**:
-
-Line 8: `for filename in glob.glob(r"ForAUC\\*\\*"):`
-
-AUC scores will print in the console.
 
 
 
