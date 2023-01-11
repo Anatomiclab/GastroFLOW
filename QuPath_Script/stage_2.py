@@ -6,23 +6,23 @@ import pandas as pd
 
 
 
-ex1 = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"
+feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"
 tile_ratio = [500]
 
 
 
 
-sep_file=ex1.split('/')[-2]
+sep_file=feat_path.split('/')[-2]
 
 saving_path="./Training_tile/"
 
 os.mkdir(saving_path + sep_file)
 
-for file in os.listdir(ex1):
+for file in os.listdir(feat_path):
 
     for ratio in tile_ratio:
 
-        df = pd.read_csv(ex1+file, header=0,sep="	")
+        df = pd.read_csv(feat_path+file, header=0,sep="	")
         #print(df['Centroid X µm'])
         try:
             df.insert(loc=7, column = "X", value = np.floor(df['Centroid X µm'].values/(ratio/4)))

@@ -73,7 +73,7 @@ The capture of working space is shown below:
 
 To run the scripts, please open the script editor via `Automate->Show script editor` and load the script for running.
 
-If you want to extract the WSI images and features using own data, please follow the steps below:
+If you want to extract the WSI images and cellular features, please follow the steps below:
 
 ### Extract the WSI Images
 
@@ -86,7 +86,7 @@ Line 7: `path="images/" // Please Change the Path`  **(Path for saving the extra
 
 **Script outputs**:
 
-* **(WSI Images).png**: *.png* file which are the extracted WSI images corresponded with scn files.
+* **(WSI Images).png**: *.png* file which are the extracted WSI images.
 
 ### Extract the cellular features
 
@@ -98,7 +98,7 @@ Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the
 
 **Script outputs**:
 
-* **(WSI cellular features).txt**: *.txt* file which contains the extracted 41 features for data.
+* **(WSI cellular features).txt**: *.txt* file which contains the extracted cellular features for WSI images.
 
 
 
@@ -119,7 +119,7 @@ Line 8: `outPath=r'./aggregateddata.csv'`
 * **aggregateddata.csv**: *.csv* file which is the slide data. 
 
 
-## Generation of tile data for training and validation
+## Generation of downsampled WSI and its tiled image data for training and validation
 
 After using QuPath to generate the cellular features, if you want to generate the tile data for the GastrolFlow training and validation, please follow the steps below:
 
@@ -127,7 +127,7 @@ After using QuPath to generate the cellular features, if you want to generate th
 
 **Modified Line(please fill the path for the path of cellular features of slides)**:
 
-Line 9: `ex1 = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path for the cellular features of slides from QuPath)**
+Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path for the cellular features of slides from QuPath)**
 
 **Modified Line(please fill the path for the path of saving)**:
 
@@ -141,7 +141,7 @@ Line 10: `tile_ratio = [500]` **(The extracted tile is 500*500)**
 
 **Modified Line(please fill the path for the path of step 1 saving path)**:
 
-Line 9: `ex1 = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill the immediate path in Step 1)**
+Line 9: `tile_path = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill the immediate path in Step 1)**
 
 **Modified Line(please fill the path for the path of saving)**:
 
@@ -166,7 +166,7 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 
 ## Machine Learning Algorithms
 
-We provide the running scripts of machine learning algorithms in Cross-Validation and External dataset.
+We provide the running scripts of machine learning algorithms in Internal Set for Cross-Validation and tested in External dataset.
 
 
 
@@ -213,7 +213,7 @@ In this section, it does not contain the scores. If you want to generate the sco
 
 
 
-### External Dataset, Internal Dataset for Score
+### External Dataset, Generate score for Internal Dataset
 
 To run the machine learning algorithms in External Dataset, or generating the score in Internal Dataset, please follow the steps below: 
 
