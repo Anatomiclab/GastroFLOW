@@ -11,6 +11,8 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 * [Extract the cellular features](#extract-the-cellular-features)
 
+[Generation of slide data](#generation-of-slide-data)
+
 [Generation of tile data for training and validation](#generation-of-tile-data-for-training-and-validation)
 
 [Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
@@ -97,6 +99,25 @@ Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the
 **Script outputs**:
 
 * **(WSI cellular features).txt**: *.txt* file which contains the extracted 41 features for data.
+
+
+
+## Generation of slide data
+
+After extracting the cellular features, please use the Python script `DataAggregationforWholeSlides.py` to generate the slide data.
+
+**Modified Line(please fill the path for the path of cellular features extracted from QuPath)**:
+
+Line 7: `path=r'./RawData'`
+
+**Modified Line(please fill the path for saving the slide data)**:
+
+Line 8: `outPath=r'./aggregateddata.csv'`
+
+**Script outputs**:
+
+* **aggregateddata.csv**: *.csv* file which is the slide data. 
+
 
 ## Generation of tile data for training and validation
 
