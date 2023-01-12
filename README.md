@@ -610,11 +610,15 @@ Before generating the maps, please run the script `Contour_Line\AppendingPreduct
 
 **Modified Line(please fill the path for your WSI image and extracted cellular features.)**:
 
-Line 25: `path=r'./Contour_Line/ExtractedData/'` **(Fill the path of the extracted cellular features)**
+Line 20: `path=r'./Contour_Line/ExtractedData/'` **(Fill the path of the extracted cellular features)**
+
+**Modified Line for Code Running**: 
+
+Line 25: `ref_data = pd.read_csv("./trainingdata.csv") #Fill the Training Data path`**(Fill the path of training data used in the model training)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 53: `name='./PredictedData/'+filename[:-4]+'.csv'` **(Fill the path for saving the network result)**
+Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'` **(Fill the path for saving the network result)**
  
 **Script outputs**:
 
@@ -629,15 +633,15 @@ Run the script `Contour_Line\ContourLineOverlay.py`.
 
 **Modified Line(please fill the path for your WSI image.)**:
 
-Line 69: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')` **(Fill the path of the extracted WSI images)**
+Line 64: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')` **(Fill the path of the extracted WSI images)**
 
 **Modified Line(please fill the path after running the step before generation.)**:
 
-Line 17: `path=r'./PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
+Line 112: `path=r'./PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 101: `img2.save('./ExportImage2/'+file.replace('csv','png'))` **(Fill the path for saving the images with contour lines)**
+Line 96: `img2.save('./ExportImage2/'+file.replace('csv','png'))` **(Fill the path for saving the images with contour lines)**
 
 **Script outputs**:
 
@@ -651,15 +655,15 @@ Run the script `Contour_Line\HeatMap.py`.
 
 **Modified Line(please fill the path for your WSI image.)**:
 
-Line 70: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")` **(Fill the path of the extracted WSI images)**
+Line 65: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")` **(Fill the path of the extracted WSI images)**
 
 **Modified Line(please fill the path after running the step before generation.)**:
 
-Line 20: `path=r'./Contour_Line/PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
+Line 15: `path=r'./Contour_Line/PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 86 : `img2.save('./ExportHeatmap/'+file.replace('csv','png'))` **(Fill the path for saving the images with heatmap)**
+Line 81: `img2.save('./ExportHeatmap/'+file.replace('csv','png'))` **(Fill the path for saving the images with heatmap)**
 
 **Script outputs**:
 

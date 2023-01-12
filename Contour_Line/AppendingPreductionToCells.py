@@ -22,7 +22,7 @@ for (dirpath, dirnames, filenames) in walk(path):
     for f in filenames:
         if f[-3:] == 'txt':
             file.append(f)
-ref_data = pd.read_csv("./trainingdata.csv")
+ref_data = pd.read_csv("./trainingdata.csv") #Fill the Training Data path
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 ref_X = ref_data.iloc[:, 1:42].values
