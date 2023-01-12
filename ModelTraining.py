@@ -161,7 +161,7 @@ def run(X, Y, Id_n, data, input_model=None):
     Val_accuracy=history.history['val_accuracy'][-1]
     print(f'Validation Accuracy = {Val_accuracy}')
     fpr, tpr, thresholds = metrics.roc_curve(Y_test, Y_pred_num)
-    roc_auc = auc(fpr, tpr),2    
+    roc_auc = auc(fpr, tpr)
     analysis=[TPR, TNR, PPV, NPV, Accuracy, roc_auc, history.history['val_accuracy'][-1]]
     
     myStr=', '.join(map(str,analysis))
