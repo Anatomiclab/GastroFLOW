@@ -1,0 +1,19 @@
+### GCNet with Tile Data
+
+Use script: `Validation_stage2.py`
+
+**Modified Line(please fill the path after downloading the External Data.)**:
+
+Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+
+Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")` **(Fill the file name of the testing data)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
+
+**Script outputs**:
+
+* **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data.
+
+After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.

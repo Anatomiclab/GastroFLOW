@@ -1,0 +1,21 @@
+### GCNet with Slide Data
+
+Use script: `Validation_stage1.py`
+
+**Modified Line(please fill the path after downloading the External Data.)**:
+
+Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+
+Line 47: `data = pd.read_csv("EX1_EX2_SlideData.csv")` **(Fill the file name of the testing data)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
+
+**Script outputs**:
+
+* **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
+
+* **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
+
+After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.

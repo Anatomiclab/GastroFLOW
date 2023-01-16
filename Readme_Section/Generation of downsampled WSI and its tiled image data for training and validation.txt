@@ -1,0 +1,31 @@
+## Generation of downsampled WSI and its tiled image data for training and validation
+
+After using QuPath to generate the cellular features, if you want to generate the tile data for the GastrolFlow training and validation, please follow the steps below:
+
+**Step 1**: run `QuPath_Script\stage_2.py`
+
+**Modified Line(please fill the path for the path of cellular features of slides)**:
+
+Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path for the cellular features of slides from QuPath)**
+
+**Modified Line(please fill the path for the path of saving)**:
+
+Line 17: `saving_path="./Training_tile/"` **(Immediate path for saving the tile data)**
+
+**Setting of the range of tile ratio**:
+
+Line 10: `tile_ratio = [500]` **(The extracted tile is 500*500)**
+
+**Step 2**: run `QuPath_Script\tile.py`
+
+**Modified Line(please fill the path for the path of step 1 saving path)**:
+
+Line 9: `tile_path = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill the immediate path in Step 1)**
+
+**Modified Line(please fill the path for the path of saving)**:
+
+Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=False)` **(Fill the path for saving the final tile data)**
+
+**Script outputs**:
+
+* **(WSI cellular features)_tiledata.csv**: *.csv* file which contains the extracted 41 features for tile data.

@@ -1,0 +1,20 @@
+### Cross-Validation
+
+Use script: `Post_processing\Slide_internal_Stage1_generation.py`
+
+**Modified Line(please fill the path after running the prediction.)**:
+
+Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))` **(Fill the path of the result for the slides model predicted positive)**
+
+Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the path of the ground truth in internal validation dataset)**
+
+Line 64: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
+
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 118: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
+
+**Script outputs**:
+
+* **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).

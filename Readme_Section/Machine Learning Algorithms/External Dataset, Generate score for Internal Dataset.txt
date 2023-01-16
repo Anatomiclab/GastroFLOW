@@ -1,0 +1,43 @@
+### External Dataset, Generate score for Internal Dataset
+
+To run the machine learning algorithms in External Dataset, or generating the score in Internal Dataset, please follow the steps below: 
+
+**Step 1**: run `machinelearn_external_score.py`
+
+**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+
+Line 116: `data = pd.read_csv('trainingdata.csv')` **(Fill the path of the training data)**
+
+Line 135: `data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')` **(Fill the path of the features of slides in external validation dataset modified with (Fake) ground truth.)**
+
+Line 277: `data = pd.read_csv('data/EX1_EX2_SlideData.csv')` **(Fill the path of the features of slides in external validation dataset)**
+
+Line 279: `ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 114: `result_path="external/"`
+
+**Script outputs**:
+
+* **(Machine Learning Algorithm).csv**: *.csv* file which contains the predicted results of machine learning models for external data.
+
+**Step 2**: run `Machine_learning_external_generation.py`
+
+**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+
+Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Fill the path of the result for the slides model predicted positive)**
+
+Line 13: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
+
+Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
+
+**Script outputs**:
+
+* **(Machine Learning Algorithm).csv**: *.csv* file which contains the list of machine learning model predictions for external data. 
+
+To generate the triage list, please use excel to sort according by predict label (Positive, Suspicous of Positive, Negative) and score.

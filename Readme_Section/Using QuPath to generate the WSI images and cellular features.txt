@@ -1,0 +1,36 @@
+## Using QuPath to generate the WSI images and cellular features
+
+We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI images and cellular features for training and validation.
+
+The capture of working space is shown below:
+
+![Image](Figure_QuPath.png)
+
+To run the scripts, please open the script editor via `Automate->Show script editor` and load the script for running.
+
+If you want to extract the WSI images and cellular features, please follow the steps below:
+
+### Extract the WSI Images
+
+For extracting the images, use QuPath script `QuPath_Script\ImagesExport.groovy`.
+
+**Modified Line(please fill the path for saving the extracted images)**:
+
+Line 7: `path="images/" // Please Change the Path`  **(Path for saving the extracted images)**
+
+
+**Script outputs**:
+
+* **(WSI Images).png**: *.png* file which are the extracted WSI images.
+
+### Extract the cellular features
+
+For extracting the cellular feature, use QuPath script`QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy`.
+
+**Modified Line(please fill the path for saving the extracted features)**:
+
+Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the extracted features)**
+
+**Script outputs**:
+
+* **(WSI cellular features).txt**: *.txt* file which contains the extracted cellular features for WSI images.

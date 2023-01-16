@@ -1,0 +1,13 @@
+## Network Training
+
+To train a model, use script `ModelTraining.py`.
+
+**Modified Line(please fill the path for the training data.)**:
+
+Line 197: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the training data)**
+
+**Script outputs**:
+
+* **(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5**: *.h5* file which is the model checkpoint after training.
+
+* **SummaryOfPerformance.csv**: *.csv* file which is the performance of model in different rounds.

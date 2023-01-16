@@ -1,0 +1,19 @@
+### Step before generating contour line and heatmap
+
+Before generating the maps, please run the script `Contour_Line\AppendingPreductionToCells.py` first.
+
+**Modified Line(please fill the path for your WSI image and extracted cellular features.)**:
+
+Line 20: `path=r'./Contour_Line/ExtractedData/'` **(Fill the path of the extracted cellular features)**
+
+**Modified Line for Code Running**: 
+
+Line 25: `ref_data = pd.read_csv("./trainingdata.csv") #Fill the Training Data path`**(Fill the path of training data used in the model training)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'` **(Fill the path for saving the network result)**
+ 
+**Script outputs**:
+
+* **EX1_2_.csv**: *.csv* file which contains the network output result based on the provided cellular features.

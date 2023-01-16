@@ -1,0 +1,25 @@
+### GastrolFlow
+
+Use script: `Validation_stage1_2.py`
+
+**Modified Line(please fill the path after downloading the External Data.)**:
+
+Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+
+Line 47: `data = pd.read_csv("EX1_EX2_SlideData.csv")` **(Fill the file name of the slide testing data)**
+ 
+Line 180: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")` **(Fill the file name of the tiled testing data)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
+
+Line 230: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
+
+**Script outputs**:
+
+* **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
+
+* **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
+
+* **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.

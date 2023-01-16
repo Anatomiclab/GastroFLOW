@@ -1,0 +1,19 @@
+### Generating Heatmap
+
+Run the script `Contour_Line\HeatMap.py`.
+
+**Modified Line(please fill the path for your WSI image.)**:
+
+Line 65: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")` **(Fill the path of the extracted WSI images)**
+
+**Modified Line(please fill the path after running the step before generation.)**:
+
+Line 15: `path=r'./Contour_Line/PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 81: `img2.save('./ExportHeatmap/'+file.replace('csv','png'))` **(Fill the path for saving the images with heatmap)**
+
+**Script outputs**:
+
+* **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.

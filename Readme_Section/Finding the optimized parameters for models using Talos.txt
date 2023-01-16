@@ -1,0 +1,11 @@
+## Finding the optimized parameters for models using Talos
+
+To find the optimized parameters of model using Talos, use script `talos_tunning.py`
+
+**Modified Line(please fill the path for the training data.)**:
+
+Line 72: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the training data)**
+
+**Script outputs**:
+
+* **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.

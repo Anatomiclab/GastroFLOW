@@ -1,0 +1,19 @@
+## GCNet in Cross-Validation
+
+In order to validate the performance of GCNet in Cross-Validation, use script `Validation_internal.py`
+
+**Modified Line(please fill the path after downloading the Internal Data.)**:
+
+Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")` **(Fill the file name of the training data)**
+
+Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Fill the file name of the testing data)**
+
+**Modified Line(please fill the path for saving the results.)**:
+
+Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
+
+**Script outputs**:
+
+* **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
+
+* **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
