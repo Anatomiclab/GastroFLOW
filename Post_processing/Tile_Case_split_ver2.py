@@ -10,7 +10,7 @@ res_time=time.time()
 
 folder_path=r"avg_score/"
 
-csv_data=pd.read_csv(folder_path+r"EX1_2_tiledata_500.csv")
+csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")
 
 
 

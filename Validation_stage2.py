@@ -24,7 +24,7 @@ print("######Running Start###############")
 stage1_1_start = time.time()
 print("Stage1_1 Start time: ", stage1_1_start)
 
-ref_data = pd.read_csv("./trainingdata.csv")
+ref_data = pd.read_csv("trainingdata.csv")
 
 print(tf.config.list_physical_devices('GPU'))
 from sklearn.preprocessing import StandardScaler
@@ -41,7 +41,7 @@ stage2_1_start = time.time()
 print("Stage2_1 Start time: ", stage2_1_start)
 
 
-data = pd.read_csv("ex1_ex2_tiledata_500.csv")
+data = pd.read_csv("data/External_tiledata_500.csv")
 
 X = data.iloc[:, 1:42].values
 Id = data.iloc[:, 0].values
@@ -66,7 +66,7 @@ for root, _, name in walk(path):
             table = pd.DataFrame({'id': Id, f: Y_pre})
         else:
             table[f] = Y_pre
-    table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")
+    table.to_csv("Network_result/"+ "Exterma;_tiledata_500.csv")
 
 stage2_2_end = time.time()
 print("Stage2_2 end time: ", stage2_2_end)

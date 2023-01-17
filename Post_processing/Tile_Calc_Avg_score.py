@@ -9,7 +9,7 @@ res_time=time.time()
 
 folder_path=r"Network_result//"
 
-csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500.csv")
+csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")
 pred=np.asarray(csv_data['id'])
 pred_cut=pred.copy()
 
@@ -39,7 +39,7 @@ for i in range(pred_cut.shape[0]):
 
 
 final=pd.DataFrame(columns=f_properties,data=f)
-final.to_csv(r"avg_score//"+"EX1_2_tiledata_500.csv")
+final.to_csv(r"avg_score//"+"External_tiledata_500.csv")
 
 
 print(time.time()-res_time)

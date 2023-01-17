@@ -4,10 +4,10 @@ import glob
 import time
 start_time=time.time()
 
-stage1_csv=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")
+stage1_csv=pd.read_csv(r"Network/External_requireTile_.csv")
 stage1_id=stage1_csv['ID']
 
-stage1_csv_pos=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")
+stage1_csv_pos=pd.read_csv(r"Network/External_report_pos_.csv")
 stage1_id_pos=stage1_csv_pos['ID']
 
 final_list = []
@@ -17,7 +17,7 @@ csv_properties=["id","Avg Score","positiveNum","diagnosis"]
 
 
 threshold=0.2
-filename=r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv"
+filename=r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv"
 
 stage2_csv=pd.read_csv(filename)
 # Diagnosis

@@ -132,7 +132,7 @@ random.shuffle(Id_n, random.random)
 Id_train = Id_n
 
 
-data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')
+data2 = pd.read_csv('data/External_SlideData_gt.csv')
 dataset2 = data2
 presplitted2 = 0
 
@@ -274,9 +274,9 @@ for i in range(6):
 
     output_pd = pd.DataFrame(columns=output_properties, data=output)
 
-    data = pd.read_csv('data/EX1_EX2_SlideData.csv')
+    data = pd.read_csv('data/External_SlideData.csv')
     data.info()
-    ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")
+    ref_data = pd.read_csv("data/GroundTruth_External.csv")
 
     X = data.iloc[:, 1:42].values
     Id = data.iloc[:, 0].values

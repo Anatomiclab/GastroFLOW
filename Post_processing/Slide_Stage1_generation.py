@@ -5,7 +5,7 @@ import time
 
 start_time=time.time()
 
-csv_data=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")
+csv_data=pd.read_csv(r"Network/External_report_pos_.csv")
 print(csv_data)
 pred=np.asarray(csv_data['ID'])
 pred_diag=np.asarray(csv_data['predict'])
@@ -15,7 +15,7 @@ pred_cut=pred.copy()
 for i in range(pred.shape[0]):
     pred_cut[i]=pred[i].split("_")[0]
 
-csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")
+csv_data=pd.read_csv(r"data/GroundTruth_External.csv")
 gt=np.asarray(csv_data['ID'])
 gt_diag=np.asarray(csv_data['Diagnosis'])
 
@@ -63,7 +63,7 @@ print(f)
 #f.remove([])
 
 
-csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")
+csv_data=pd.read_csv(r"Network/External_requireTile_.csv")
 #Diagnosis
 print(csv_data)
 pred=np.asarray(csv_data['ID'])
@@ -117,7 +117,7 @@ for i in range(len(f)):
         f2.append(f[i])
 
 final=pd.DataFrame(columns=f_properties,data=f2)
-final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")
+final.to_csv(r"stage1_result/External_stage1_test_PN.csv")
 
 end_time=time.time()
 print("Total Time: ",end_time-start_time)

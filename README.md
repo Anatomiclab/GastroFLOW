@@ -159,7 +159,7 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 
 * Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
 
-* External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EQFpIguoZMpHgaCPkJpEEokBTdYUON7_JTXRQa046HFEKQ)
+* External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
 
 * Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
@@ -225,11 +225,11 @@ To run the machine learning algorithms in External Dataset, or generating the sc
 
 Line 116: `data = pd.read_csv('trainingdata.csv')` **(Fill the path of the training data)**
 
-Line 135: `data2 = pd.read_csv('data/EX1_EX2_SlideData_withgt.csv')` **(Fill the path of the features of slides in external validation dataset modified with (Fake) ground truth.)**
+Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Fill the path of the features of slides in external validation dataset modified with (Fake) ground truth.)**
 
-Line 277: `data = pd.read_csv('data/EX1_EX2_SlideData.csv')` **(Fill the path of the features of slides in external validation dataset)**
+Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Fill the path of the features of slides in external validation dataset)**
 
-Line 279: `ref_data = pd.read_csv("data/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
+Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -245,7 +245,7 @@ Line 114: `result_path="external/"`
 
 Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Fill the path of the result for the slides model predicted positive)**
 
-Line 13: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
+Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
 Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
 
@@ -329,9 +329,9 @@ Use script: `Validation_stage1.py`
 
 **Modified Line(please fill the path after downloading the External Data.)**:
 
-Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Fill the file name of the training data)**
 
-Line 47: `data = pd.read_csv("EX1_EX2_SlideData.csv")` **(Fill the file name of the testing data)**
+Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -353,17 +353,17 @@ Use script: `Validation_stage2.py`
 
 **Modified Line(please fill the path after downloading the External Data.)**:
 
-Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Fill the file name of the training data)**
 
-Line 44: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")` **(Fill the file name of the testing data)**
+Line 44: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Fill the file name of the testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 69: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
+Line 69: `table.to_csv("Network_result/"+ "Exterma;_tiledata_500.csv")`
 
 **Script outputs**:
 
-* **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data.
+* **"External_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data.
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
@@ -375,17 +375,17 @@ Use script: `Validation_stage1_2.py`
 
 **Modified Line(please fill the path after downloading the External Data.)**:
 
-Line 27: `ref_data = pd.read_csv("./trainingdata.csv")` **(Fill the file name of the training data)**
+Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Fill the file name of the training data)**
 
-Line 47: `data = pd.read_csv("EX1_EX2_SlideData.csv")` **(Fill the file name of the slide testing data)**
+Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Fill the file name of the slide testing data)**
  
-Line 180: `data = pd.read_csv("ex1_ex2_tiledata_500.csv")` **(Fill the file name of the tiled testing data)**
+Line 180: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Fill the file name of the tiled testing data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
 Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
 
-Line 230: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
+Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
 **Script outputs**:
 
@@ -393,7 +393,7 @@ Line 230: `table.to_csv("Network_result/"+ "EX1_EX2_tiledata_500.csv")`
 
 * **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
 
-* **"EX1_EX2_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
+* **External_tiledata_500.csv**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
 
 
  
@@ -435,19 +435,19 @@ Use script: `Post_processing\Slide_Stage1_generation.py`
 
 **Modified Line(please fill the path after running the prediction.)**:
 
-Line 8: `csv_data=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")` **(Fill the path of the result for the slides model predicted positive)**
+Line 8: `csv_data=pd.read_csv(r"Network/External_report_pos_.csv")` **(Fill the path of the result for the slides model predicted positive)**
 
-Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of the ground truth in external validation dataset)**
+Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
-Line 66: `csv_data=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
+Line 66: `csv_data=pd.read_csv(r"Network/External_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 120: `final.to_csv(r"stage1_result/EX1_EX2_stage1_test_PN.csv")`
+Line 120: `final.to_csv(r"stage1_result/External_stage1_test_PN.csv")`
 
 **Script outputs**:
 
-* **EX1_EX2__.csv**: *.csv* file which contains the triage list for External test data based on slide data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+* **External__.csv**: *.csv* file which contains the triage list for External test data based on slide data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 To generate **the prioritization of cases**, please use Excel function to do.
 
@@ -465,11 +465,11 @@ Please follow the steps below:
 
 Line 10: `folder_path=r"Network_result//"` **(Fill the path of the predicted result after running the network prediction)**
 
-Line 12: `csv_data=pd.read_csv(folder_path+r"EX1_EX2_tiledata_500.csv")` **(Fill the filename of the predicted result after running the network prediction)**
+Line 12: `csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")` **(Fill the filename of the predicted result after running the network prediction)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 42: `final.to_csv(r"avg_score//"+"EX1_2_tiledata_500.csv")` **("avg_score//" is immediate path)**
+Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_score//" is immediate path)**
 
 **Script outputs**:
 
@@ -479,7 +479,7 @@ Line 42: `final.to_csv(r"avg_score//"+"EX1_2_tiledata_500.csv")` **("avg_score//
 
 **Modified Line(please fill the path after running the Step1.)**:
 
-Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"EX1_2_tiledata_500.csv")` **(Fill the immediate path in step 1)** 
+Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")` **(Fill the immediate path in step 1)** 
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -515,27 +515,27 @@ Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):` **(Fill the immedi
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 53,57: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_csv(r"Final_Tile_Stage2//EX1_2_"+"_"+str(threshold)+ ".csv", index=False)` **("Final_Tile_Stage2//" is immediate path)**
+Line 53,57: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_csv(r"Final_Tile_Stage2//External_" +"_"+str(threshold)+ ".csv", index=False)` **("Final_Tile_Stage2//" is immediate path)**
 
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the minimum number of positive tile to become the suspicious positive, the actual number of positive tile and the diagnosis.
+* **External_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the minimum number of positive tile to become the suspicious positive, the actual number of positive tile and the diagnosis.
 
 **Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
 
 **Modified Line(please fill the path after running the Step4.)**:
 
-Line 9: `csv_data=pd.read_csv(r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 4)**
+Line 9: `csv_data=pd.read_csv(r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 4)**
 
-Line 19: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")`  **(Fill the path of ground truth in external dataset)**
+Line 19: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")`  **(Fill the path of ground truth in external dataset)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 78: `final.to_csv(r"stage2_result/EX1_2_stage2_test_PN_"+str(threshold)+".csv")`
+Line 78: `final.to_csv(r"stage2_result/External_stage2_test_PN_"+str(threshold)+".csv")`
 
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the triage list for External test data based on tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+* **External_.csv**: *.csv* file which contains the triage list for External test data based on tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 To generate **the prioritization of cases**, please use Excel function to do.
 
@@ -554,11 +554,11 @@ Then, please follow the steps:
 
 **Modified Line(please fill the path after running the Step3.)**:
 
-Line 7: `stage1_csv=pd.read_csv(r"Network/EX1_EX2_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
+Line 7: `stage1_csv=pd.read_csv(r"Network/External_requireTile_.csv")` **(Fill the path of the result for the slides model predicted negative)**
 
-Line 10: `stage1_csv_pos=pd.read_csv(r"Network/EX1_EX2_report_pos_.csv")`**(Fill the path of the result for the slides model predicted positive)**
+Line 10: `stage1_csv_pos=pd.read_csv(r"Network/External_report_pos_.csv")`**(Fill the path of the result for the slides model predicted positive)**
 
-Line 20: `filename=r"Final_Tile_Stage2/EX1_2_500_"+str(threshold)+".csv"` **(Fill the path of the result for the tile data)**
+Line 20: `filename=r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv"` **(Fill the path of the result for the tile data)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
@@ -566,23 +566,23 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the predicted result for external dataset. It will provide the prediction label (positive, suspect positive and negative), the predict score, and the number of the tiled predicted as suspect positive.
+* **External_.csv**: *.csv* file which contains the predicted result for external dataset. It will provide the prediction label (positive, suspect positive and negative), the predict score, and the number of the tiled predicted as suspect positive.
 
 **Step 2**: Run script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
 
 **Modified Line(please fill the path after running the Step4.)**:
 
-Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/EX1_2_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 1)**
+Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 1)**
 
-Line 18: `csv_data=pd.read_csv(r"Ground_Truth/GroundTruth_ex1_2.csv")` **(Fill the path of ground truth in external dataset)**
+Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of ground truth in external dataset)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 82: `final.to_csv(r"stage1_2_result/EX1_2_stage1_2_test_PN_"+str(threshold)+".csv")`
+Line 82: `final.to_csv(r"stage1_2_result/External_stage1_2_test_PN_"+str(threshold)+".csv")`
 
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the triage list for External test data based on slide and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+* **External_.csv**: *.csv* file which contains the triage list for External test data based on slide and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 To generate the triage list of cases, please use excel to sort according the prediction label (Positive, Suspect Positive and Negative), and the prediction score.
 
@@ -624,7 +624,7 @@ Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'` **(Fill the path for sav
  
 **Script outputs**:
 
-* **EX1_2_.csv**: *.csv* file which contains the network output result based on the provided cellular features.
+* **Predict_.csv**: *.csv* file which contains the network output result based on the provided cellular features.
 
 
 

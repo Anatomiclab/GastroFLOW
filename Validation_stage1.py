@@ -44,7 +44,7 @@ print("Stage1_1 time: ", stage1_1_end - stage1_1_start)
 def read(model_path):
     model = keras.models.load_model(model_path)
 
-    data = pd.read_csv("EX1_EX2_SlideData.csv")
+    data = pd.read_csv("data/External_SlideData.csv")
 
     X = data.iloc[:, 1:42].values
     Id = data.iloc[:, 0].values
@@ -147,8 +147,8 @@ report_neg = result.loc[result['predict'] == 'False']
 report_pos = result.loc[result['predict'] == 'Positive']
 
 
-posName = 'EX1_EX2_report_pos_' +  '.csv'
-negName = 'EX1_EX2_requireTile_' + '.csv'
+posName = 'External_report_pos_' +  '.csv'
+negName = 'External_requireTile_' + '.csv'
 
 
 

@@ -54,7 +54,7 @@ os.makedirs("Final_Tile_Stage2//", exist_ok=True)
 
 csv_properties=["id","Avg Score","Passline","positiveNum","diagnosis"]
 case_final = pd.DataFrame(columns=csv_properties, data=final_list)
-case_final.to_csv(r"Final_Tile_Stage2//EX1_2_" +"_"+str(threshold)+ ".csv", index=False)
+case_final.to_csv(r"Final_Tile_Stage2//External_" +"_"+str(threshold)+ ".csv", index=False)
 
 
 print(time.time()-res_time)
