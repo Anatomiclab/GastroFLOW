@@ -5,6 +5,8 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 ## Content
 
+[Environment of Python](#environment-of-python)
+
 [Using QuPath to generate the WSI images and cellular features](#Using-QuPath-to-generate-the-WSI-images-and-cellular-features)
 
 * [Extract the WSI Images](#extract-the-wsi-images)
@@ -62,6 +64,9 @@ This repository provides training and testing scripts for the article "Prioritiz
 [Running time](#running-time)
 
 
+## Environment of Python
+
+(Wait for Environment File Generation)
 
 ## Using QuPath to generate the WSI images and cellular features
 
