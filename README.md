@@ -171,6 +171,9 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 * Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
+## Data Statistics for Cross-Validation, External Validation
+
+(Fill Data Table)
 
 
 ## Machine Learning Algorithms
