@@ -66,7 +66,9 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 ## Environment of Python
 
-(Wait for Environment File Generation)
+We update the environment file of Python using in the project. The anaconda environment file is `environment.yml`
+
+Please follow the [import guideline](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to reproduce the environment.
 
 ## Using QuPath to generate the WSI images and cellular features
 
