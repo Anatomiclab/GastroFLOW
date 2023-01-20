@@ -66,7 +66,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 ## Environment of Python
 
-We update the environment file of Python using in the project. The anaconda environment file is `environment.yml`
+We update the environment file of Python using in the project. The anaconda environment file is `environment_tf2.yml`
 
 Please follow the [import guideline](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to reproduce the environment.
 
@@ -182,7 +182,7 @@ We provide the running scripts of machine learning algorithms in Internal Set fo
 
 
 
-### Cross-Validation
+### Cross-Validation (Check)
 
 To run the machine learning algorithms in Cross-Validation, please follow the steps below: 
 
@@ -225,7 +225,7 @@ In this section, it does not contain the scores. If you want to generate the sco
 
 
 
-### External Dataset, Generate score for Internal Dataset
+### External Dataset, Generate score for Internal Dataset(Check)
 
 To run the machine learning algorithms in External Dataset, or generating the score in Internal Dataset, please follow the steps below: 
 
@@ -271,7 +271,7 @@ To generate the triage list, please use excel to sort according by predict label
 
 
 
-## Finding the optimized parameters for models using Talos
+## Finding the optimized parameters for models using Talos (Check)
 
 To find the optimized parameters of model using Talos, use script `talos_tunning.py`
 
@@ -286,7 +286,7 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the traini
 
 
 
-## Network Training
+## Network Training (Check)
 
 To train a model, use script `ModelTraining.py`.
 
@@ -303,7 +303,7 @@ Line 197: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the train
 
 
 
-## GCNet in Cross-Validation
+## GCNet in Cross-Validation (Check)
 
 In order to validate the performance of GCNet in Cross-Validation, use script `Validation_internal.py`
 
@@ -315,6 +315,8 @@ Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Fill the file name o
 
 **Modified Line(please fill the path for saving the results.)**:
 
+Line 146,147: `posName = 'Internal_cross10_report_pos_' +  '.csv'`,`negName = 'Internal_cross10_requireTile_' + '.csv'`
+
 Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
 
 **Script outputs**:
@@ -322,6 +324,8 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 * **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
 
 * **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
+
+After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
 
 
@@ -333,7 +337,7 @@ In order to validate the performance of GCNet and GastroFlow in External Validat
 
 
 
-### GCNet with Slide Data
+### GCNet with Slide Data (Check)
 
 Use script: `Validation_stage1.py`
 
@@ -357,7 +361,7 @@ After generate the predicted result, to generate the triage list of result, plea
 
 
 
-### GCNet with Tile Data
+### GCNet with Tile Data (Check)
 
 Use script: `Validation_stage2.py`
 
@@ -369,7 +373,7 @@ Line 44: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Fill the file
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 69: `table.to_csv("Network_result/"+ "Exterma;_tiledata_500.csv")`
+Line 69: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
 **Script outputs**:
 
@@ -379,7 +383,7 @@ After generate the predicted result, to generate the triage list of result, plea
 
 
 
-### GastrolFlow
+### GastrolFlow (Check)
 
 Use script: `Validation_stage1_2.py`
 
@@ -413,7 +417,7 @@ After predicting the slides and tiled data, to generate the triage lists for ana
 
 
 
-### Cross-Validation
+### Cross-Validation (Check)
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
@@ -437,9 +441,9 @@ Line 118: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 
 
-### External Validation
+### External Validation 
 
-#### GCNet with Slide Data
+#### GCNet with Slide Data (Check)
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
@@ -469,7 +473,7 @@ To generate **the prioritization of cases**, please use Excel function to do.
 
 Please follow the steps below:
 
-**Step 1**: Run script: `Post_processing\Tile_Calc_Avg_score.py`
+**Step 1**: Run script: `Post_processing\Tile_Calc_Avg_score.py` (Check)
 
 **Modified Line(please fill the path after running the prediction.)**:
 
@@ -479,13 +483,13 @@ Line 12: `csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")` **(Fil
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_score//" is immediate path)**
+Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_score//" is immediate path. Please Create it manually when the path is not existed.)**
 
 **Script outputs**:
 
 * **avgscore.csv**: *.csv* file which contains the average predicted score of 11 models for each tile data.
 
-**Step 2**: Run script: `Post_processing\Tile_Case_split_ver2.py`
+**Step 2**: Run script: `Post_processing\Tile_Case_split_ver2.py` (Check)
 
 **Modified Line(please fill the path after running the Step1.)**:
 
@@ -493,13 +497,13 @@ Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"Exte
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 82,83,87: `shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)` **("case_split//" is immediate path)**
+Line 82,83,87: `#shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)` **("case_split//" is immediate path. Please Create it manually when the path is not existed.)**
 
 **Script outputs**:
 
 * **Folder of Case.csv**: *.csv* file which contains the predicted result of tiled data corresponding to each cases.
 
-**Step 3**: Run script: `Post_processing\Tile_Case_Sort.py`
+**Step 3**: Run script: `Post_processing\Tile_Case_Sort.py` (Check)
 
 **Modified Line(please fill the path after running the Step2.)**:
 
@@ -507,13 +511,13 @@ Line 15: `for filename in glob.glob(r"case_split/*"):` **(Fill the immediate pat
 
 **Modified Line(please fill the path for saving the results.)**:
 
-Line 12,13: `shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)` **("case_split_Sorted//" is immediate path)**
+Line 12,13: `#shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)` **("case_split_Sorted//" is immediate path. Please Create it manually when the path is not existed.)**
 
 **Script outputs**:
 
 * **Folder of Case.csv**: *.csv* file which contains the predicted result of tiled data corresponding to each cases, after this step, the score will be sorted in decreasing order.
 
-**Step 4**: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
+**Step 4**: Run script: `Post_processing\Tile_Case_Combine_ver1.py` (Check)
 
 **The threshold for prediction**
 
@@ -531,7 +535,7 @@ Line 53,57: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_c
 
 * **External_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the minimum number of positive tile to become the suspicious positive, the actual number of positive tile and the diagnosis.
 
-**Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
+**Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py` (Check)
 
 **Modified Line(please fill the path after running the Step4.)**:
 
@@ -560,7 +564,7 @@ After the step, it should generate the triage list for tiled data while the corr
 
 Then, please follow the steps:
 
-**Step 1**: Run script: `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
+**Step 1**: Run script: `Post_processing\Slide_Tile_Filter_Temporary_Solution.py` (Check)
 
 **Modified Line(please fill the path after running the Step3.)**:
 
@@ -578,7 +582,7 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 * **External_.csv**: *.csv* file which contains the predicted result for external dataset. It will provide the prediction label (positive, suspect positive and negative), the predict score, and the number of the tiled predicted as suspect positive.
 
-**Step 2**: Run script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
+**Step 2**: Run script: `Post_processing\Slide_Tile_Stage1_2_generation.py` (Check)
 
 **Modified Line(please fill the path after running the Step4.)**:
 

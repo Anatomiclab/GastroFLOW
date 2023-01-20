@@ -66,7 +66,7 @@ for root, _, name in walk(path):
             table = pd.DataFrame({'id': Id, f: Y_pre})
         else:
             table[f] = Y_pre
-    table.to_csv("Network_result/"+ "Exterma;_tiledata_500.csv")
+    table.to_csv("Network_result/"+ "External_tiledata_500.csv")
 
 stage2_2_end = time.time()
 print("Stage2_2 end time: ", stage2_2_end)
