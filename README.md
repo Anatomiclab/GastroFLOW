@@ -173,8 +173,8 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 
 ## Data Statistics for Cross-Validation, External Validation
 
-| Cases  | Benign  | Malignant  | Benign to malignant ratio  | WSIs  |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Dataset | Cases  | Benign  | Malignant  | Benign to malignant ratio  | WSIs  |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Internal Data  | 649 |  |  | 2064 |
 | External Data  | 312 |  |  | 739 |
 | Retrospective Case  | 90 |  | 113 |
