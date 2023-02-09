@@ -19,6 +19,8 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
 
+[Data Statistics for Cross-Validation, External Validation](#data-statistics-for-cross-validation-external-validation)
+
 [Machine Learning Algorithms](#machine-learning-algorithms)
 
 * [Cross-Validation](#cross-validation)
