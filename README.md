@@ -136,7 +136,7 @@ After using QuPath to generate the cellular features, if you want to generate th
 
 **Modified Line(please fill the path for the path of cellular features of slides)**:
 
-Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path for the cellular features of slides from QuPath)**
+Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path stored the extracted cellular features generated from QuPath)**
 
 **Modified Line(please fill the path for the path of saving)**:
 
@@ -241,9 +241,9 @@ To run the machine learning algorithms in External Dataset, or generating the sc
 
 Line 116: `data = pd.read_csv('trainingdata.csv')` **(Fill the path of the training data)**
 
-Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Fill the path of the features of slides in external validation dataset modified with (Fake) ground truth.)**
+Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Fill the path of containing the slides' cellular features in external validation dataset modified with (Fake) ground truth.)**
 
-Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Fill the path of the features of slides in external validation dataset)**
+Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Fill the path of containing the slides' cellular features in external validation dataset)**
 
 Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
 
@@ -288,13 +288,14 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the traini
 **Script outputs**:
 
 * **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
+(Revised to CSV)
+The csv file contains the optimized hyperparameters setting of MLP networks
 
 
 
+## MLP Network Training for GCNet
 
-## Network Training
-
-To train a model, use script `ModelTraining.py`.
+To train a model, use script `ModelTraining.py`. Please set the optimized parameters gained from talos to obtain optimized network for GCNet model building.
 
 **Modified Line(please fill the path for the training data.)**:
 
@@ -422,13 +423,13 @@ Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
  
-## Post-Processing for generating Triage List
+## Post-Processing for generating Triage List (Post-Processing)
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
 
 
 
-### Cross-Validation
+### Cross-Validation (For GCNet)
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
@@ -563,13 +564,14 @@ Line 78: `final.to_csv(r"stage2_result/External_stage2_test_PN_"+str(threshold)+
 * **External_.csv**: *.csv* file which contains the triage list for External test data based on tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 To generate **the prioritization of cases**, please use Excel function to do.
+(To generate **the prioritization of cases**, please use Excel to sort by classification label(carcinoma, suspicious of carcinoma, benign) then sort by prediction score)
 
 
 
 
 #### GastrolFlow
 
-Before the step, please run the step **Only Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
+Before the step, please run the step **GCNet with Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
 
 After the step, it should generate the triage list for tiled data while the corresponding slide data is predicted as negative.
 
@@ -612,6 +614,7 @@ Line 82: `final.to_csv(r"stage1_2_result/External_stage1_2_test_PN_"+str(thresho
 * **External_.csv**: *.csv* file which contains the triage list for External test data based on slide and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 To generate the triage list of cases, please use excel to sort according the prediction label (Positive, Suspect Positive and Negative), and the prediction score.
+
 
 
 
