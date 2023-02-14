@@ -597,6 +597,8 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 **Modified Line(please fill the path after running the Step4.)**:
 
+Line 6: `threshold=0.2` **(Fill the immediate path in step 1)**
+
 Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 1)**
 
 Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of ground truth in external dataset)**
