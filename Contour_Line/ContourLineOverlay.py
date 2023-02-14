@@ -89,7 +89,7 @@ for file in f:
                 i+=1
     
     
-    img2=img2.rotate(270, expand=True)
+    #img2=img2.rotate(270, expand=True)
     sizeX=img2.size[0]
     sizeY=img2.size[1]
     draw1 = ImageDraw.Draw(img2)    
