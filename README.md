@@ -707,12 +707,12 @@ We calculate the running time of using the scripts with our provided data in ext
 
 | The Stage of the System  | Running Time(s)  |
 | ------------- | ------------- |
-| Network Running Time (External Validation(Only Slide Data))  | 8.5837  |
-| Network Running Time (External Validation(Only Tile Data))  | 36.2036  |
-| Network Running Time (External Validation(Slide and Tile Data))  | 23.5408  |
-| Post-Processing Time (External Validation(Only Slide Data))  | 0.4937  |
-| Post-Processing Time (External Validation(Only Tile Data))  | 21.6656  |
-| Post-Processing Time (External Validation(Slide and Tile Data))  | 9.4012  |
-| Total Time (External Validation(Only Slide Data))  | 9.0774  |
-| Total Time (External Validation(Only Tile Data))  | 57.8692  |
-| Total Time (External Validation(Slide and Tile Data))  | 32.942  |
+| Network Running Time (GCNet with Only Slide Data)  | 8.5837  |
+| Network Running Time (GCNet with Only Tile Data)  | 36.2036  |
+| Network Running Time (GastrolFlow)  | 23.5408  |
+| Post-Processing Time (GCNet with Only Slide Data)  | 0.4937  |
+| Post-Processing Time (GCNet with Only Tile Data)  | 21.6656  |
+| Post-Processing Time (GastrolFlow)  | 9.4012  |
+| Total Time (GCNet with Only Slide Data)  | 9.0774  |
+| Total Time (GCNet with Only Tile Data)  | 57.8692  |
+| Total Time (GastrolFlow)  | 32.942  |
