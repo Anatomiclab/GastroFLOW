@@ -188,7 +188,7 @@ We provide the running scripts of machine learning algorithms in Internal Set fo
 
 
 
-### Cross-Validation (Check)
+### Cross-Validation
 
 To run the machine learning algorithms in Cross-Validation, please follow the steps below: 
 
@@ -231,7 +231,7 @@ In this section, it does not contain the scores. If you want to generate the sco
 
 
 
-### External Dataset, Generate score for Internal Dataset(Check)
+### External Dataset, Generate score for Internal Dataset
 
 To run the machine learning algorithms in External Dataset, or generating the score in Internal Dataset, please follow the steps below: 
 
@@ -277,7 +277,7 @@ To generate the triage list, please use excel to sort according by predict label
 
 
 
-## Finding the optimized parameters for models using Talos (Check)
+## Finding the optimized parameters for models using Talos
 
 To find the optimized parameters of model using Talos, use script `talos_tunning.py`
 
@@ -292,7 +292,7 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the traini
 
 
 
-## Network Training (Check)
+## Network Training
 
 To train a model, use script `ModelTraining.py`.
 
@@ -309,7 +309,7 @@ Line 197: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the train
 
 
 
-## GCNet in Cross-Validation (Check)
+## GCNet in Cross-Validation
 
 In order to validate the performance of GCNet in Cross-Validation, use script `Validation_internal.py`
 
@@ -343,7 +343,7 @@ In order to validate the performance of GCNet and GastroFlow in External Validat
 
 
 
-### GCNet with Slide Data (Check)
+### GCNet with Slide Data
 
 Use script: `Validation_stage1.py`
 
@@ -369,7 +369,7 @@ After generate the predicted result, to generate the triage list of result, plea
 
 
 
-### GCNet with Tile Data (Check)
+### GCNet with Tile Data
 
 Use script: `Validation_stage2.py`
 
@@ -391,7 +391,7 @@ After generate the predicted result, to generate the triage list of result, plea
 
 
 
-### GastrolFlow (Check)
+### GastrolFlow
 
 Use script: `Validation_stage1_2.py`
 
@@ -428,7 +428,7 @@ After predicting the slides and tiled data, to generate the triage lists for ana
 
 
 
-### Cross-Validation (Check)
+### Cross-Validation
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
@@ -454,7 +454,7 @@ Line 118: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 ### External Validation 
 
-#### GCNet with Slide Data (Check)
+#### GCNet with Slide Data
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 
@@ -484,7 +484,7 @@ To generate **the prioritization of cases**, please use Excel function to do.
 
 Please follow the steps below:
 
-**Step 1**: Run script: `Post_processing\Tile_Calc_Avg_score.py` (Check)
+**Step 1**: Run script: `Post_processing\Tile_Calc_Avg_score.py`
 
 **Modified Line(please fill the path after running the prediction.)**:
 
@@ -500,7 +500,7 @@ Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_scor
 
 * **avgscore.csv**: *.csv* file which contains the average predicted score of 11 models for each tile data.
 
-**Step 2**: Run script: `Post_processing\Tile_Case_split_ver2.py` (Check)
+**Step 2**: Run script: `Post_processing\Tile_Case_split_ver2.py`
 
 **Modified Line(please fill the path after running the Step1.)**:
 
@@ -514,7 +514,7 @@ Line 82,83,87: `#shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",e
 
 * **Folder of Case.csv**: *.csv* file which contains the predicted result of tiled data corresponding to each cases.
 
-**Step 3**: Run script: `Post_processing\Tile_Case_Sort.py` (Check)
+**Step 3**: Run script: `Post_processing\Tile_Case_Sort.py`
 
 **Modified Line(please fill the path after running the Step2.)**:
 
@@ -528,7 +528,7 @@ Line 12,13: `#shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_So
 
 * **Folder of Case.csv**: *.csv* file which contains the predicted result of tiled data corresponding to each cases, after this step, the score will be sorted in decreasing order.
 
-**Step 4**: Run script: `Post_processing\Tile_Case_Combine_ver1.py` (Check)
+**Step 4**: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
 
 **The threshold for prediction**
 
@@ -546,7 +546,7 @@ Line 53,57: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_c
 
 * **External_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the minimum number of positive tile to become the suspicious positive, the actual number of positive tile and the diagnosis.
 
-**Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py` (Check)
+**Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
 
 **Modified Line(please fill the path after running the Step4.)**:
 
@@ -575,7 +575,7 @@ After the step, it should generate the triage list for tiled data while the corr
 
 Then, please follow the steps:
 
-**Step 1**: Run script: `Post_processing\Slide_Tile_Filter_Temporary_Solution.py` (Check)
+**Step 1**: Run script: `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
 **Modified Line(please fill the path after running the Step3.)**:
 
@@ -593,7 +593,7 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 * **External_.csv**: *.csv* file which contains the predicted result for external dataset. It will provide the prediction label (positive, suspect positive and negative), the predict score, and the number of the tiled predicted as suspect positive.
 
-**Step 2**: Run script: `Post_processing\Slide_Tile_Stage1_2_generation.py` (Check)
+**Step 2**: Run script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
 
 **Modified Line(please fill the path after running the Step4.)**:
 
@@ -666,7 +666,7 @@ Line 64: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png'
 
 **Modified Line(please fill the path after running the step before generation.)**:
 
-Line 112: `path=r'./PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
+Line 12: `path=r'./PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
 
 **Modified Line(please fill the path for saving the results.)**:
 
