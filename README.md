@@ -198,7 +198,7 @@ To run the machine learning algorithms in Cross-Validation, please follow the st
 
 Line 111: `Train_data_path="801010/"` **(Fill the root path of the internal data)**
 
-Line 116, `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Fill the file name of the training data)**
+Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Fill the file name of the training data)**
 
 Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Fill the file name of the testing data)**
 
@@ -355,6 +355,8 @@ Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Fill the file na
 
 **Modified Line(please fill the path for saving the results.)**:
 
+Line 150,151: `posName = 'External_report_pos_' +  '.csv'`,`negName = 'External_requireTile_' + '.csv'`
+
 Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
 
 **Script outputs**:
@@ -403,6 +405,8 @@ Line 180: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Fill the fil
 
 **Modified Line(please fill the path for saving the results.)**:
 
+Line 150,151: `posName = 'External_report_pos_' +  '.csv'`,`negName = 'External_requireTile_' + '.csv'`
+
 Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
 
 Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
@@ -415,6 +419,7 @@ Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
 * **External_tiledata_500.csv**: *.csv* file which contains the predicted result of Tiled Data for the slides model predict negative.
 
+After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
  
 ## Post-Processing for generating Triage List
