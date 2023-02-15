@@ -7,13 +7,13 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Environment of Python](#environment-of-python)
 
-[Using QuPath to generate the WSI images and cellular features](#Using-QuPath-to-generate-the-WSI-images-and-cellular-features)
+[Using QuPath to generate the WSI and cellular features](#using-qupath-to-generate-the-wsi-and-cellular-features)
 
-* [Extract the WSI Images](#extract-the-wsi-images)
+* [Extract the WSI](#extract-the-wsi)
 
 * [Extract the cellular features](#extract-the-cellular-features)
 
-[Generation of slide data](#generation-of-slide-data)
+[Generation of WSI data](#generation-of-wsi-data)
 
 [Generation of tile data for training and validation](#generation-of-tile-data-for-training-and-validation)
 
@@ -35,19 +35,19 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [External Validation](#external-validation-1)
 
-* [GCNet with Slide Data](#gcnet-with-slide-data)
+* [GCNet with WSI Data](#gcnet-with-wsi-data)
 
 * [GCNet with Tile Data](#gcnet-with-tile-data)
 
 * [GastrolFlow](#gastrolflow)
 
-[Post-Processing for generating Triage List](#post-processing-for-generating-triage-list)
+[Post-Processing](#post-processing)
 
 * [Cross-Validation](#cross-validation-2)
 
 * [External Validation](#external-validation-2)
 
-* [GCNet with Slide Data](#gcnet-with-slide-data-1)
+* [GCNet with WSI Data](#gcnet-with-wsi-data-1)
 
 * [GCNet with Tile Data](#gcnet-with-tile-data-1)
 
@@ -72,9 +72,9 @@ We update the environment file of Python using in the project. The anaconda envi
 
 Please follow the [import guideline](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to reproduce the environment.
 
-## Using QuPath to generate the WSI images and cellular features
+## Using QuPath to generate the WSI and cellular features
 
-We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI images and cellular features for training and validation.
+We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI and cellular features for training and validation.
 
 The capture of working space is shown below:
 
@@ -82,9 +82,9 @@ The capture of working space is shown below:
 
 To run the scripts, please open the script editor via `Automate->Show script editor` and load the script for running.
 
-If you want to extract the WSI images and cellular features, please follow the steps below:
+If you want to extract the WSI and cellular features, please follow the steps below:
 
-### Extract the WSI Images
+### Extract the WSI
 
 For extracting the images, use QuPath script `QuPath_Script\ImagesExport.groovy`.
 
@@ -111,21 +111,21 @@ Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the
 
 
 
-## Generation of slide data
+## Generation of WSI data
 
-After extracting the cellular features, please use the Python script `DataAggregationforWholeSlides.py` to generate the slide data.
+After extracting the cellular features, please use the Python script `DataAggregationforWholeSlides.py` to generate the WSI data.
 
 **Modified Line(please fill the path for the path of cellular features extracted from QuPath)**:
 
 Line 7: `path=r'./RawData'`
 
-**Modified Line(please fill the path for saving the slide data)**:
+**Modified Line(please fill the path for saving the WSI data)**:
 
 Line 8: `outPath=r'./aggregateddata.csv'`
 
 **Script outputs**:
 
-* **aggregateddata.csv**: *.csv* file which is the slide data. 
+* **aggregateddata.csv**: *.csv* file which is the WSI data. 
 
 
 ## Generation of downsampled WSI and its tiled image data for training and validation
@@ -134,7 +134,7 @@ After using QuPath to generate the cellular features, if you want to generate th
 
 **Step 1**: run `QuPath_Script\stage_2.py`
 
-**Modified Line(please fill the path for the path of cellular features of slides)**:
+**Modified Line(please fill the path for the path of cellular features of WSI)**:
 
 Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path stored the extracted cellular features generated from QuPath)**
 
@@ -175,11 +175,11 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 
 ## Data Statistics for Cross-Validation, External Validation
 
-| Dataset | Cases  | WSIs  |
-| ------------- | ------------- | ------------- |
-| Internal Data  | 649 | 2064 |
-| External Data  | 312 | 739 |
-| Retrospective Case  | 90 | 113 |
+| Dataset | Benign  | Malignant  | Benign to Malignant ratio  | Cases  | WSIs  |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Internal Data  | 407(62.71%) | 242(37.29%) | 1.68:1 | 649 | 2064 |
+| External Data  | 222(71.15%) | 90(28.85%) | 2.46:1 | 312 | 739 |
+| Retrospective Case  | 60(66.66%) | 30(33.34%) | 2:1 | 90 | 113 |
 
 
 ## Machine Learning Algorithms
@@ -344,7 +344,7 @@ In order to validate the performance of GCNet and GastroFlow in External Validat
 
 
 
-### GCNet with Slide Data
+### GCNet with WSI Data
 
 Use script: `Validation_stage1.py`
 
@@ -362,9 +362,9 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 **Script outputs**:
 
-* **report_pos_.csv**: *.csv* file which contains the Slides model predict positive.
+* **report_pos_.csv**: *.csv* file which contains the WSI prediction in positive.
 
-* **requireTile_.csv**: *.csv* file which contains the Slides model predict negative.
+* **requireTile_.csv**: *.csv* file which contains the WSI prediction in negative.
 
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
@@ -423,7 +423,7 @@ Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
 
  
-## Post-Processing for generating Triage List (Post-Processing)
+## Post-Processing
 
 After predicting the slides and tiled data, to generate the triage lists for analysis, please follow the steps below:
 
@@ -455,7 +455,7 @@ Line 118: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 ### External Validation 
 
-#### GCNet with Slide Data
+#### GCNet with WSI Data
 
 Use script: `Post_processing\Slide_Stage1_generation.py`
 

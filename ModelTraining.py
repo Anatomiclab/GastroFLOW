@@ -130,7 +130,7 @@ def run(X, Y, Id_n, data, input_model=None):
     X_val = K.cast_to_floatx(X_val)
     Y_val = K.cast_to_floatx(Y_val)
 
-    history=model.fit(X_train1, Y_train1, batch_size=42, epochs=20, validation_data=(X_val, Y_val))
+    history=model.fit(X_train1, Y_train1, batch_size=40, epochs=20, validation_data=(X_val, Y_val))
     
     Y_pred_num=model.predict(X_test)
     Y_pred =(Y_pred_num>0.5)
