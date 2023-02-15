@@ -43,7 +43,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Post-Processing](#post-processing)
 
-* [Cross-Validation](#cross-validation-for-gcnet)
+* [Cross-Validation for GCNet](#cross-validation-for-gcnet)
 
 * [External Validation](#external-validation-1)
 
@@ -429,7 +429,7 @@ After predicting the WSIs and tiled data, to generate the triage lists for analy
 
 
 
-### Cross-Validation (For GCNet)
+### Cross-Validation for GCNet
 
 Use script: `Post_processing\Slide_internal_Stage1_generation.py`
 
