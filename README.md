@@ -15,7 +15,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Generation of WSI data](#generation-of-wsi-data)
 
-[Generation of tile data for training and validation](#generation-of-tile-data-for-training-and-validation)
+[Generation of downsampled WSI and its tiled image data for training and validation](#generation-of-downsampled-wsi-and-its-tiled-image-data-for-training-and-validation)
 
 [Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
 
@@ -25,13 +25,13 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 * [Cross-Validation](#cross-validation)
 
-* [External Dataset, Internal Dataset for Score](#external-dataset-internal-dataset-for-score)
+* [External Dataset, Generate score for Internal Dataset](#external-dataset-generate-score-for-internal-dataset)
 
 [Finding the optimized parameters for models using Talos](#finding-the-optimized-parameters-for-models-using-talos)
 
-[Network Training](#network-training)
+[MLP Network Training for GCNet](#mlp-network-training-for-gcnet)
 
-[Cross-Validation](#cross-validation-1)
+[GCNet in Cross-Validation](#gcnet-in-cross-validation)
 
 [External Validation](#external-validation-1)
 
@@ -43,9 +43,9 @@ This repository provides training and testing scripts for the article "Prioritiz
 
 [Post-Processing](#post-processing)
 
-* [Cross-Validation](#cross-validation-2)
+* [Cross-Validation](#cross-validation-for-gcnet)
 
-* [External Validation](#external-validation-2)
+* [External Validation](#external-validation-1)
 
 * [GCNet with WSI Data](#gcnet-with-wsi-data-1)
 
