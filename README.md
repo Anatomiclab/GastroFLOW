@@ -1,11 +1,15 @@
-# Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system
+# Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images
 
-This repository provides training and testing scripts for the article "Prioritization on whole slide images of clinical gastric carcinoma biopsies through a weakly supervised and annotation-free system".
+This repository provides scripts (Gastric Carcinoma classification Network "GCNet" and Gastric-specific Prioritization Workflow "GastroFLOW") for the article "Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images".
+
+GCNet is the Gastric Carcinoma classification Network developed in the study. It is an ensemble of optimized Multilayer Perceptron (MLP) neural networks trained on downsampled cellular features extracted from gastric biopsy whole slide images (WSIs). GCNet is designed to classify WSIs as either carcinoma (CA) or non-carcinoma (non-CA) cases. The top-performing MLP networks, based on Area Under the Curve (AUC) values, are selected and ensembled together. A majority voting scheme is used to classify WSIs based on the sum of votes from the MLP-based networks. The average of the MLP network outputs is used to calculate the mean case malignancy score, which is a measure of the probability of a case being CA. This score is used to prioritize cases for further review.
+
+GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow developed in the study. It integrates GCNet and additional processing steps to enhance the triage ability for CA cases, especially those with low tumor area content. GastroFLOW involves the tiling of non-CA WSIs into smaller image tiles and re-evaluation using GCNet. Tiled images with a mean malignancy prediction score above a certain threshold are considered positive for carcinoma (P-CA). Cases are then assigned a grading based on the original GCNet prediction and the P-CA prediction from the tiled images. Cases graded as CA or suspicious for carcinoma are prioritized for further review, while those graded as benign are deemed lower risk. GastroFLOW aims to improve the detection and prioritization of CA cases, particularly those with low tumor content.
 
 
 ## Content
 
-[Environment of Python](#environment-of-python)
+[Python Environment Setup](#python-environment-setup)
 
 [Using QuPath to generate the WSI and cellular features](#using-qupath-to-generate-the-wsi-and-cellular-features)
 
@@ -66,7 +70,7 @@ This repository provides training and testing scripts for the article "Prioritiz
 [Running time](#running-time)
 
 
-## Environment of Python
+## Python Environment Setup
 
 We update the environment file of Python using in the project. The anaconda environment file is `environment_tf2.yml`
 
