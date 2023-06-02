@@ -74,7 +74,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 To reproduce the Python environment used in the project, please follow the import guidelines provided below. The environment file is named `environment_tf2.yml` and is based on the Anaconda environment.
 
-Please follow the [import guideline](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to reproduce the environment.
+By following this step, you will be able to set up the Python environment with the required dependencies and packages used in the project.
 
 ## Using QuPath to generate the WSI and cellular features
 
