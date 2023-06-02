@@ -72,7 +72,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 ## Python Environment Setup
 
-We update the environment file of Python using in the project. The anaconda environment file is `environment_tf2.yml`
+To reproduce the Python environment used in the project, please follow the import guidelines provided below. The environment file is named `environment_tf2.yml` and is based on the Anaconda environment.
 
 Please follow the [import guideline](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to reproduce the environment.
 
