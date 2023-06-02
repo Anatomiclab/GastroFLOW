@@ -72,7 +72,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 ## Python Environment Setup
 
-To reproduce the Python environment used in the project, please follow the import guidelines provided below. The environment file is named `environment_tf2.yml` and is based on the Anaconda environment.
+To reproduce the Python environment used in the project, please use the environment file is named `environment_tf2.yml` and is based on the Anaconda environment.
 
 By following this step, you will be able to set up the Python environment with the required dependencies and packages used in the project.
 
@@ -84,7 +84,7 @@ To extract the Whole Slide Images (WSI) and cellular features, please follow the
 
 ![Image](Figure_QuPath.png)
 
-Open the QuPath(0.2.0-m8) and its script editor by navigating to Automate -> Show script editor.
+Open the QuPath(0.2.0-m8)[Link](https://qupath.github.io/) and its script editor by navigating to Automate -> Show script editor.
 Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
 
 Modify Line 7 in the script to specify the path where the extracted images will be saved:
@@ -97,8 +97,10 @@ Script Outputs:
 
 ### Extract the Cellular Features:
 
-Open the QuPath script editor.
-Load the script for cellular feature extraction located at QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy.
+Open the script editor from QuPath(0.2.0-m8).
+
+Load the script for cellular feature extraction located at `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy`.
+
 Modify Line 92 in the script to specify the path where the extracted features will be saved:
 
 Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the extracted cellular features)**
