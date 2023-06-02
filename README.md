@@ -89,7 +89,7 @@ Load the script for image extraction located at `QuPath_Script\ImagesExport.groo
 
 Modify Line 7 in the script to specify the path where the extracted images will be saved:
 
-Line 7: `path="images/" // Please Change the Path`  **(Path for saving the exporting WSI)**
+Line 7: `path="images/" // **(Path storing the extracted cellular features generated from QuPath)** `  
 
 Script Outputs:
 
@@ -103,7 +103,7 @@ Load the script for cellular feature extraction located at `QuPath_Script\Cellul
 
 Modify Line 92 in the script to specify the path where the extracted features will be saved:
 
-Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the extracted cellular features)**
+Line 92: `save_path = "Feature/"  //**(CHANGE save path here (Path for saving the extracted features))` 
 
 Script Outputs:
 
@@ -117,7 +117,7 @@ Once you have extracted the cellular features, you can use the provided Python s
 
 Please follow the steps below:
 
-1. Open the Python script, DataAggregationforWholeSlides.py.
+1. Open the Python script, `DataAggregationforWholeSlides.py`.
 2. Modify Line 7 in the script to specify the path of the cellular features extracted from QuPath:
 
 Line 7: `path=r'./RawData'`
@@ -132,37 +132,36 @@ aggregateddata.csv: This is a .csv file that contains the generated WSI data.
 By following these steps, you will be able to generate the WSI data using the provided Python script. The resulting aggregateddata.csv file will contain the relevant information derived from the cellular features of the WSIs.
 
 
-## Generation of downsampled WSI and its tiled image data for training and validation
+## Generation of tiled image data
 
-After using QuPath to generate the cellular features, if you want to generate the tile data for the GastrolFlow training and validation, please follow the steps below:
+Step 1: Run `QuPath_Script\stage_2.py`
+1. Open the script `stage_2.py` located in the QuPath_Script directory.
+2. Modify Line 9 in the script to specify the path where the cellular features of the WSIs generated from QuPath are stored:
 
-**Step 1**: run `QuPath_Script\stage_2.py`
+Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path storing the extracted cellular features generated from QuPath)** 
 
-**Modified Line(please fill the path for the path of cellular features of WSI)**:
-
-Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path stored the extracted cellular features generated from QuPath)**
-
-**Modified Line(please fill the path for the path of saving)**:
+3. Modify Line 17 in the script to specify the immediate path for saving the tile data:
 
 Line 17: `saving_path="./Training_tile/"` **(Immediate path for saving the tile data)**
 
-**Setting of the range of tile ratio**:
+4. Adjust the tile ratio as needed. By default, the extracted tile size is set to 500x500 pixels.
 
-Line 10: `tile_ratio = [500]` **(The extracted tile is 500*500)**
+Line 10: `tile_ratio = [500]` **(The extracted tile is 500x500)**
 
-**Step 2**: run `QuPath_Script\tile.py`
+Step 2: Run QuPath_Script\tile.py
+1. Open the script `tile.py` located in the QuPath_Script directory.
+2. Modify Line 9 in the script to specify the path of the saving path used in Step 1:
 
-**Modified Line(please fill the path for the path of step 1 saving path)**:
+Line 9: `tile_path = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill in the immediate path from Step 1)**
 
-Line 9: `tile_path = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill the immediate path in Step 1)**
+3. Modify Line 20 in the script to specify the path for saving the final tile data:
 
-**Modified Line(please fill the path for the path of saving)**:
+Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=False)` **(Fill in the path for saving the final tile data)**
 
-Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=False)` **(Fill the path for saving the final tile data)**
+Script Outputs:
 
-**Script outputs**:
-
-* **(WSI cellular features)_tiledata.csv**: *.csv* file which contains the extracted 41 features for tile data.
+(WSI cellular features)_tiledata.csv: This is a .csv file containing the extracted 41 features for the tile image data.
+By following these steps, you will be able to generate downsampled WSI and tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
 
 
