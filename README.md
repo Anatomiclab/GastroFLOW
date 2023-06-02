@@ -113,19 +113,23 @@ By following these steps, you will be able to export the desired WSI images and 
 
 ## Generation of WSI data
 
-After extracting the cellular features, please use the Python script `DataAggregationforWholeSlides.py` to generate the WSI data.
+Once you have extracted the cellular features, you can use the provided Python script, DataAggregationforWholeSlides.py, to generate the Whole Slide Image (WSI) data.
 
-**Modified Line(please fill the path for the path of cellular features extracted from QuPath)**:
+Please follow the steps below:
+
+1. Open the Python script, DataAggregationforWholeSlides.py.
+2. Modify Line 7 in the script to specify the path of the cellular features extracted from QuPath:
 
 Line 7: `path=r'./RawData'`
 
-**Modified Line(please fill the path for saving the WSI data)**:
+3. Modify Line 8 in the script to specify the path where the WSI data will be saved:
 
 Line 8: `outPath=r'./aggregateddata.csv'`
 
-**Script outputs**:
+Script Outputs:
 
-* **aggregateddata.csv**: *.csv* file which is the WSI data. 
+aggregateddata.csv: This is a .csv file that contains the generated WSI data.
+By following these steps, you will be able to generate the WSI data using the provided Python script. The resulting aggregateddata.csv file will contain the relevant information derived from the cellular features of the WSIs.
 
 
 ## Generation of downsampled WSI and its tiled image data for training and validation
