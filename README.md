@@ -11,11 +11,11 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 [Python Environment Setup](#python-environment-setup)
 
-[Using QuPath to generate the WSI and cellular features](#using-qupath-to-generate-the-wsi-and-cellular-features)
+[Export WSI and extract cellular features from WSI](#export-wsi-and-extract-cellular-features-from-wsi)
 
-* [Extract the WSI](#extract-the-wsi)
+* [Export the WSI](#export-the-WSI)
 
-* [Extract the cellular features](#extract-the-cellular-features)
+* [Extract the Cellular Features](#extract-the-cellular-features)
 
 [Generation of WSI data](#generation-of-wsi-data)
 
@@ -76,44 +76,38 @@ To reproduce the Python environment used in the project, please follow the impor
 
 By following this step, you will be able to set up the Python environment with the required dependencies and packages used in the project.
 
-## Using QuPath to generate the WSI and cellular features
+## Export WSI and extract cellular features from WSI
 
-We use the QuPath(0.2.0-m8) [Link](https://qupath.github.io/) to generate the WSI and cellular features for training and validation.
+To extract the Whole Slide Images (WSI) and cellular features, please follow the steps outlined below:
 
-The capture of working space is shown below:
+1. Export the WSI
 
 ![Image](Figure_QuPath.png)
 
-To run the scripts, please open the script editor via `Automate->Show script editor` and load the script for running.
+Open the software QuPath(0.2.0-m8) [Link](https://qupath.github.io/)script editor by navigating to Automate -> Show script editor.
+Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
 
-If you want to extract the WSI and cellular features, please follow the steps below:
+Modify Line 7 in the script to specify the path where the extracted images will be saved:
 
-### Extract the WSI
+Line 7: `path="images/" // Please Change the Path`  **(Path for saving the exporting WSI)**
 
-For extracting the images, use QuPath script `QuPath_Script\ImagesExport.groovy`.
+Script Outputs:
 
-**Modified Line(please fill the path for saving the extracted images)**:
+(WSI Images).png: This is a .png file containing the extracted WSI images.
 
-Line 7: `path="images/" // Please Change the Path`  **(Path for saving the extracted images)**
+2. Extract the Cellular Features:
 
+Open the QuPath script editor.
+Load the script for cellular feature extraction located at QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy.
+Modify Line 92 in the script to specify the path where the extracted features will be saved:
 
-**Script outputs**:
+Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the extracted cellular features)**
 
-* **(WSI Images).png**: *.png* file which are the extracted WSI images.
+Script Outputs:
 
-### Extract the cellular features
+(WSI cellular features).txt: This is a .txt file containing the extracted cellular features for the WSI images.
 
-For extracting the cellular feature, use QuPath script`QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy`.
-
-**Modified Line(please fill the path for saving the extracted features)**:
-
-Line 92: `save_path = "Feature/"  //CHANGE sve path here` **(Path for saving the extracted features)**
-
-**Script outputs**:
-
-* **(WSI cellular features).txt**: *.txt* file which contains the extracted cellular features for WSI images.
-
-
+By following these steps, you will be able to export the desired WSI images and extract cellular features using the provided QuPath scripts.
 
 ## Generation of WSI data
 
