@@ -274,19 +274,19 @@ To generate the triage list, sort the predictions in Excel based on the predicte
 
 
 
-## Finding the optimized parameters for models using Talos
+## Hyperparameter Optimization using Talos
 
-To find the optimized parameters of model using Talos, use script `talos_tunning.py`
+To find the optimized parameters for multilayer perceptron (MLP) models using Talos, follow the steps below:
 
-**Modified Line(please fill the path for the training data.)**:
+Step 1: Run `talos_tunning.py` script
 
-Line 72: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the training data)**
+Modify the following line to specify the path for the training data:
 
-**Script outputs**:
+Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the training data)**
 
-* **tuner_{int(time.time())}.pkl**: *.pkl* file which contains the finding parameters and the corresponding loss value and validation metrics.
-(Revised to CSV)
-The csv file contains the optimized hyperparameters setting of MLP networks
+Script Output:
+
+tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters, along with the corresponding loss value and validation metrics. The results are stored in a CSV format. The CSV file provides the optimized hyperparameter settings for the MLP networks to develop GCNet.
 
 
 
