@@ -291,7 +291,7 @@ Step 1: Run the `ModelTraining.py` script
 
 1. Modify the following line in the script to specify the path for the training data:
 
-Line 197: `data = pd.read_csv("trainingdata.csv")` **(Modify the following line in the script to specify the path for the training data:)**
+Line 197: `data = pd.read_csv("trainingdata.csv")` **(Specify the path for the training data)**
 
 Script Outputs:
 
