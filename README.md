@@ -146,7 +146,7 @@ Line 17: `saving_path="./Training_tile/"` **(Immediate path for saving the tile 
 
 4. Adjust the tile ratio as needed. By default, the extracted tile size is set to 500x500 pixels.
 
-Line 10: `tile_ratio = [500]` **(The extracted tile is 500x500)**
+Line 10: `tile_ratio = [500]` **(The image size of extracted tile image is 500x500)**
 
 Step 2: Run QuPath_Script\tile.py
 1. Open the script `tile.py` located in the QuPath_Script directory.
@@ -165,7 +165,7 @@ By following these steps, you will be able to generate downsampled WSI and tiled
 
 
 
-## Data for Cross-Validation, External Validation
+## Data for model training, Cross-Validation, External Validation, and retrospectective study
 
 * Training Data: [Training Data](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
 
@@ -182,7 +182,7 @@ By following these steps, you will be able to generate downsampled WSI and tiled
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Internal Data  | 407(62.71%) | 242(37.29%) | 1.68:1 | 649 | 2064 |
 | External Data  | 222(71.15%) | 90(28.85%) | 2.46:1 | 312 | 739 |
-| Retrospective Case  | 60(66.66%) | 30(33.34%) | 2:1 | 90 | 113 |
+| Retrospective Case  | 60(66.67%) | 30(33.33%) | 2:1 | 90 | 113 |
 
 
 ## Machine Learning Algorithms
