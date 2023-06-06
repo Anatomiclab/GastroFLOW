@@ -283,23 +283,23 @@ tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters
 
 
 
-## MLP Network Training for GCNet
+## MLP Network Training
 
-To train the GCNet model, use the `ModelTraining.py` script. Make sure to set the optimized parameters obtained from Talos for achieving an optimized network.
+To train any MLP network used for ensembling as GCNet, follow the steps below using the ModelTraining.py script. Ensure that you have set the optimized parameters obtained from Talos to train MLP network.
 
 Step 1: Run the `ModelTraining.py` script
 
-Modify the following line to specify the path for the training data:
+Modify the following line in the script to specify the path for the training data:
 
-Line 197: `data = pd.read_csv("trainingdata.csv")` **(Modify the following line to specify the path for the training data:)**
+Line 197: `data = pd.read_csv("trainingdata.csv")` **(Modify the following line in the script to specify the path for the training data:)**
 
 Script Outputs:
 
-(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5: An .h5 file that serves as the model checkpoint after training.
+(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5: An .h5 file that serves as the model after training. This file contains the trained MLP network.
 
-SummaryOfPerformance.csv: A .csv file containing the performance metrics of the model for different rounds of training.
+SummaryOfPerformance.csv: A .csv file that provides the performance metrics of the model for different rounds of training. This file contains information about the MLP model's performance during training.
 
-
+By following these steps and running the ModelTraining.py script, you will be able to train the MLP networks, and choose suitable MLP networks ensembling as GCNet. 
 
 
 ## GCNet in Cross-Validation
