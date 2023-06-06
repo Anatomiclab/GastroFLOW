@@ -9,6 +9,10 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 ## Content
 
+[Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
+
+[Data Statistics for Cross-Validation, External Validation](#data-statistics-for-cross-validation-external-validation)
+
 [Python Environment Setup](#python-environment-setup)
 
 [Export WSI and extract cellular features from WSI](#export-wsi-and-extract-cellular-features-from-wsi)
@@ -20,10 +24,6 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 [Generation of WSI data](#generation-of-wsi-data)
 
 [Generation of downsampled WSI and its tiled image data for training and validation](#generation-of-downsampled-wsi-and-its-tiled-image-data-for-training-and-validation)
-
-[Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
-
-[Data Statistics for Cross-Validation, External Validation](#data-statistics-for-cross-validation-external-validation)
 
 [Machine Learning Algorithms](#machine-learning-algorithms)
 
@@ -69,6 +69,24 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 [Running time](#running-time)
 
+## Data for Model training, cross-Validation, external Validation, and retrospectective study
+
+* Training Data: [Training Data](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
+
+* Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
+
+* External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
+
+* Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
+
+
+## Data Statistics for Cross-Validation, External Validation
+
+| Dataset | Benign  | Malignant  | Benign to Malignant ratio  | Cases  | WSIs  |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| Internal Data  | 407(62.71%) | 242(37.29%) | 1.68:1 | 649 | 2064 |
+| External Data  | 222(71.15%) | 90(28.85%) | 2.46:1 | 312 | 739 |
+| Retrospective Case  | 60(66.67%) | 30(33.33%) | 2:1 | 90 | 113 |
 
 ## Python Environment Setup
 
@@ -164,40 +182,19 @@ Script Outputs:
 By following these steps, you will be able to generate downsampled WSI and tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
 
+## Machine Learning Algorithms for Cross-Validation and External Validation
 
-## Data for model training, Cross-Validation, External Validation, and retrospectective study
-
-* Training Data: [Training Data](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
-
-* Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
-
-* External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
-
-* Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
-
-
-## Data Statistics for Cross-Validation, External Validation
-
-| Dataset | Benign  | Malignant  | Benign to Malignant ratio  | Cases  | WSIs  |
-| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Internal Data  | 407(62.71%) | 242(37.29%) | 1.68:1 | 649 | 2064 |
-| External Data  | 222(71.15%) | 90(28.85%) | 2.46:1 | 312 | 739 |
-| Retrospective Case  | 60(66.67%) | 30(33.33%) | 2:1 | 90 | 113 |
-
-
-## Machine Learning Algorithms
-
-We provide the running scripts of machine learning algorithms in Internal Set for Cross-Validation and tested in External dataset.
+This section provides the running scripts for machine learning algorithms on the internal dataset for cross-validation and testing on the external dataset.
 
 
 
 ### Cross-Validation
 
-To run the machine learning algorithms in Cross-Validation, please follow the steps below: 
+To run the machine learning algorithms for cross-validation, please follow the steps below:
 
-**Step 1**: run `machinelearn_internal.py`
+Step 1: run `machinelearn_internal.py`
 
-**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+Modified Line(please fill the path for the data. Note that the cross-validation fold needs to be modified manually):
 
 Line 111: `Train_data_path="801010/"` **(Fill the root path of the internal data)**
 
@@ -205,40 +202,38 @@ Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Fill the 
 
 Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Fill the file name of the testing data)**
 
-**Modified Line(please fill the path for saving the results.)**:
+Modify Line 112 in the script to specify the path for saving the final tile data
 
-Line 112: `Result_path=""`
+Line 112: `Result_path=""`**(Fill in the path for saving the results)**
 
-**Script outputs**:
+Script output:
 
-* **(Machine Learning Algorithm).csv**: *.csv* file which contains the predicted results of machine learning models for internal data.
+(Machine Learning Algorithm).csv: A .csv file containing the predicted results of machine learning models for the internal data.
 
-**Step 2**: run `Machine_learning_internal_generation.py`
+Step 2: Run `Machine_learning_internal_generation.py`
 
-**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+Modified Line (please fill the path for the data. Note that the cross-validation fold needs to be modified manually):
 
-Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Fill the path of the predicted result in the Step 1)**
+Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Fill the path of the predicted results from Step 1)**
 
 Line 17: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the path of the ground truth)**
 
-**Modified Line(please fill the path for saving the results.)**:
+Modified Line(Fill in the path for saving the results.):
 
 Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
-**Script outputs**:
+Script outputs:
 
-* **(Machine Learning Algorithm).csv**: *.csv* file which contains the triage list of machine learning models for internal data. 
+(Machine Learning Algorithm).csv: A .csv file containing the triage list of machine learning models for the internal data.
 
-In this section, it does not contain the scores. If you want to generate the score for calculating AUC or finding priorities, please turn to section **External Dataset, Internal Dataset for Score**.
-
-
+Note: This section does not contain the malignancy prediction scores. If you want to generate scores for calculating AUC or finding priorities, please refer to the "External Dataset, Internal Dataset for Score" section.
 
 
 ### External Dataset, Generate score for Internal Dataset
 
-To run the machine learning algorithms in External Dataset, or generating the score in Internal Dataset, please follow the steps below: 
+To run the machine learning algorithms on the external dataset or generate scores for the internal dataset, please follow the steps below:
 
-**Step 1**: run `machinelearn_external_score.py`
+Step 1: Run `machinelearn_external_score.py`
 
 **Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
 
