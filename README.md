@@ -84,7 +84,7 @@ To extract the Whole Slide Images (WSI) and cellular features, please follow the
 
 ![Image](Figure_QuPath.png)
 
-Open the QuPath(0.2.0-m8)[Link](https://qupath.github.io/) and its script editor by navigating to Automate -> Show script editor.
+Open the Software QuPath(0.2.0-m8)[Link](https://qupath.github.io/) and its script editor by navigating to Automate -> Show script editor.
 Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
 
 Modify Line 7 in the script to specify the path where the extracted images will be saved:
@@ -97,7 +97,7 @@ Script Outputs:
 
 ### Extract the Cellular Features:
 
-Open the script editor from QuPath(0.2.0-m8).
+Open the script editor from Software QuPath(0.2.0-m8).
 
 Load the script for cellular feature extraction located at `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy`.
 
