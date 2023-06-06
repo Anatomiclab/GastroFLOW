@@ -197,7 +197,7 @@ Modify the following lines to specify the data paths. Note that the cross-valida
 
 Line 111: `Train_data_path="801010/"` **(Specify the root path of the internal data)**
 
-Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Specify the file name of the training data**
+Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Specify the file name of the training data)**
 
 Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Specify the file name of the testing data)**
 
@@ -228,9 +228,9 @@ Script outputs:
 Note: This section does not contain the malignancy prediction scores. If you want to generate malignancy prediction scores for AUC calculation or determining priorities for cases triaging, please refer to the "**External Dataset, Internal Dataset for Score**" section.
 
 
-### External Dataset, Generate score for Internal Dataset
+### Generation for malignancy prediction scores for external dataset using machine learning algorithms
 
-This section provides instructions for running machine learning algorithms on the external dataset to generate scores for the internal dataset. Follow the steps below:
+This section provides instructions for running machine learning algorithms on the external dataset to generate scores. Follow the steps below:
 
 Step 1: Run `machinelearn_external_score.py`
 
@@ -260,7 +260,7 @@ Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the pa
 
 Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
 
-Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA)by the model)**
+Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA) by the model)**
 
 Modify the following line to specify the path for saving the results:
 
