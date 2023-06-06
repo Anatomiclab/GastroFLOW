@@ -228,7 +228,7 @@ Script outputs:
 Note: This section does not contain the malignancy prediction scores. If you want to generate malignancy prediction scores for AUC calculation or determining priorities for cases triaging, please refer to the "**External Dataset, Internal Dataset for Score**" section.
 
 
-### Generation for malignancy prediction scores for external dataset using machine learning algorithms
+### Generation of malignancy prediction scores for external dataset
 
 This section provides instructions for running machine learning algorithms on the external dataset to generate scores. Follow the steps below:
 
