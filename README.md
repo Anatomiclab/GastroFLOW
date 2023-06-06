@@ -331,8 +331,6 @@ requireTile_.csv: A .csv file containing the WSIs predicted as negative (non-CA)
 After generating the predicted results, please refer to the "Post Processing" section to generate the triage list based on the results.
 
 
-
-
 ## External Validation of GCNet and GastroFLOW
 
 The external validation of GCNet and GastroFlow is divided into three parts, each with its respective script.
@@ -420,8 +418,6 @@ After generating the predicted results, please refer to the "Post Processing" se
 ## Post-Processing
 
 After predicting the WSIs and tiled data, to generate the triage lists for analysis, please follow the steps below:
-
-
 
 ### Cross-Validation for GCNet
 
