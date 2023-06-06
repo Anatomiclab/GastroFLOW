@@ -94,38 +94,26 @@ To reproduce the Python environment used in the project, please use the environm
 
 By following this step, you will be able to set up the Python environment with the required dependencies and packages used in the project.
 
-## Export WSI and extract cellular features from WSI
-
-To extract the Whole Slide Images (WSI) and cellular features, please follow the steps outlined below:
-
-### Export the WSI
-
 ![Image](Figure_QuPath.png)
 
-Open the Software QuPath(0.2.0-m8)[Link](https://qupath.github.io/) and its script editor by navigating to Automate -> Show script editor.
-Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
-
-Modify Line 7 in the script to specify the path where the extracted images will be saved:
-
-Line 7: `path="images/" // **(Path storing the extracted cellular features generated from QuPath)** `  
+Step 1: Export the WSI
+1. Open the Software QuPath(0.2.0-m8)[Link](https://qupath.github.io/) and access the script editor by navigating to Automate -> Show script editor.
+2. Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
+3. Modify Line 7 in the script to specify the path where the extracted images will be saved: Line 7: `path="images/"` //**(Specify the path to store the extracted images)** 
 
 Script Outputs:
 
-(WSI Images).png: This is a .png file containing the extracted WSI images.
+(WSI Images).png: A .png file containing the extracted WSI images
 
-### Extract the Cellular Features:
-
-Open the script editor from Software QuPath(0.2.0-m8).
-
-Load the script for cellular feature extraction located at `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy`.
-
-Modify Line 92 in the script to specify the path where the extracted features will be saved:
-
-Line 92: `save_path = "Feature/"  //**(CHANGE save path here (Path for saving the extracted features))` 
+Step 2: Extract the Cellular Features
+1. Open the script editor in QuPath software (version 0.2.0-m8).
+2. Load the script for cellular feature extraction located at `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy.`
+3. Modify Line 92 in the script to specify the path where the extracted features will be saved:
+Line 92: `save_path = "Feature/"`  //**(Specify the path for saving the extracted features)** 
 
 Script Outputs:
 
-(WSI cellular features).txt: This is a .txt file containing the extracted cellular features for the WSI images.
+(WSI cellular features).txt: A .txt file containing the extracted cellular features for the WSI images.
 
 By following these steps, you will be able to export the desired WSI images and extract cellular features using the provided QuPath scripts.
 
