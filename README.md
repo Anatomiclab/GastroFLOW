@@ -99,7 +99,9 @@ By following this step, you will be able to set up the Python environment with t
 Step 1: Export the WSI
 1. Open the Software QuPath(0.2.0-m8)[Link](https://qupath.github.io/) and access the script editor by navigating to Automate -> Show script editor.
 2. Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
-3. Modify Line 7 in the script to specify the path where the extracted images will be saved: Line 7: `path="images/"` //**(Specify the path to store the extracted images)** 
+3. Modify Line 7 in the script to specify the path where the extracted images will be saved: 
+
+Line 7: `path="images/"` //**(Specify the path to store the extracted images)** 
 
 Script Outputs:
 
@@ -109,6 +111,7 @@ Step 2: Extract the Cellular Features
 1. Open the script editor in QuPath software (version 0.2.0-m8).
 2. Load the script for cellular feature extraction located at `QuPath_Script\CellularFeaturesExtractionforWholeSlide.groovy.`
 3. Modify Line 92 in the script to specify the path where the extracted features will be saved:
+
 Line 92: `save_path = "Feature/"`  //**(Specify the path for saving the extracted features)** 
 
 Script Outputs:
