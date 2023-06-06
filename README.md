@@ -178,8 +178,7 @@ By following these steps, you will be able to generate tiled image data for trai
 
 ## Cross-Validation and External Validation using Machine Learning Algorithms
 
-This section provides the necessary scripts to run machine learning algorithms on the internal dataset for cross-validation and testing on the external dataset.
-
+This section provides the necessary scripts to perform cross-validation on the internal dataset and test machine learning algorithms on the external dataset.
 
 ### Cross-Validation
 
@@ -187,7 +186,7 @@ To perform cross-validation using machine learning algorithms, follow these step
 
 Step 1: run `machinelearn_internal.py`
 
-Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
 Line 111: `Train_data_path="801010/"` **(Specify the root path of the internal data)**
 
@@ -195,7 +194,7 @@ Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Specify t
 
 Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Specify the file name of the testing data)**
 
-Modify Line 112 in the script to specify the path for saving the results:
+2. Modify Line 112 in the script to specify the path for saving the results:
 
 Line 112: `Result_path=""`**(Specify the path for saving the results)**
 
@@ -205,13 +204,13 @@ Script output:
 
 Step 2: Run `Machine_learning_internal_generation.py`
 
-Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
 Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Specify the path of the predicted results from Step 1)**
 
 Line 17: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Specify the path of the ground truth)**
 
-Modify the following line to specify the path for saving the results:
+2. Modify the following line to specify the path for saving the results:
 
 Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
@@ -219,7 +218,7 @@ Script outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the triage list of machine learning models for the internal data.
 
-Note: This section does not contain the malignancy prediction scores. If you want to generate malignancy prediction scores for AUC calculation or determining priorities for cases triaging, please refer to the "**External Dataset, Internal Dataset for Score**" section.
+Note: This section does not include malignancy prediction scores. If you want to generate malignancy prediction scores for AUC calculation or prioritize cases for triaging, please refer to the "External Dataset, Internal Dataset for Score" section.
 
 
 ### Generation of malignancy prediction scores for external dataset
@@ -228,7 +227,7 @@ This section provides instructions for running machine learning algorithms on th
 
 Step 1: Run `machinelearn_external_score.py`
 
-Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
 Line 116: `data = pd.read_csv('trainingdata.csv')` **(Specify the path of the training data)**
 
@@ -248,7 +247,7 @@ Script Outputs:
 
 Step 2: Run `Machine_learning_external_generation.py`
 
-Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
 Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the WSIs predicted as positive (CA) by the model)**
 
@@ -256,7 +255,7 @@ Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Specify the
 
 Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA) by the model)**
 
-Modify the following line to specify the path for saving the results:
+2. Modify the following line to specify the path for saving the results:
 
 Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
@@ -264,7 +263,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the list of machine learning model predictions for the external data.
 
-To generate the triage list, sort the predictions in Excel based on the predicted label (Positive, Suspicious of Positive, Negative) and score.
+To generate the triage list, sort the predictions in Excel based on the predicted label (Positive, Suspicious of Positive, Negative) and malignancy prediction scores.
 
 
 
@@ -274,7 +273,7 @@ To find the optimized parameters for multilayer perceptron (MLP) models using Ta
 
 Step 1: Run `talos_tunning.py` script
 
-Modify the following line to specify the path for the training data:
+1. Modify the following line to specify the path for the training data:
 
 Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the training data)**
 
@@ -290,15 +289,15 @@ To train any MLP network used for ensembling as GCNet, follow the steps below us
 
 Step 1: Run the `ModelTraining.py` script
 
-Modify the following line in the script to specify the path for the training data:
+1. Modify the following line in the script to specify the path for the training data:
 
 Line 197: `data = pd.read_csv("trainingdata.csv")` **(Modify the following line in the script to specify the path for the training data:)**
 
 Script Outputs:
 
-(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5: An .h5 file that serves as the model after training. This file contains the trained MLP network.
+(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5: An .h5 file that serves as the model and its performance after training. This file contains the trained MLP network.
 
-SummaryOfPerformance.csv: A .csv file that provides the performance metrics of the model for different rounds of training. This file contains information about the MLP model's performance during training.
+SummaryOfPerformance.csv: A .csv file that provides the performance metrics of the model for different rounds of training.
 
 By following these steps and running the ModelTraining.py script, you will be able to train the MLP networks, and choose suitable MLP networks ensembling as GCNet. 
 
