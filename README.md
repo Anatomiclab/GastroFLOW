@@ -299,33 +299,36 @@ Script Outputs:
 
 SummaryOfPerformance.csv: A .csv file that provides the performance metrics of the model for different rounds of training.
 
-By following these steps and running the ModelTraining.py script, you will be able to train the MLP networks, and choose suitable MLP networks ensembling as GCNet. 
+By following these steps and running the ModelTraining.py script, you will be able to train the MLP networks, and choose suitable MLP networks ensembling as GCNet. The optimized MLP networks used for ensembling as GCNet are stored at `model_file`.
 
 
-## GCNet in Cross-Validation
+## GCNet Performance Validation in Cross-Validation
 
-In order to validate the performance of GCNet in Cross-Validation, use script `Validation_internal.py`
+This section provides the necessary script, `Validation_internal.py`, to validate the performance of GCNet in cross-validation.
 
-**Modified Line(please fill the path after downloading the Internal Data.)**:
+To validate the performance of GCNet in cross-validation, follow these steps:
 
-Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")` **(Fill the file name of the training data)**
+Step 1: Run `Validation_internal.py`
 
-Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Fill the file name of the testing data)**
+1. Modify the following lines in the script to specify the path after downloading the internal data:
 
-**Modified Line(please fill the path for saving the results.)**:
+Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")` **(Specify the file name of the training data)**
+
+Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Specify the file name of the testing data)**
+
+2. Modify the following lines to specify the path for saving the results:
 
 Line 146,147: `posName = 'Internal_cross10_report_pos_' +  '.csv'`,`negName = 'Internal_cross10_requireTile_' + '.csv'`
 
 Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
 
-**Script outputs**:
+Script Outputs:
 
-* **report_pos_.csv**: *.csv* file which contains the WSIs model predict positive.
+report_pos_.csv: A .csv file containing the WSIs predicted as positive (CA) by the GCNet model.
 
-* **requireTile_.csv**: *.csv* file which contains the WSIs model predict negative.
+requireTile_.csv: A .csv file containing the WSIs predicted as negative (non-CA)by the GCNet model.
 
-After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
-
+After generating the predicted results, please refer to the "Post Processing" section to generate the triage list based on the results.
 
 
 
