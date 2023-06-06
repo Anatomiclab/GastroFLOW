@@ -263,7 +263,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the list of machine learning model predictions for the external data.
 
-To generate the triage list, sort the predictions in Excel based on the predicted label (Positive, Suspicious of Positive, Negative) and malignancy prediction scores.
+To generate the triage list, sort the predictions in Excel based on the predicted label (CA and non-CA) and malignancy prediction scores.
 
 
 
