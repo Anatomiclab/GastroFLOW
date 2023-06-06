@@ -333,73 +333,72 @@ After generating the predicted results, please refer to the "Post Processing" se
 
 
 
-## External Validation
+## External Validation of GCNet and GastroFLOW
 
-In order to validate the performance of GCNet and GastroFlow in External Validation, it divides into three parts:
-
-
+The external validation of GCNet and GastroFlow is divided into three parts, each with its respective script.
 
 ### GCNet with WSI Data
 
-Use script: `Validation_stage1.py`
+To validate the performance of GCNet using WSI data, follow these steps:
 
-**Modified Line(please fill the path after downloading the External Data.)**:
+Step 1. Run `Validation_stage1.py`
 
-Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Fill the file name of the training data)**
+1. Modify the following lines after downloading the external data:
 
-Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Fill the file name of the testing data)**
+Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Specify the file name of the training data)**
 
-**Modified Line(please fill the path for saving the results.)**:
+Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Specify the file name of the testing data)**
+
+2. Modify the following lines to specify the path for saving the results
 
 Line 150,151: `posName = 'External_report_pos_' +  '.csv'`,`negName = 'External_requireTile_' + '.csv'`
 
 Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_csv("Network_result/" + negName)`
 
-**Script outputs**:
+Script Outputs:
 
-* **report_pos_.csv**: *.csv* file which contains the WSI prediction in positive.
+report_pos_.csv: A .csv file containing the predictions of WSIs as positive (CA) by GCNet.
 
-* **requireTile_.csv**: *.csv* file which contains the WSI prediction in negative.
-
-After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
-
+requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA)by GCNet.
 
 
 ### GCNet with Tile Data
 
-Use script: `Validation_stage2.py`
+To validate the performance of GCNet using tile data, follow these steps:
 
-**Modified Line(please fill the path after downloading the External Data.)**:
+Step 1. Run `Validation_stage2.py`
 
-Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Fill the file name of the training data)**
+1. Modify the following lines after downloading the external data:
 
-Line 44: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Fill the file name of the testing data)**
+Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Specify the file name of the training data)**
 
-**Modified Line(please fill the path for saving the results.)**:
+Line 44: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Specify the file name of the testing data)**
+
+2. Modify Line 69 to specify the path for saving the results:
 
 Line 69: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
-**Script outputs**:
+Script Output:
 
-* **"External_tiledata_500.csv"**: *.csv* file which contains the predicted result of Tiled Data.
-
-After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
+External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GCNet.
 
 
 
 ### GastrolFlow
 
-Use script: `Validation_stage1_2.py`
+To validate the performance of GastrolFlow, follow these steps:
 
-**Modified Line(please fill the path after downloading the External Data.)**:
+Step 1. Run `Validation_stage1_2.py`
 
-Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Fill the file name of the training data)**
+1. Modify the following lines after downloading the external data:
 
-Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Fill the file name of the WSI testing data)**
+Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Specify the file name of the training data)**
+
+Line 47: `data = pd.read_csv("data/External_SlideData.csv")` **(Specify the file name of the WSI testing data)**
  
-Line 180: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Fill the file name of the tiled testing data)**
+Line 180: `data = pd.read_csv("data/External_tiledata_500.csv")` **(Specify the file name of the tiled testing data)**
 
-**Modified Line(please fill the path for saving the results.)**:
+2. Modify the following lines to specify the path for saving the results:
 
 Line 150,151: `posName = 'External_report_pos_' +  '.csv'`,`negName = 'External_requireTile_' + '.csv'`
 
@@ -407,15 +406,15 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
-**Script outputs**:
+Script Outputs:
 
-* **report_pos_.csv**: *.csv* file which contains the WSIs model predict positive.
+report_pos_.csv: A .csv file containing the predictions of WSIs as positive (CA) by GastrolFlow.
 
-* **requireTile_.csv**: *.csv* file which contains the WSIs model predict negative.
+requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA) by GastrolFlow.
 
-* **External_tiledata_500.csv**: *.csv* file which contains the predicted result of Tiled Data for the WSIs model predict negative.
+External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GastrolFlow.
 
-After generate the predicted result, to generate the triage list of result, please follow the section **Post Processing**.
+After generating the predicted results, please refer to the "Post Processing" section to generate the triage list based on the results.
 
  
 ## Post-Processing
