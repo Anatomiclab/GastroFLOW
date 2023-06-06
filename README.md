@@ -143,21 +143,23 @@ By following these steps, you will be able to generate the WSI data using the pr
 
 ## Generation of tiled image data
 
+To generate tiled image data for training and validation, follow the steps below:
+
 Step 1: Run `QuPath_Script\stage_2.py`
 1. Open the script `stage_2.py` located in the QuPath_Script directory.
 2. Modify Line 9 in the script to specify the path where the cellular features of the WSIs generated from QuPath are stored:
 
-Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Path storing the extracted cellular features generated from QuPath)** 
+Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Specify the path for the extracted cellular features)** 
 
 3. Modify Line 17 in the script to specify the immediate path for saving the tile data:
 
-Line 17: `saving_path="./Training_tile/"` **(Immediate path for saving the tile data)**
+Line 17: `saving_path="./Training_tile/"` **(Specify the immediate path for saving the tile data)**
 
 4. Adjust the tile ratio as needed. By default, the extracted tile size is set to 500x500 pixels.
 
-Line 10: `tile_ratio = [500]` **(The image size of extracted tile image is 500x500)**
+Line 10: `tile_ratio = [500]` **(Specify the desired tile size)**
 
-Step 2: Run QuPath_Script\tile.py
+Step 2: Run `QuPath_Script\tile.py`
 1. Open the script `tile.py` located in the QuPath_Script directory.
 2. Modify Line 9 in the script to specify the path of the saving path used in Step 1:
 
@@ -170,7 +172,7 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 Script Outputs:
 
 (WSI cellular features)_tiledata.csv: This is a .csv file containing the extracted 41 features for the tile image data.
-By following these steps, you will be able to generate downsampled WSI and tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
+By following these steps, you will be able to generate tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
 
 ## Cross-Validation and External Validation using Machine Learning Algorithms
