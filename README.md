@@ -182,43 +182,42 @@ Script Outputs:
 By following these steps, you will be able to generate downsampled WSI and tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
 
-## Machine Learning Algorithms for Cross-Validation and External Validation
+## Cross-Validation and External Validation using Machine Learning Algorithms
 
-This section provides the running scripts for machine learning algorithms on the internal dataset for cross-validation and testing on the external dataset.
-
+This section provides the necessary scripts to run machine learning algorithms on the internal dataset for cross-validation and testing on the external dataset.
 
 
 ### Cross-Validation
 
-To run the machine learning algorithms for cross-validation, please follow the steps below:
+To perform cross-validation using machine learning algorithms, follow these steps:
 
 Step 1: run `machinelearn_internal.py`
 
-Modified Line(please fill the path for the data. Note that the cross-validation fold needs to be modified manually):
+Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
-Line 111: `Train_data_path="801010/"` **(Fill the root path of the internal data)**
+Line 111: `Train_data_path="801010/"` **(Specify the root path of the internal data)**
 
-Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Fill the file name of the training data)**
+Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Specify the file name of the training data**
 
-Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Fill the file name of the testing data)**
+Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Specify the file name of the testing data)**
 
-Modify Line 112 in the script to specify the path for saving the final tile data
+Modify Line 112 in the script to specify the path for saving the results:
 
-Line 112: `Result_path=""`**(Fill in the path for saving the results)**
+Line 112: `Result_path=""`**(Specify the path for saving the results)**
 
 Script output:
 
-(Machine Learning Algorithm).csv: A .csv file containing the predicted results of machine learning models for the internal data.
+(Machine Learning Algorithm).csv: A .csv file containing the predicted results of the machine learning models for the internal data.
 
 Step 2: Run `Machine_learning_internal_generation.py`
 
-Modified Line (please fill the path for the data. Note that the cross-validation fold needs to be modified manually):
+Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
-Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Fill the path of the predicted results from Step 1)**
+Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Specify the path of the predicted results from Step 1)**
 
-Line 17: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the path of the ground truth)**
+Line 17: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Specify the path of the ground truth)**
 
-Modified Line(Fill in the path for saving the results.):
+Modify the following line to specify the path for saving the results:
 
 Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
@@ -226,52 +225,52 @@ Script outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the triage list of machine learning models for the internal data.
 
-Note: This section does not contain the malignancy prediction scores. If you want to generate scores for calculating AUC or finding priorities, please refer to the "External Dataset, Internal Dataset for Score" section.
+Note: This section does not contain the malignancy prediction scores. If you want to generate malignancy prediction scores for AUC calculation or determining priorities for cases triaging, please refer to the "**External Dataset, Internal Dataset for Score**" section.
 
 
 ### External Dataset, Generate score for Internal Dataset
 
-To run the machine learning algorithms on the external dataset or generate scores for the internal dataset, please follow the steps below:
+This section provides instructions for running machine learning algorithms on the external dataset to generate scores for the internal dataset. Follow the steps below:
 
 Step 1: Run `machinelearn_external_score.py`
 
-**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
-Line 116: `data = pd.read_csv('trainingdata.csv')` **(Fill the path of the training data)**
+Line 116: `data = pd.read_csv('trainingdata.csv')` **(Specify the path of the training data)**
 
-Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Fill the path of containing the WSIs' cellular features in external validation dataset modified with (Fake) ground truth.)**
+Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Specify the path of the external dataset containing the WSIs' cellular features with modified (Fake) ground truth.)**
 
-Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Fill the path of containing the WSIs' cellular features in external validation dataset)**
+Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Specify the path of the external dataset containing the WSIs' cellular features)**
 
-Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
+Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
 
-**Modified Line(please fill the path for saving the results.)**:
+Modify the following line to specify the path for saving the results:
 
 Line 114: `result_path="external/"`
 
-**Script outputs**:
+Script Outputs:
 
-* **(Machine Learning Algorithm).csv**: *.csv* file which contains the predicted results of machine learning models for external data.
+(Machine Learning Algorithm).csv: A .csv file containing the predicted results of machine learning models for the external data.
 
-**Step 2**: run `Machine_learning_external_generation.py`
+Step 2: Run `Machine_learning_external_generation.py`
 
-**Modified Line(please fill the path for the data. Please note that the Cross-Validation needs to modified the Fold manually)**:
+Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
-Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Fill the path of the result for the WSIs model predicted positive)**
+Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the WSIs predicted as positive (CA) by the model)**
 
-Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
+Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
 
-Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Fill the path of the result for the WSIs model predicted negative)**
+Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA)by the model)**
 
-**Modified Line(please fill the path for saving the results.)**:
+Modify the following line to specify the path for saving the results:
 
 Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
-**Script outputs**:
+Script Outputs:
 
-* **(Machine Learning Algorithm).csv**: *.csv* file which contains the list of machine learning model predictions for external data. 
+(Machine Learning Algorithm).csv: A .csv file containing the list of machine learning model predictions for the external data.
 
-To generate the triage list, please use excel to sort according by predict label (Positive, Suspicous of Positive, Negative) and score.
+To generate the triage list, sort the predictions in Excel based on the predicted label (Positive, Suspicious of Positive, Negative) and score.
 
 
 
