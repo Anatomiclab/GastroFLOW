@@ -172,6 +172,7 @@ Line 20: `df.to_csv("./RAW_TXT-SET_20200520_tiledata_{}.csv".format(r), index=Fa
 Script Outputs:
 
 (WSI cellular features)_tiledata.csv: This is a .csv file containing the extracted 41 features for the tile image data.
+
 By following these steps, you will be able to generate tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
 
@@ -237,7 +238,7 @@ Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Specify the pat
 
 Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
 
-Modify the following line to specify the path for saving the results:
+2. Modify the following line to specify the path for saving the results:
 
 Line 114: `result_path="external/"`
 
