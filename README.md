@@ -292,17 +292,19 @@ tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters
 
 ## MLP Network Training for GCNet
 
-To train a model, use script `ModelTraining.py`. Please set the optimized parameters gained from talos to obtain optimized network for GCNet model building.
+To train the GCNet model, use the `ModelTraining.py` script. Make sure to set the optimized parameters obtained from Talos for achieving an optimized network.
 
-**Modified Line(please fill the path for the training data.)**:
+Step 1: Run the `ModelTraining.py` script
 
-Line 197: `data = pd.read_csv("trainingdata.csv")` **(Fill the path of the training data)**
+Modify the following line to specify the path for the training data:
 
-**Script outputs**:
+Line 197: `data = pd.read_csv("trainingdata.csv")` **(Modify the following line to specify the path for the training data:)**
 
-* **(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5**: *.h5* file which is the model checkpoint after training.
+Script Outputs:
 
-* **SummaryOfPerformance.csv**: *.csv* file which is the performance of model in different rounds.
+(TPR, TNR, PPV, NPV, Accuracy, roc_auc, val_accuracy).h5: An .h5 file that serves as the model checkpoint after training.
+
+SummaryOfPerformance.csv: A .csv file containing the performance metrics of the model for different rounds of training.
 
 
 
