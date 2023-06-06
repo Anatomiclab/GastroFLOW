@@ -326,7 +326,7 @@ Script Outputs:
 
 report_pos_.csv: A .csv file containing the WSIs predicted as positive (CA) by the GCNet model.
 
-requireTile_.csv: A .csv file containing the WSIs predicted as negative (non-CA)by the GCNet model.
+requireTile_.csv: A .csv file containing the WSIs predicted as negative (non-CA) by the GCNet model.
 
 After generating the predicted results, please refer to the "Post Processing" section to generate the triage list based on the results.
 
