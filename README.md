@@ -184,7 +184,7 @@ This section provides the necessary scripts to perform cross-validation on the i
 
 ### Cross-Validation
 
-To perform cross-validation using machine learning algorithms after downloading cross-validation data, follow these steps:
+To perform cross-validation using machine learning algorithms after downloading cross-validation data, follow these steps below:
 
 Step 1: run `machinelearn_internal.py`
 
@@ -224,7 +224,7 @@ Note: This section does not include generation of malignancy prediction scores o
 
 ### Generation of malignancy prediction scores for external dataset
 
-This section provides instructions for running machine learning algorithms on the external dataset to generate malignancy prediction score, follow these steps:
+This section provides instructions for running machine learning algorithms on the external dataset to generate malignancy prediction score, follow these steps below:
 
 Step 1: Run `machinelearn_external_score.py`
 
@@ -282,7 +282,7 @@ tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters
 
 ## MLP Network Training
 
-To train any MLP network, follow the steps below using the ModelTraining.py script. Ensure that you have set the optimized parameters obtained from Talos to train MLP network.
+To train any MLP network, follow the steps below using the `ModelTraining.py` script. Ensure that you have set the optimized parameters obtained from Talos to train MLP network.
 
 Step 1: Run the `ModelTraining.py` script
 
@@ -335,7 +335,7 @@ The external validation of GCNet and GastroFlow is divided into three parts, eac
 
 ### GCNet with WSI Data
 
-To validate the performance of GCNet using WSI data, follow these steps:
+To validate the performance of GCNet using WSI data from external dataset, follow these steps:
 
 Step 1. Run `Validation_stage1.py`
 
@@ -361,7 +361,7 @@ Those lists contain the case ID, malignancy prediction scores computed from 11 M
 
 ### GCNet with Tiled Image Data
 
-To validate the performance of GCNet using tile data, follow these steps:
+To validate the performance of GCNet using tile image data, follow these steps:
 
 Step 1. Run `Validation_stage2.py`
 
