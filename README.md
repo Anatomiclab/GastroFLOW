@@ -220,7 +220,7 @@ Note: This section does not include generation of malignancy prediction scores o
 
 ### Generation of malignancy prediction scores for external dataset
 
-This section provides instructions for running machine learning algorithms on the external dataset to generate malignancy prediction score. Follow the steps below:
+This section provides instructions for running machine learning algorithms on the external dataset to generate malignancy prediction score, follow these steps:
 
 Step 1: Run `machinelearn_external_score.py`
 
