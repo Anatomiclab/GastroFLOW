@@ -198,7 +198,7 @@ Line 112: `Result_path=""`**(Specify the path for saving the results)**
 
 Script output:
 
-(Machine Learning Algorithm).csv: A .csv file containing the case WSIs' prediction (CA or non-CA) of the machine learning models for the internal data. **(1 represent CA, while 0 represent non-CA)**
+(Machine Learning Algorithm).csv: A .csv file containing the case ID, case WSIs' prediction (CA or non-CA) and the ground truth label(CA or non-CA). **(1 represent CA, while 0 represent non-CA)**
 
 Step 2: Run `Machine_learning_internal_generation.py`
 
@@ -214,9 +214,9 @@ Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
 Script outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the case WSIs' prediction (CA or non-CA) and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN")
+(Machine Learning Algorithm).csv: A .csv file containing the case ID, case WSIs' prediction (CA or non-CA) and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN")
 
-Note: This section does not include generation of malignancy prediction scores of case WSIs. To generate malignancy prediction scores for AUC calculation or case triaging, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
+Note: This section does not include generation of malignancy prediction scores of case WSIs. To generate malignancy prediction scores, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
 
 ### Generation of malignancy prediction scores for external dataset
 
@@ -240,7 +240,7 @@ Line 114: `result_path="external/"`
 
 Script Outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the predicted results of machine learning models for the external data.
+(Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA)**（true,false）** for the external data.
 
 Step 2: Run `Machine_learning_external_generation.py`
 
@@ -258,9 +258,9 @@ Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
 Script Outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the list of machine learning model predicted case WSIs' malignancy prediction scores for the external dataset.
+(Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA), ground truth label(CA or non-CA), and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN") for the external dataset.
 
-By following these steps, you will be able to generate malignancy prediction score for AUC calculation and cases WSI triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microscoft Excel by sorting predicted label (CA and non-CA), and predicted malignancy prediction score. 
+By following these steps, you will be able to evaluate model performance from its confusion matrix, the predicted malignancy prediction scores used for assessing model's area under the receiver operating curve and cases WSIs's triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microscoft Excel by firstly sorting predicted label (CA and non-CA), and then sorting predicted malignancy prediction score in desending order. 
 
 ## Hyperparameter Optimization using Talos
 
