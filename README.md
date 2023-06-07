@@ -88,7 +88,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 | External Data  | 222(71.15%) | 90(28.85%) | 2.46:1 | 312 | 739 |
 | Retrospective Case  | 60(66.67%) | 30(33.33%) | 2:1 | 90 | 113 |
 
-## Python Environment Setup
+## Python Environment Setup **(please update the environment,especially the talos)**
 
 To reproduce the Python environment used in the project, please use the environment file is named `environment_tf2.yml` and is based on the Anaconda environment.
 
