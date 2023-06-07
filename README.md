@@ -264,7 +264,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA), ground truth label(CA or non-CA), and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN") for the external dataset.
 
-By following these steps, you will be able to evaluate model performance from its confusion matrix, the  malignancy prediction scores used for calculating the model's area under the receiver operating curve and cases WSIs's triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
+By following these steps, you will be able to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Hyperparameter Optimization using Talos
 
@@ -416,7 +416,7 @@ By following these steps, you will be able to generate external validation resul
  
 ## Post-Processing
 
-After predicting the WSIs and tiled data, follow the steps below to generate triage lists for analysis:
+After generating predictions of the WSIs and tiled data using GCNet and GastroFLOW, follow the steps below to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs.
 
 ### Cross-Validation for GCNet
 
