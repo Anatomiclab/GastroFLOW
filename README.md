@@ -141,7 +141,7 @@ aggregateddata.csv: This is a .csv file that contains the generated WSI data.Thi
 By following these steps, you will be able to generate the WSI data using the provided Python script. 
 
 
-## Generation of tiled image data
+## Tiled Image Data Generation 
 
 To generate tiled image data for training and validation, follow the steps below:
 
