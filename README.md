@@ -140,7 +140,6 @@ aggregateddata.csv: This is a .csv file that contains the generated WSI data.Thi
 
 By following these steps, you will be able to generate the WSI data using the provided Python script. 
 
-
 ## Tiled Image Data Generation 
 
 To generate tiled image data for model training and validation, follow the steps below:
@@ -175,8 +174,7 @@ Script Outputs:
 
 By following these steps, you will be able to generate tiled image data for model training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
-
-## Cross-Validation and External Validation using Machine Learning Algorithms
+## Cross-Validation and External Validation of Machine Learning Algorithms
 
 This section provides the necessary scripts to perform cross-validation on the internal dataset and test machine learning algorithms on the external dataset.
 
@@ -200,7 +198,7 @@ Line 112: `Result_path=""`**(Specify the path for saving the results)**
 
 Script output:
 
-(Machine Learning Algorithm).csv: A .csv file containing the predicted results of the machine learning models for the internal data.
+(Machine Learning Algorithm).csv: A .csv file **containing the predicted results of the machine learning models for the internal data.**
 
 Step 2: Run `Machine_learning_internal_generation.py`
 
@@ -216,10 +214,11 @@ Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
 Script outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the **triage list** of machine learning models for the internal data.
+(Machine Learning Algorithm).csv: A .csv file **containing the case WSIs' prediction (CA or non-CA) generated using machine learning models for the internal data.**
 
-Note: This section does not include malignancy prediction scores. To generate malignancy prediction scores for AUC calculation or prioritize cases for triaging, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
+By following these steps, you will be able to generate the case WSIs' prediction using different machine learning models.
 
+Note: This section does not include generation of malignancy prediction scores of case WSIs. To generate malignancy prediction scores for AUC calculation or case triaging, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
 
 ### Generation of malignancy prediction scores for external dataset
 
@@ -231,11 +230,11 @@ Step 1: Run `machinelearn_external_score.py`
 
 Line 116: `data = pd.read_csv('trainingdata.csv')` **(Specify the path of the training data)**
 
-Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Specify the path of the external dataset containing the WSIs' cellular features with modified (Fake) ground truth.)**
+Line 135: `data2 = pd.read_csv('data/External_SlideData_gt.csv')` **(Specify the path of the external dataset containing the case WSIs' cellular features with modified (Fake) ground truth.)**
 
-Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Specify the path of the external dataset containing the WSIs' cellular features)**
+Line 277: `data = pd.read_csv('data/External_SlideData.csv')` **(Specify the path of the external dataset containing the case WSIs' cellular features)**
 
-Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
+Line 279: `ref_data = pd.read_csv("data/GroundTruth_External.csv")` **(Specify the path of the case WSIs' ground truth in the external validation dataset)**
 
 2. Modify the following line to specify the path for saving the results:
 
@@ -249,11 +248,11 @@ Step 2: Run `Machine_learning_external_generation.py`
 
 1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
-Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the WSIs predicted as positive (CA) by the machine learning models)**
+Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the case WSIs predicted as positive (CA) by the machine learning models)**
 
-Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
+Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Specify the path of the case WSI's ground truth in the external validation dataset)**
 
-Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA) by the machine learning models)**
+Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the case WSIs predicted as negative (non-CA) by the machine learning models)**
 
 2. Modify the following line to specify the path for saving the results:
 
@@ -261,9 +260,9 @@ Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
 Script Outputs:
 
-(Machine Learning Algorithm).csv: A .csv file **containing the list of machine learning model predictions for the external data**.
+(Machine Learning Algorithm).csv: A .csv file **containing the list of machine learning model predicted case WSIs' malignancy prediction scores for the external dataset**.
 
-To generate the triage list, sort the predictions in Excel based on the predicted label (CA and non-CA) and malignancy prediction scores.
+**By following these steps, you will be able to generate malignancy prediction score for AUC calculation and cases WSI triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv: A .csv` can generate triage list using Microscoft Excel by sorting predicted label (CA and non-CA), and predicted malignancy prediction score. **
 
 ## Hyperparameter Optimization using Talos
 
@@ -298,11 +297,11 @@ SummaryOfPerformance.csv: A .csv file that provides the performance metrics of t
 By following these steps and running the ModelTraining.py script, you will be able to train the MLP networks, and choose suitable MLP networks ensembling as GCNet. The optimized MLP networks used for ensembling as GCNet are stored at `model_file`.
 
 
-## GCNet Performance Validation in Cross-Validation
+## Cross-Validation of GCNet
 
-This section provides the necessary script, `Validation_internal.py`, to validate the performance of GCNet in cross-validation.
+This section provides the necessary script, `Validation_internal.py`, to perfrom cross-validation of GCNet.
 
-To validate the performance of GCNet in cross-validation, follow these steps:
+To cross-validate GCNet, follow these steps:
 
 Step 1: Run `Validation_internal.py`
 
@@ -324,7 +323,10 @@ report_pos_.csv: A .csv file containing the WSIs predicted as positive (CA) by t
 
 requireTile_.csv: A .csv file containing the WSIs predicted as negative (non-CA) by the GCNet model.
 
-After generating the predicted results, please refer to the "Post Processing" section to generate the triage list based on the results.
+After generating the predicted results, it 
+To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv: A .csv` can generate triage list using Microscoft Excel by sorting predicted label (CA and non-CA), and predicted malignancy prediction score. 
+
+please refer to the "Post-Processing" section to evaluate model performance.
 
 
 ## External Validation of GCNet and GastroFLOW
