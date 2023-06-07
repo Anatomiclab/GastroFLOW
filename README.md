@@ -143,7 +143,7 @@ By following these steps, you will be able to generate the WSI data using the pr
 
 ## Tiled Image Data Generation 
 
-To generate tiled image data for training and validation, follow the steps below:
+To generate tiled image data for model training and validation, follow the steps below:
 
 Step 1: Run `QuPath_Script\stage_2.py`
 1. Open the script `stage_2.py` located in the QuPath_Script directory.
