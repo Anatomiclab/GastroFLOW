@@ -136,7 +136,7 @@ Line 8: `outPath=r'./aggregateddata.csv'`//**(Specify the path for saving the WS
 
 Script Outputs:
 
-aggregateddata.csv: This is a .csv file that contains the generated WSI data.This file will include relevant information derived from the averaged cellular features of the WSIs.
+aggregateddata.csv: This is a .csv file that contains the generated WSI data. This file will include relevant information derived from the averaged cellular features of the WSIs.
 
 By following these steps, you will be able to generate the WSI data using the provided Python script. 
 
@@ -180,7 +180,7 @@ This section provides the necessary scripts to perform cross-validation on the i
 
 ### Cross-Validation
 
-To perform cross-validation using machine learning algorithms, follow these steps:
+To perform cross-validation using machine learning algorithms after downloading cross-validation data, follow these steps:
 
 Step 1: run `machinelearn_internal.py`
 
@@ -198,7 +198,7 @@ Line 112: `Result_path=""`**(Specify the path for saving the results)**
 
 Script output:
 
-(Machine Learning Algorithm).csv: A .csv file **containing the predicted results of the machine learning models for the internal data.**
+(Machine Learning Algorithm).csv: A .csv file containing the case WSIs' prediction (CA or non-CA) of the machine learning models for the internal data. **(1 represent CA, while 0 represent non-CA)**
 
 Step 2: Run `Machine_learning_internal_generation.py`
 
@@ -214,9 +214,7 @@ Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
 Script outputs:
 
-(Machine Learning Algorithm).csv: A .csv file **containing the case WSIs' prediction (CA or non-CA) generated using machine learning models for the internal data.**
-
-By following these steps, you will be able to generate the case WSIs' prediction using different machine learning models.
+(Machine Learning Algorithm).csv: A .csv file containing the case WSIs' prediction (CA or non-CA) and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN")
 
 Note: This section does not include generation of malignancy prediction scores of case WSIs. To generate malignancy prediction scores for AUC calculation or case triaging, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
 
@@ -260,9 +258,9 @@ Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
 Script Outputs:
 
-(Machine Learning Algorithm).csv: A .csv file **containing the list of machine learning model predicted case WSIs' malignancy prediction scores for the external dataset**.
+(Machine Learning Algorithm).csv: A .csv file containing the list of machine learning model predicted case WSIs' malignancy prediction scores for the external dataset.
 
-**By following these steps, you will be able to generate malignancy prediction score for AUC calculation and cases WSI triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv: A .csv` can generate triage list using Microscoft Excel by sorting predicted label (CA and non-CA), and predicted malignancy prediction score. **
+By following these steps, you will be able to generate malignancy prediction score for AUC calculation and cases WSI triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microscoft Excel by sorting predicted label (CA and non-CA), and predicted malignancy prediction score. 
 
 ## Hyperparameter Optimization using Talos
 
