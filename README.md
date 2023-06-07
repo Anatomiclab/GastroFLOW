@@ -101,7 +101,7 @@ Step 1: Export the WSI
 2. Load the script for image extraction located at `QuPath_Script\ImagesExport.groovy`.
 3. Modify Line 7 in the script to specify the path where the extracted images will be saved: 
 
-Line 7: `path="images/"` //**(Specify the path to store the extracted images)** 
+Line 7: `path="images/"` //**(Specify the path to store the exported images)** 
 
 Script Outputs:
 
