@@ -173,7 +173,7 @@ Script Outputs:
 
 (WSI cellular features)_tiledata.csv: This is a .csv file containing the extracted 41 features for the tile image data.
 
-By following these steps, you will be able to generate tiled image data for training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
+By following these steps, you will be able to generate tiled image data for model training and validation purposes. The resulting tiledata.csv file will contain the extracted cellular features for the tile image data.
 
 
 ## Cross-Validation and External Validation using Machine Learning Algorithms
