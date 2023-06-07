@@ -278,7 +278,7 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the tra
 
 Script Output:
 
-tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters, along with the corresponding loss value and validation metrics. The results are stored in a CSV format. The CSV file provides the optimized hyperparameter settings for the MLP networks to develop GCNet.
+.csv : A .csv file that contains tested hyperparameter settings including (activation for the MLP networks to develop GCNet.
 
 ## MLP Network Training
 
