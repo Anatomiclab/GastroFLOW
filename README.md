@@ -216,14 +216,14 @@ Line 76: `final.to_csv(r"internal_result/K-SVM.csv")`
 
 Script outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the triage list of machine learning models for the internal data.
+(Machine Learning Algorithm).csv: A .csv file containing the **triage list** of machine learning models for the internal data.
 
-Note: This section does not include malignancy prediction scores. If you want to generate malignancy prediction scores for AUC calculation or prioritize cases for triaging, please refer to the "External Dataset, Internal Dataset for Score" section.
+Note: This section does not include malignancy prediction scores. To generate malignancy prediction scores for AUC calculation or prioritize cases for triaging, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
 
 
 ### Generation of malignancy prediction scores for external dataset
 
-This section provides instructions for running machine learning algorithms on the external dataset to generate scores. Follow the steps below:
+This section provides instructions for running machine learning algorithms on the external dataset to generate malignancy prediction score. Follow the steps below:
 
 Step 1: Run `machinelearn_external_score.py`
 
@@ -249,11 +249,11 @@ Step 2: Run `Machine_learning_external_generation.py`
 
 1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
-Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the WSIs predicted as positive (CA) by the model)**
+Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the WSIs predicted as positive (CA) by the machine learning models)**
 
 Line 13: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Specify the path of the ground truth in the external validation dataset)**
 
-Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA) by the model)**
+Line 63: `csv_data=pd.read_csv(r"SVM--linear/requireTile_.csv")` **(Specify the path of the results for the WSIs predicted as negative (non-CA) by the machine learning models)**
 
 2. Modify the following line to specify the path for saving the results:
 
@@ -261,11 +261,9 @@ Line 115: `final.to_csv(r"external_result/SVM--linear.csv")`
 
 Script Outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the list of machine learning model predictions for the external data.
+(Machine Learning Algorithm).csv: A .csv file **containing the list of machine learning model predictions for the external data**.
 
 To generate the triage list, sort the predictions in Excel based on the predicted label (CA and non-CA) and malignancy prediction scores.
-
-
 
 ## Hyperparameter Optimization using Talos
 
@@ -280,8 +278,6 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the tra
 Script Output:
 
 tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters, along with the corresponding loss value and validation metrics. The results are stored in a CSV format. The CSV file provides the optimized hyperparameter settings for the MLP networks to develop GCNet.
-
-
 
 ## MLP Network Training
 
@@ -357,7 +353,7 @@ Script Outputs:
 
 report_pos_.csv: A .csv file containing the predictions of WSIs as positive (CA) by GCNet.
 
-requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA)by GCNet.
+requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA) by GCNet.
 
 
 ### GCNet with Tile Data
@@ -379,8 +375,6 @@ Line 69: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 Script Output:
 
 External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GCNet.
-
-
 
 ### GastrolFlow
 
