@@ -169,7 +169,7 @@ Y_train = K.cast_to_floatx(Y_train)
     
 print('starting........')
 t=ta.Scan(x=X_train, y=Y_train, model=model, params=p, x_val=X_test, y_val=Y_test, fraction_limit=.005, experiment_name='hyperparameter_tuning',
-          random_method='quantum')
+          random_method='quantum') **change random method**
 
 ##with open(f"tuner_{int(time.time())}.pkl", "wb") as f:
     pickle.dump(t, f)## (may can ignore this code)
