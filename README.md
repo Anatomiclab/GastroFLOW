@@ -198,7 +198,7 @@ Line 112: `Result_path=""`**(Specify the path for saving the results)**
 
 Script output:
 
-(Machine Learning Algorithm).csv: A .csv file containing the case ID, case WSIs' prediction (CA or non-CA) and the ground truth label(CA or non-CA). **(1 represent CA, while 0 represent non-CA)**
+(Machine Learning Algorithm).csv: A .csv file containing the case ID, case WSIs' prediction (CA or non-CA) and the ground truth label(CA or non-CA). **("1" indicates CA, while "0" indicates non-CA)**
 
 Step 2: Run `Machine_learning_internal_generation.py`
 
@@ -240,7 +240,7 @@ Line 114: `result_path="external/"`
 
 Script Outputs:
 
-(Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA)**（true,false）** for the external data.
+(Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA) for the external data.**(TRUE indicates CA, while FALSE indicates non-CA)**
 
 Step 2: Run `Machine_learning_external_generation.py`
 
@@ -260,7 +260,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA), ground truth label(CA or non-CA), and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN") for the external dataset.
 
-By following these steps, you will be able to evaluate model performance from its confusion matrix, the predicted malignancy prediction scores used for assessing model's area under the receiver operating curve and cases WSIs's triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microscoft Excel by firstly sorting predicted label (CA and non-CA), and then sorting predicted malignancy prediction score in desending order. 
+By following these steps, you will be able to evaluate model performance from its confusion matrix, the  malignancy prediction scores used for calculating the model's area under the receiver operating curve and cases WSIs's triaging. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Hyperparameter Optimization using Talos
 
@@ -317,15 +317,13 @@ Line 162,163: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 Script Outputs:
 
-report_pos_.csv: A .csv file containing the WSIs predicted as positive (CA) by the GCNet model.
+report_pos_.csv: A .csv file containing the cases' WSIs predicted as positive (CA) by the GCNet model. 
 
-requireTile_.csv: A .csv file containing the WSIs predicted as negative (non-CA) by the GCNet model.
+requireTile_.csv: A .csv file containing the cases' WSIs predicted as negative (non-CA) by the GCNet model.
 
-After generating the predicted results, it 
-To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv: A .csv` can generate triage list using Microscoft Excel by sorting predicted label (CA and non-CA), and predicted malignancy prediction score. 
+Those list contains the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
 
-please refer to the "Post-Processing" section to evaluate model performance.
-
+By following these steps, you will be able to generate cross-validation result using GCNet. To evaluate the cross-validation performance of GCNet, please refer to the "Post-Processing" section.
 
 ## External Validation of GCNet and GastroFLOW
 
@@ -376,7 +374,7 @@ Script Output:
 
 External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GCNet.
 
-### GastrolFlow
+### GastroFLOW
 
 To validate the performance of GastrolFlow, follow these steps:
 
