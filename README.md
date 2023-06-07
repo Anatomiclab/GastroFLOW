@@ -417,13 +417,13 @@ After generating the predicted results, please refer to the "Post Processing" se
  
 ## Post-Processing
 
-After predicting the WSIs and tiled data, to generate the triage lists for analysis, please follow the steps below:
+After predicting the WSIs and tiled data, follow the steps below to generate triage lists for analysis:
 
 ### Cross-Validation for GCNet
 
-Use script: `Post_processing\Slide_internal_Stage1_generation.py`
+Step 1. Run `Post_processing\Slide_internal_Stage1_generation.py`
 
-**Modified Line(please fill the path after running the prediction.)**:
+1. Modify the following lines to specify the path of the result for the WSIs predicted 
 
 Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))` **(Fill the path of the result for the WSIs model predicted positive)**
 
