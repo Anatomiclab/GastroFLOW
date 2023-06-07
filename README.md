@@ -327,7 +327,7 @@ requireTile_.csv: A .csv file containing the cases' WSIs predicted as negative (
 
 Those lists contain the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
 
-By following these steps, you will be able to generate cross-validation result using GCNet. To evaluate the cross-validation performance of GCNet, please refer to the "Post-Processing" section.
+By following these steps, you will be able to generate the cross-validation result using GCNet. To evaluate the cross-validation performance of GCNet, please refer to the "Post-Processing" section.
 
 ## External Validation of GCNet and GastroFLOW
 
@@ -359,7 +359,7 @@ requireTile_.csv: A .csv file containing the cases' WSIs predicted as negative (
 
 Those lists contain the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
 
-### GCNet with Tile Data
+### GCNet with Tiled Image Data
 
 To validate the performance of GCNet using tile data, follow these steps:
 
@@ -405,11 +405,11 @@ Line 230: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
 Script Outputs:
 
-report_pos_.csv: A .csv file containing the predictions of WSIs as positive (CA) by GastrolFlow.
+report_pos_.csv: A .csv file containing the predictions of WSIs as positive (CA).
 
-requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA) by GastrolFlow.
+requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA).
 
-External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GastrolFlow.
+External_tiledata_500.csv: A .csv file containing the predicted results of tile data.
 
 By following these steps, you will be able to generate external validation result using GCNet and GastroFLOW. To evaluate the external validation performance of GCNet and GastroFLOW , please refer to the "Post-Processing" section.
 
@@ -422,187 +422,196 @@ After generating predictions of the WSIs and tiled data using GCNet and GastroFL
 
 Step 1. Run `Post_processing\Slide_internal_Stage1_generation.py`
 
-1. Modify the following lines to specify the path of the result for the WSIs predicted 
+1. Modify Line 4 in the script to specify the path of the result for the WSIs predicted as CA
 
-Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))` **(Fill the path of the result for the WSIs model predicted positive)**
+Line 4: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_report_pos_.csv"))` 
 
-Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` **(Fill the path of the ground truth in internal validation dataset)**
+2. Modify Line 14 in the script to specify the path of the ground truth label in the internal dataset:
 
-Line 64: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")` **(Fill the path of the result for the WSIs model predicted negative)**
+Line 14: `csv_data=pd.read_csv(r"801010/final_training_gt.csv")` 
 
+3. Modify Line 64 in the script to specify the path of the result for the WSIs predicted as non-CA
 
-**Modified Line(please fill the path for saving the results.)**:
+Line 64: `csv_data=pd.read_csv(r"Network_result/Internal_cross10_requireTile_.csv")` 
+
+4. Modify Line 118 in the script to specify the path for saving the results:
 
 Line 118: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
-**Script outputs**:
+Script outputs:
 
-* **Internal_.csv**: *.csv* file which contains the triage list for cross-validation test data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
-
-
+Internal_.csv: *.csv* file containing the triage list for the cross-validation test data. The file includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
 
 ### External Validation 
 
 #### GCNet with WSI Data
 
-Use script: `Post_processing\Slide_Stage1_generation.py`
+Step 1. Run `Post_processing\Slide_Stage1_generation.py`
 
-**Modified Line(please fill the path after running the prediction.)**:
+1. Modify Line 8 in the script to specify the path of the result for the WSIs predicted as CA
 
-Line 8: `csv_data=pd.read_csv(r"Network/External_report_pos_.csv")` **(Fill the path of the result for the WSIs model predicted positive)**
+Line 8: `csv_data=pd.read_csv(r"Network/External_report_pos_.csv")` 
 
-Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of the ground truth in external validation dataset)**
+2. Modify Line 18 in the script to specify the path of the ground truth in the external validation dataset
 
-Line 66: `csv_data=pd.read_csv(r"Network/External_requireTile_.csv")` **(Fill the path of the result for the WSIs model predicted negative)**
+Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` 
 
-**Modified Line(please fill the path for saving the results.)**:
+3. Modify Line 66 in the script to specify the path of the result for the WSIs predicted as non-CA
+
+Line 66: `csv_data=pd.read_csv(r"Network/External_requireTile_.csv")`
+
+4. Modify Line 120 in the script to specify the path for saving the results:
 
 Line 120: `final.to_csv(r"stage1_result/External_stage1_test_PN.csv")`
 
-**Script outputs**:
+Script outputs:
 
-* **External__.csv**: *.csv* file which contains the triage list for External test data based on WSI data. The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+External__.csv: *.csv* file containing the triage list for the external test data based on WSI data. The file includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
-To generate **the prioritization of cases**, please use Excel function to do.
+To generate the prioritization of cases, use Excel to sort the predictions by classification label (positive, suspect positive, and negative) and prediction score.
 
-
-
-
-
-#### GCNet with Tile Data
+#### GCNet with Tiled Image Data
 
 Please follow the steps below:
 
-**Step 1**: Run script: `Post_processing\Tile_Calc_Avg_score.py`
+Step 1: Run `Post_processing\Tile_Calc_Avg_score.py`
 
-**Modified Line(please fill the path after running the prediction.)**:
+1. Modify Line 10 in the script to specify the folder path after running the network prediction:
 
-Line 10: `folder_path=r"Network_result//"` **(Fill the path of the predicted result after running the network prediction)**
+Line 10: `folder_path=r"Network_result//"` 
 
-Line 12: `csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")` **(Fill the filename of the predicted result after running the network prediction)**
+2. Modify Line 12 in the script to specify the filename of the predicted results of tile data by GCNet after running the network prediction:
 
-**Modified Line(please fill the path for saving the results.)**:
+Line 12: `csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")`
+
+3. Modify Line 42 in the script to specify the path for saving the results:
 
 Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_score//" is immediate path. Please Create it manually when the path is not existed.)**
 
-**Script outputs**:
+Script outputs:
 
-* **avgscore.csv**: *.csv* file which contains the average predicted score of 11 models for each tile data.
+avgscore.csv: *.csv* file containing the average predicted score of 11 models for each tiled Image Data.
 
-**Step 2**: Run script: `Post_processing\Tile_Case_split_ver2.py`
+Step 2: Run script: `Post_processing\Tile_Case_split_ver2.py`
 
-**Modified Line(please fill the path after running the Step1.)**:
+1. Modify Line 11 and Line 13 in the script to specify the folder path after running Step 1:
 
-Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")` **(Fill the immediate path in step 1)** 
+Line 11,13: `folder_path=r"avg_score/"`,`csv_data=pd.read_csv(folder_path+r"External_tiledata_500.csv")` 
 
-**Modified Line(please fill the path for saving the results.)**:
+2. Modify Line 11 and Line 13 in the script to specify the folder path after running Step 1:
 
-Line 82,83,87: `#shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)` **("case_split//" is immediate path. Please Create it manually when the path is not existed.)**
+Line 82,83,87: `#shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",exist_ok=True)`, `case_final.to_csv(r"case_split//"+str(i)+".csv",index=False)` **("case_split//" is immediate path. Please create it manually when the path is not existed.)**
 
-**Script outputs**:
+Script outputs:
 
-* **Folder of Case.csv**: *.csv* file which contains the predicted result of tiled data corresponding to each cases.
+Folder of Case.csv: *.csv* file containing the predicted results of tiled data corresponding to each case.
 
-**Step 3**: Run script: `Post_processing\Tile_Case_Sort.py`
+Step 3: Run script: `Post_processing\Tile_Case_Sort.py`
 
-**Modified Line(please fill the path after running the Step2.)**:
+1. Modify Line 15 in the script to specify the path after running Step 2:
 
 Line 15: `for filename in glob.glob(r"case_split/*"):` **(Fill the immediate path in step 2)**
 
-**Modified Line(please fill the path for saving the results.)**:
+2. Modify Line 12 and Line 13 in the script to specify the path for saving the results:
 
-Line 12,13: `#shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)` **("case_split_Sorted//" is immediate path. Please Create it manually when the path is not existed.)**
+Line 12,13: `#shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_Sorted//",exist_ok=True)` **("case_split_Sorted//" is immediate path. Please create it manually when the path is not existed.)**
 
-**Script outputs**:
+Script outputs:
 
-* **Folder of Case.csv**: *.csv* file which contains the predicted result of tiled data corresponding to each cases, after this step, the score will be sorted in decreasing order.
+Folder of Case.csv: *.csv* file containing the predicted results of tiled data corresponding to each case. After this step, the scores will be sorted in descending order.
 
-**Step 4**: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
+Step 4: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
 
-**The threshold for prediction**
+1. Modify Line 9 in the script to set the cut-off ratio (threshold) of positive for carcinoma (P-CA) tiled images for classifying and prioritizing cases as “suspicious for carcinoma”:
 
 Line 9: `threshold=0.2`
 
-**Modified Line(please fill the path after running the Step3.)**:
+2. Modify Line 18 in the script to specify the path after running Step 3:
 
 Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):` **(Fill the immediate path in step 3)**
 
-**Modified Line(please fill the path for saving the results.)**:
+3. Modify Line 53 and Line 57 in the script to specify the path for saving the results:
 
 Line 53,57: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_csv(r"Final_Tile_Stage2//External_" +"_"+str(threshold)+ ".csv", index=False)` **("Final_Tile_Stage2//" is immediate path)**
 
-**Script outputs**:
+Script outputs:
 
-* **External_.csv**: *.csv* file which contains the predicted result for External test data. It contains the average score, the minimum number of positive tile to become the suspicious positive, the actual number of positive tile and the diagnosis.
+External_.csv: *.csv* file containing the predicted results for the external test data. It includes the average score, the minimum number of positive tiles required to be classified as suspicious positive, the actual number of positive tiles, and the diagnosis.
 
-**Step 5**: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
+Step 5: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
 
-**Modified Line(please fill the path after running the Step4.)**:
+1. Modify Line 9 in the script to specify the path after running Step 4:
 
 Line 9: `csv_data=pd.read_csv(r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 4)**
 
+2. Modify Line 19 in the script to specify the path of the ground truth in the external dataset:
+
 Line 19: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")`  **(Fill the path of ground truth in external dataset)**
 
-**Modified Line(please fill the path for saving the results.)**:
+3. Modify Line 78 in the script to specify the path for saving the results:
 
 Line 78: `final.to_csv(r"stage2_result/External_stage2_test_PN_"+str(threshold)+".csv")`
 
-**Script outputs**:
+Script outputs:
 
-* **External_.csv**: *.csv* file which contains the triage list for External test data based on tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+External_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
-To generate **the prioritization of cases**, please use Excel function to do.
-(To generate **the prioritization of cases**, please use Excel to sort by classification label(carcinoma, suspicious of carcinoma, benign) then sort by prediction score)
-
-
-
+To generate the triage list of cases, use Excel to sort the predictions by the prediction label (Positive, Suspect Positive, and Negative) and the prediction score.
 
 #### GastrolFlow
 
-Before the step, please run the step **GCNet with Tile Data** using the generated result of tiled data from `Validation_stage1_2.py`:
+Before proceeding, make sure to run the step "GCNet with Tiled Image Data" using the generated results of tiled data from `Validation_stage1_2.py`:
 
-After the step, it should generate the triage list for tiled data while the corresponding WSI data is predicted as negative.
+After completing the step, the triage list for tiled data will be generated while the corresponding WSI data is predicted as non-CA. Then follow these steps:
 
 Then, please follow the steps:
 
-**Step 1**: Run script: `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
+Step 1: Run the script `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
-**Modified Line(please fill the path after running the Step3.)**:
+1. Modify Line 7 in the script to specify the path of the result for the WSIs predicted non-CA from external dataset or Retrospective Case-Control Study Dataset:
 
-Line 7: `stage1_csv=pd.read_csv(r"Network/External_requireTile_.csv")` **(Fill the path of the result for the WSIs model predicted negative)**
+Line 7: `stage1_csv=pd.read_csv(r"Network/External_requireTile_.csv")` 
 
-Line 10: `stage1_csv_pos=pd.read_csv(r"Network/External_report_pos_.csv")`**(Fill the path of the result for the WSIs model predicted positive)**
+2. Modify Line 10 in the script to specify the path of the result for the WSIs predicted CA from external dataset or Retrospective Case-Control Study Dataset:
 
-Line 20: `filename=r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv"` **(Fill the path of the result for the tile data)**
+Line 10: `stage1_csv_pos=pd.read_csv(r"Network/External_report_pos_.csv")`
 
-**Modified Line(please fill the path for saving the results.)**:
+3. Modify Line 20 in the script to specify the path of the predicted result for the tiled Image Data from external dataset or Retrospective Case-Control Study Dataset:
+
+Line 20: `filename=r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv"` 
+
+4. Modify Line 52 in the script to specify the path for saving the results:
 
 Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],index=False)` **("Final_Tile_Stage1_2//" is immediate path)**
 
-**Script outputs**:
+Script outputs:
 
-* **External_.csv**: *.csv* file which contains the predicted result for external dataset. It will provide the prediction label (positive, suspect positive and negative), the predict score, and the number of the tiled predicted as suspect positive.
+External_.csv: *.csv* file containing the predicted results for the external dataset or Retrospective Case-Control Study Dataset. It provides the prediction labels (positive, suspect positive, and negative), the predicted scores, and the number of tiled predictions classified as suspect positive.
 
-**Step 2**: Run script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
+Step 2: Run the script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
 
-**Modified Line(please fill the path after running the Step4.)**:
+1. Modify Line 6 in the script to set the cut-off ratio (threshold) of positive for carcinoma (P-CA) tiled images for classifying and prioritizing cases as “suspicious for carcinoma”:
 
-Line 6: `threshold=0.2` **(Fill the immediate path in step 1)**
+Line 6: `threshold=0.2` 
+
+2. Modify Line 8 in the script to specify the path after running Step 1:
 
 Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 1)**
 
-Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` **(Fill the path of ground truth in external dataset)**
+3. Modify Line 18 in the script to specify the path of the ground truth in the external dataset or Retrospective Case-Control Study Dataset:
 
-**Modified Line(please fill the path for saving the results.)**:
+Line 18: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")` 
+
+4. Modify Line 82 in the script to specify the path for saving the results:
 
 Line 82: `final.to_csv(r"stage1_2_result/External_stage1_2_test_PN_"+str(threshold)+".csv")`
 
-**Script outputs**:
+Script outputs:
 
-* **External_.csv**: *.csv* file which contains the triage list for External test data based on WSI and tiled data.The file contains predicted score, predicted label, ground-truth label and items for confusion matrix (True Positive, False Positive, True Negative, False Negative).
+External_.csv: *.csv* file containing the triage list for the external test data based on WSI and tiled data. It includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
 
-To generate the triage list of cases, please use excel to sort according the prediction label (Positive, Suspect Positive and Negative), and the prediction score.
+To generate the triage list of cases, use Excel to sort the predictions by the prediction label (Positive, Suspect Positive, and Negative) and the prediction score.
 
 
 
