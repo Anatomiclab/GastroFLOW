@@ -77,7 +77,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 * External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
 
-* Retrospctive: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
+* Retrospective Case-Control Study Dataset: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 
 ## Data Statistics for Cross-Validation, External Validation
@@ -321,7 +321,7 @@ report_pos_.csv: A .csv file containing the cases' WSIs predicted as positive (C
 
 requireTile_.csv: A .csv file containing the cases' WSIs predicted as negative (non-CA) by the GCNet model.
 
-Those list contains the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
+Those lists contain the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
 
 By following these steps, you will be able to generate cross-validation result using GCNet. To evaluate the cross-validation performance of GCNet, please refer to the "Post-Processing" section.
 
@@ -349,10 +349,11 @@ Line 166,167: `report_pos2.to_csv("Network_result/" + posName)`,`report_neg2.to_
 
 Script Outputs:
 
-report_pos_.csv: A .csv file containing the predictions of WSIs as positive (CA) by GCNet.
+report_pos_.csv: A .csv file containing the cases' WSIs predicted as positive (CA) by the GCNet model.
 
-requireTile_.csv: A .csv file containing the predictions of WSIs as negative (non-CA) by GCNet.
+requireTile_.csv: A .csv file containing the cases' WSIs predicted as negative (non-CA) by the GCNet model.
 
+Those lists contain the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
 
 ### GCNet with Tile Data
 
@@ -374,13 +375,15 @@ Script Output:
 
 External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GCNet.
 
+This list contains the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet
+
 ### GastroFLOW
 
 To validate the performance of GastrolFlow, follow these steps:
 
 Step 1. Run `Validation_stage1_2.py`
 
-1. Modify the following lines after downloading the external data:
+1. Modify the following lines after downloading the external dataset or retrospective case-control study dataset:
 
 Line 27: `ref_data = pd.read_csv("trainingdata.csv")` **(Specify the file name of the training data)**
 
@@ -404,7 +407,7 @@ requireTile_.csv: A .csv file containing the predictions of WSIs as negative (no
 
 External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GastrolFlow.
 
-After generating the predicted results, please refer to the "Post Processing" section to generate the triage list based on the results.
+By following these steps, you will be able to generate external validation result using GCNet and GastroFLOW. To evaluate the external validation performance of GCNet and GastroFLOW , please refer to the "Post-Processing" section.
 
  
 ## Post-Processing
