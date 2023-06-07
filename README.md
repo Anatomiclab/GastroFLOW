@@ -278,7 +278,7 @@ tuner_{int(time.time())}.pkl: A .pkl file that contains the optimized parameters
 
 ## MLP Network Training
 
-To train any MLP network used for ensembling as GCNet, follow the steps below using the ModelTraining.py script. Ensure that you have set the optimized parameters obtained from Talos to train MLP network.
+To train any MLP network, follow the steps below using the ModelTraining.py script. Ensure that you have set the optimized parameters obtained from Talos to train MLP network.
 
 Step 1: Run the `ModelTraining.py` script
 
