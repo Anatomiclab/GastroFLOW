@@ -94,6 +94,10 @@ To reproduce the Python environment used in the project, please use the environm
 
 By following this step, you will be able to set up the Python environment with the required dependencies and packages used in the project.
 
+## Export WSI and extract cellular features from WSI
+
+To extract the Whole Slide Images (WSI) and cellular features, please follow the steps outlined below:
+
 ![Image](Figure_QuPath.png)
 
 Step 1: Export the WSI
