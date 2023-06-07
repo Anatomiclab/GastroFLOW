@@ -138,7 +138,7 @@ Script Outputs:
 
 aggregateddata.csv: This is a .csv file that contains the generated WSI data.This file will include relevant information derived from the averaged cellular features of the WSIs.
 
-By following these steps, you will be able to generate the WSI data using the provided Python script. The resulting aggregateddata.csv file will contain the relevant information derived from the averaged cellular features of the WSIs.
+By following these steps, you will be able to generate the WSI data using the provided Python script. 
 
 
 ## Generation of tiled image data
