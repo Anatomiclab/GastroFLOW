@@ -264,7 +264,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA), ground truth label(CA or non-CA), and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN") for the external dataset.
 
-By following these steps, you will be able to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
+By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Hyperparameter Optimization using Talos
 
@@ -379,7 +379,7 @@ Line 69: `table.to_csv("Network_result/"+ "External_tiledata_500.csv")`
 
 Script Output:
 
-External_tiledata_500.csv: A .csv file containing the predicted results of tile data by GCNet.
+External_tiledata_500.csv: A .csv file containing the predicted results of tile image data by GCNet.
 
 This list contains the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet
 
@@ -469,7 +469,7 @@ Line 120: `final.to_csv(r"stage1_result/External_stage1_test_PN.csv")`
 
 Script outputs:
 
-`External_stage1_test_PN.csv`: *.csv* file containing predicted results of WSI data by GCNet. The file includes cases ID, GCNet's predicted scores (malignancy prediction scores), predicted labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
+`External_stage1_test_PN.csv`: *.csv* file containing predicted results of WSI data by GCNet. The file includes cases ID, GCNet's predicted scores (malignancy prediction scores), predicted daignosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
 To generate triage list from `External_stage1_test_PN.csv`, it can use Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
@@ -493,7 +493,7 @@ Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_scor
 
 Script outputs:
 
-avgscore.csv: *.csv* file containing the average predicted score of 11 models for each tiled Image Data.
+avgscore.csv: *.csv* file containing the predicted result for each tiled image data. The file includes tile image name, GCNet's predicted scores (malignancy prediction scores), and number of MLP networks from GCNet classify tile image is positive to carcinoma (P-CA).
 
 Step 2: Run script: `Post_processing\Tile_Case_split_ver2.py`
 
@@ -507,7 +507,7 @@ Line 82,83,87: `#shutil.rmtree(r"case_split//")`, `os.makedirs(r"case_split//",e
 
 Script outputs:
 
-Folder of Case.csv: *.csv* file containing the predicted results of tiled data corresponding to each case.
+Folder of Case.csv: *.csv* file containing the predicted results of all the tiled image data corresponding to each case.
 
 Step 3: Run script: `Post_processing\Tile_Case_Sort.py`
 
@@ -521,7 +521,7 @@ Line 12,13: `#shutil.rmtree("case_split_Sorted//")"`,`os.makedirs("case_split_So
 
 Script outputs:
 
-Folder of Case.csv: *.csv* file containing the predicted results of tiled data corresponding to each case. After this step, the scores will be sorted in descending order.
+Folder of Case.csv: *.csv* file containing the predicted results of all the tiled image data corresponding to each case. After this step, the scores will be sorted in descending order.
 
 Step 4: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
 
@@ -539,7 +539,7 @@ Line 53,57: `os.makedirs("Final_Tile_Stage2//", exist_ok=True)`,`case_final.to_c
 
 Script outputs:
 
-External_.csv: *.csv* file containing the predicted results for the external test data. It includes the average score, the minimum number of positive tiles required to be classified as suspicious positive, the actual number of positive tiles, and the diagnosis.
+External_.csv: *.csv* file containing the predicted results for case using external validation dataset. It includes the cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, the minimum number of P-CA tiles required to be classified as suspicious for positive, the actual number of P-CA tiles, and the predicted diagnosis label **("suspective positive" indicates suspicious for carcinoma, while "negative" indicates benign)**.
 
 Step 5: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
 
@@ -557,9 +557,9 @@ Line 78: `final.to_csv(r"stage2_result/External_stage2_test_PN_"+str(threshold)+
 
 Script outputs:
 
-External_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
+External_stage2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted daignosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
-To generate the triage list of cases, use Excel to sort the predictions by the prediction label (Positive, Suspect Positive, and Negative) and the prediction score.
+By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 #### GastrolFlow
 
