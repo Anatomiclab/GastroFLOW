@@ -264,7 +264,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA), ground truth label(CA or non-CA), and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN") for the external dataset.
 
-By following these steps, you will be able to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoam cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
+By following these steps, you will be able to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Hyperparameter Optimization using Talos
 
@@ -418,7 +418,7 @@ By following these steps, you will be able to generate external validation resul
  
 ## Post-Processing
 
-After generating predictions of the WSIs and tiled data using GCNet and GastroFLOW, follow the steps below to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs.
+After generating predictions of the WSIs and tiled data using GCNet and GastroFLOW, follow the steps below to evaluate model performance from its confusion matrix, generate the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate list for case triaging.
 
 ### Cross-Validation for GCNet
 
@@ -442,7 +442,7 @@ Line 118: `final.to_csv(r"stage1_result/Internal_cross10_test_PN.csv")`
 
 Script outputs:
 
-Internal_.csv: *.csv* file containing the triage list for the cross-validation test data. The file includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
+Internal_.csv: *.csv* file containing predicted results of WSI data by GCNet from cross-validation data. The file includes cases ID, GCNet's predicted scores, predicted labels, ground-truth labels, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
 
 ### External Validation 
@@ -469,9 +469,9 @@ Line 120: `final.to_csv(r"stage1_result/External_stage1_test_PN.csv")`
 
 Script outputs:
 
-External__.csv: *.csv* file containing the triage list for the external test data based on WSI data. The file includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
+`External_stage1_test_PN.csv`: *.csv* file containing predicted results of WSI data by GCNet. The file includes cases ID, GCNet's predicted scores (malignancy prediction scores), predicted labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
-To generate the prioritization of cases, use Excel to sort the predictions by classification label (positive, suspect positive, and negative) and prediction score.
+To generate triage list from `External_stage1_test_PN.csv`, it can use Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 #### GCNet with Tiled Image Data
 
