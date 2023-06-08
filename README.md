@@ -563,23 +563,23 @@ By following these steps, you will be able to evaluate model performance from it
 
 #### GastrolFlow
 
-Before proceeding, make sure to run the step "GCNet with Tiled Image Data" using the generated results of tiled data from `Validation_stage1_2.py`:
+Before proceeding the following steps, make sure to use `External_tiledata_500.csv` generated from `Validation_stage1_2.py` to run the step "GCNet with Tiled Image Data" to generate `External_stage2_test_PN_.csv` file. 
 
-After completing the step, the tiled data from the corresponding WSI data is predicted as non-CA. Then follow these steps:
+This can ensure only cases predicted as non-CA are reprocessed using their tiled image data, and those case can be reclassified as either suspicious for carcinoma or benign. 
 
 Then, please follow the steps:
 
 Step 1: Run the script `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
-1. Modify Line 7 in the script to specify the path of the result for the WSIs predicted non-CA from external dataset or Retrospective Case-Control Study Dataset:
+1. Modify Line 7 in the script to specify the path of the result for the WSIs predicted non-CA from external dataset or retrospective case-control study dataset:
 
 Line 7: `stage1_csv=pd.read_csv(r"Network/External_requireTile_.csv")` 
 
-2. Modify Line 10 in the script to specify the path of the result for the WSIs predicted CA from external dataset or Retrospective Case-Control Study Dataset:
+2. Modify Line 10 in the script to specify the path of the result for the WSIs predicted CA from external dataset or retrospective case-control study datase:
 
 Line 10: `stage1_csv_pos=pd.read_csv(r"Network/External_report_pos_.csv")`
 
-3. Modify Line 20 in the script to specify the path of the predicted result for the tiled Image Data from external dataset or Retrospective Case-Control Study Dataset:
+3. Modify Line 20 in the script to specify the path of the predicted result for the tiled Image Data from external dataset or retrospective case-control study datase:
 
 Line 20: `filename=r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv"` 
 
@@ -589,7 +589,7 @@ Line 52: `case_final.to_csv(r"Final_Tile_Stage1_2/"+filename.split('/')[-1],inde
 
 Script outputs:
 
-External_.csv: *.csv* file containing the predicted results for the external dataset or Retrospective Case-Control Study Dataset. It provides the prediction labels (positive, suspect positive, and negative), the predicted scores, and the number of tiled predictions classified as suspect positive.
+External_.csv: *.csv* file containing the predicted results for the external dataset or retrospective case-control study dataset. It provides the prediction labels (positive, suspect positive, and negative), the predicted scores, and the number of tiled predictions classified as suspect positive.
 
 Step 2: Run the script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
 
