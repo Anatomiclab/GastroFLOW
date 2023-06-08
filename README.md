@@ -278,7 +278,9 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the tra
 
 Script Output:
 
-.csv : A .csv file that contains hyperparameters settings tested along with its performance metrics for training MLP networks.
+.csv : A .csv file that contains hyperparameters settings tested along with its performance metrics for training MLP networks. 
+
+By following these steps, you will be able to select the optimized hyperparameters for MLP network training. To train MLP network, please refer to the following section "**MLP Network Training**".
 
 ## MLP Network Training
 
