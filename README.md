@@ -278,7 +278,7 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the tra
 
 Script Output:
 
-.csv : A .csv file that contains tested hyperparameter settings including (activation for the MLP networks to develop GCNet.
+.csv : A .csv file that contains hyperparameters settings tested along with its performance metrics for training MLP networks.
 
 ## MLP Network Training
 
