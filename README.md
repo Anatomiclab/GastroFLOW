@@ -565,7 +565,7 @@ By following these steps, you will be able to evaluate model performance from it
 
 Before proceeding, make sure to run the step "GCNet with Tiled Image Data" using the generated results of tiled data from `Validation_stage1_2.py`:
 
-After completing the step, the triage list for tiled data will be generated while the corresponding WSI data is predicted as non-CA. Then follow these steps:
+After completing the step, the tiled data from the corresponding WSI data is predicted as non-CA. Then follow these steps:
 
 Then, please follow the steps:
 
