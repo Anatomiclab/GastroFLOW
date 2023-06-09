@@ -61,7 +61,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 * [Generation of computer-aided diagnosis with contour for highlighting carcinoma regions](#generation-of-computer-aided-diagnosis-with-contour-for-highlighting-carcinoma-regions)
 
-[Running time](#running-time)
+[Network Running time](#network-running-time)
 
 ## Overview of the datasets presented in this study
 
@@ -684,18 +684,24 @@ Contour Line.png: *.png* file containing the combination of grayscale WSI image 
 
 By following these steps, you will be able to generate cancer probability heatmap and computer-aided diagnosis with contour. 
 
-## Running time
+## Network Running time
 
-We calculate the running time of using the scripts with our provided data in external dataset. Please note that, based on different environment, the time will be slightly different.
+The running time of the provided scripts with the provided data in the external dataset may vary based on different environments. The following running time information was measured on a system with the following specifications:
 
-| The Stage of the System  | Running Time(s)  |
+1. System: Intel® Core™ i9-9900K CPU at 3.6GHz
+2. RAM: 32GB
+3. GPU: NVIDIA GeForce RTX 3080
+
+The running time for each stage of the system using the provided data is presented in the table below:
+
+| Stage of the System | Running Time (s) |
 | ------------- | ------------- |
 | Network Running Time (GCNet with WSI Data)  | 8.5837  |
-| Network Running Time (GCNet with Tile Data)  | 36.2036  |
-| Network Running Time (GastrolFlow)  | 23.5408  |
+| Network Running Time (GCNet with Tiled Image Data)  | 36.2036  |
+| Network Running Time (GastroFLOW)  | 23.5408  |
 | Post-Processing Time (GCNet with WSI Data)  | 0.4937  |
-| Post-Processing Time (GCNet with Tile Data)  | 21.6656  |
-| Post-Processing Time (GastrolFlow)  | 9.4012  |
+| Post-Processing Time (GCNet with Tiled Image Data)  | 21.6656  |
+| Post-Processing Time (GastroFLOW)  | 9.4012  |
 | Total Time (GCNet with WSI Data)  | 9.0774  |
 | Total Time (GCNet with Tile Data)  | 57.8692  |
 | Total Time (GastrolFlow)  | 32.942  |
