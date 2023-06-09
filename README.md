@@ -25,21 +25,21 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 * [Cross-Validation](#cross-validation)
 
-* [External Dataset, Generate score for Internal Dataset](#external-dataset-generate-score-for-internal-dataset)
+* [External-Validation](#external-validation)
 
-[Finding the optimized parameters for models using Talos](#finding-the-optimized-parameters-for-models-using-talos)
+[Hyperparameter Optimization using Talos](#hyperparameter-optimization-using-talos)
 
-[MLP Network Training for GCNet](#mlp-network-training-for-gcnet)
+[MLP Network Training](#mlp-network-training)
 
-[GCNet in Cross-Validation](#gcnet-in-cross-validation)
+[Cross-Validation of GCNet](#cross-validation-of-gcnet)
 
 [External Validation](#external-validation-1)
 
 * [GCNet with WSI Data](#gcnet-with-wsi-data)
 
-* [GCNet with Tile Data](#gcnet-with-tile-data)
+* [GCNet with Tiled Image Data](#gcnet-with-tiled-image-data)
 
-* [GastrolFlow](#gastrolflow)
+* [GastroFLOW](#gastroflow)
 
 [Post-Processing](#post-processing)
 
@@ -49,9 +49,9 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 * [GCNet with WSI Data](#gcnet-with-wsi-data-1)
 
-* [GCNet with Tile Data](#gcnet-with-tile-data-1)
+* [GCNet with Tiled Image Data](#gcnet-with-tiled-image-data)
 
-* [GastrolFlow](#gastrolflow-1)
+* [GastroFLOW](#gastroflow)
 
 [Generation of Contour Line and Heatmap](#generation-of-contour-line-and-heatmap)
 
@@ -175,7 +175,7 @@ By following these steps, you will be able to generate tiled image data for mode
 
 ## Cross-Validation and External Validation of Machine Learning Algorithms
 
-This section provides the necessary scripts to perform cross-validation on the internal dataset and test machine learning algorithms on the external dataset.
+This section provides the necessary scripts to perform cross-validation on the internal dataset.
 
 ### Cross-Validation
 
@@ -215,11 +215,11 @@ Script outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, case WSIs' prediction (CA or non-CA) and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN")
 
-Note: This section does not include generation of malignancy prediction scores of case WSIs. To generate malignancy prediction scores, please refer to the following section "**Generation of malignancy prediction scores for external dataset**".
+By following these steps, you will be able to evaluate cross-validation performance of different machine learning model from its confusion matrix. 
 
-### Generation of malignancy prediction scores for external dataset
+### External Validation 
 
-This section provides instructions for running machine learning algorithms on the external dataset to generate malignancy prediction score, follow these steps below:
+This section provides instructions for running machine learning algorithms on the external dataset, follow these steps below:
 
 Step 1: Run `machinelearn_external_score.py`
 
@@ -260,6 +260,8 @@ Script Outputs:
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA), ground truth label(CA or non-CA), and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN") for the external dataset.
 
 By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `(Machine Learning Algorithm).csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
+
+Note: This section can also be used to obtain malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs from cross-validation data.
 
 ## Hyperparameter Optimization using Talos
 
