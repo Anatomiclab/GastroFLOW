@@ -694,9 +694,7 @@ By following these steps, you will be able to generate cancer probability heatma
 
 ## Network Running time
 
-The running time of the provided scripts with the provided data in the external dataset may vary based on different environments.
-
-The running time for each stage of the system using the provided data is presented in the table below:
+The running time for each stage of the system using external dataset is presented in the table below:
 
 | Stage of the System | Running Time (s) |
 | ------------- | ------------- |
