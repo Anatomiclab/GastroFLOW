@@ -121,7 +121,7 @@ By following these steps, you will be able to export the desired WSI images and 
 
 Once you have extracted the cellular features, you can generate Whole Slide Image (WSI) data using the provided Python script, `DataAggregationforWholeSlides.py`. Follow the steps below:
 
-Step 1: Open the Python script, `DataAggregationforWholeSlides.py`.
+Step 1: Run the script `DataAggregationforWholeSlides.py`.
 
 Step 2: Modify Line 7 in the script to specify the path of the cellular features extracted from QuPath:
 
@@ -141,8 +141,8 @@ By following these steps, you will be able to generate the WSI data using the pr
 
 To generate tiled image data for model training and validation, follow the steps below:
 
-Step 1: Run `QuPath_Script\stage_2.py`
-1. Open the script `stage_2.py` located in the QuPath_Script directory.
+Step 1: Open the script `QuPath_Script\stage_2.py`
+1. Open the script `stage_2.py` located in the `QuPath_Script` directory.
 2. Modify Line 9 in the script to specify the path where the cellular features of the WSIs generated from QuPath are stored:
 
 Line 9: `feat_path = "./2022Gastrointernaldataraw/RAW_TXT-SET_20200520/"` **(Specify the path for the extracted cellular features)** 
@@ -156,7 +156,7 @@ Line 17: `saving_path="./Training_tile/"` **(Specify the immediate path for savi
 Line 10: `tile_ratio = [500]` **(Specify the desired tile size)**
 
 Step 2: Run `QuPath_Script\tile.py`
-1. Open the script `tile.py` located in the QuPath_Script directory.
+1. Open the script `tile.py` located in the `QuPath_Script` directory.
 2. Modify Line 9 in the script to specify the path of the saving path used in Step 1:
 
 Line 9: `tile_path = "./Training_tile/RAW_TXT-SET_20200520/"` **(Fill in the immediate path from Step 1)**
@@ -179,7 +179,7 @@ This section provides the necessary scripts to perform cross-validation on the i
 
 To perform cross-validation using machine learning algorithms after downloading cross-validation data, follow these steps below:
 
-Step 1: run `machinelearn_internal.py`
+Step 1: Run the script `machinelearn_internal.py`
 
 1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
@@ -197,7 +197,7 @@ Script output:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, case WSIs' prediction (CA or non-CA) and the ground truth label(CA or non-CA). **("1" indicates CA, while "0" indicates non-CA)**
 
-Step 2: Run `Machine_learning_internal_generation.py`
+Step 2: Run the script `Machine_learning_internal_generation.py`
 
 1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
@@ -219,7 +219,7 @@ By following these steps, you will be able to evaluate cross-validation performa
 
 This section provides instructions for running machine learning algorithms on the external dataset, follow these steps below:
 
-Step 1: Run `machinelearn_external_score.py`
+Step 1: Run the script `machinelearn_external_score.py`
 
 1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
@@ -239,7 +239,7 @@ Script Outputs:
 
 (Machine Learning Algorithm).csv: A .csv file containing the case ID, predicted malignancy prediction scores, and case WSIs' prediction (CA or non-CA) for the external data.**(TRUE indicates CA, while FALSE indicates non-CA)**
 
-Step 2: Run `Machine_learning_external_generation.py`
+Step 2: Run the script `Machine_learning_external_generation.py`
 
 1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
 
@@ -265,7 +265,7 @@ Note: This section can also be used to obtain malignancy prediction scores used 
 
 To find the optimized parameters for multilayer perceptron (MLP) models using Talos, follow the steps below:
 
-Step 1: Run `talos_tunning.py` script
+Step 1: Run the script `talos_tunning.py`
 
 1. Modify the following line to specify the path for the training data:
 
@@ -281,7 +281,7 @@ By following these steps, you will be able to select the optimized hyperparamete
 
 To train any MLP network, follow the steps below using the `ModelTraining.py` script. Ensure that you have set the optimized parameters obtained from Talos to train MLP network.
 
-Step 1: Run the `ModelTraining.py` script
+Step 1: Run the script `ModelTraining.py`
 
 1. Modify the following line in the script to specify the path for the training data:
 
@@ -302,7 +302,7 @@ This section provides the necessary script, `Validation_internal.py`, to perfrom
 
 To cross-validate GCNet, follow these steps:
 
-Step 1: Run `Validation_internal.py`
+Step 1: Run the script `Validation_internal.py`
 
 1. Modify the following lines in the script to specify the path after downloading the internal data:
 
@@ -334,7 +334,7 @@ The external validation of GCNet and GastroFlow is divided into three parts, eac
 
 To validate the performance of GCNet using WSI data from external dataset, follow these steps:
 
-Step 1. Run `Validation_stage1.py`
+Step 1. Run the script `Validation_stage1.py`
 
 1. Modify the following lines after downloading the external data:
 
@@ -360,7 +360,7 @@ Those lists contain the case ID, malignancy prediction scores computed from 11 M
 
 To validate the performance of GCNet using tile image data, follow these steps:
 
-Step 1. Run `Validation_stage2.py`
+Step 1. Run the script `Validation_stage2.py`
 
 1. Modify the following lines after downloading the external data:
 
@@ -382,7 +382,7 @@ This list contains the case ID, malignancy prediction scores computed from 11 ML
 
 To validate the performance of GastrolFlow, follow these steps:
 
-Step 1. Run `Validation_stage1_2.py`
+Step 1. Run the script `Validation_stage1_2.py`
 
 1. Modify the following lines after downloading the external dataset or retrospective case-control study dataset:
 
@@ -417,7 +417,7 @@ After generating predictions of the WSIs and tiled data using GCNet and GastroFL
 
 ### Cross-Validation for GCNet
 
-Step 1. Run `Post_processing\Slide_internal_Stage1_generation.py`
+Step 1. Run the script `Post_processing\Slide_internal_Stage1_generation.py`
 
 1. Modify Line 4 in the script to specify the path of the result for the WSIs predicted as CA
 
@@ -444,7 +444,7 @@ Internal_.csv: *.csv* file containing predicted results of WSI data by GCNet fro
 
 #### GCNet with WSI Data
 
-Step 1. Run `Post_processing\Slide_Stage1_generation.py`
+Step 1. Run the script `Post_processing\Slide_Stage1_generation.py`
 
 1. Modify Line 8 in the script to specify the path of the result for the WSIs predicted as CA
 
@@ -472,7 +472,7 @@ To generate triage list from `External_stage1_test_PN.csv`, it can use Microsoft
 
 Please follow the steps below:
 
-Step 1: Run `Post_processing\Tile_Calc_Avg_score.py`
+Step 1: Run the script `Post_processing\Tile_Calc_Avg_score.py`
 
 1. Modify Line 10 in the script to specify the folder path after running the network prediction:
 
@@ -490,7 +490,7 @@ Script outputs:
 
 avgscore.csv: *.csv* file containing the predicted result for each tiled image data. The file includes tile image name, GCNet's predicted scores (malignancy prediction scores), and number of MLP networks from GCNet classify tile image is positive to carcinoma (P-CA).
 
-Step 2: Run script: `Post_processing\Tile_Case_split_ver2.py`
+Step 2: Run the script `Post_processing\Tile_Case_split_ver2.py`
 
 1. Modify Line 11 and Line 13 in the script to specify the folder path after running Step 1:
 
@@ -504,7 +504,7 @@ Script outputs:
 
 Folder of Case.csv: *.csv* file containing the predicted results of all the tiled image data corresponding to each case.
 
-Step 3: Run script: `Post_processing\Tile_Case_Sort.py`
+Step 3: Run the script `Post_processing\Tile_Case_Sort.py`
 
 1. Modify Line 15 in the script to specify the path after running Step 2:
 
@@ -518,7 +518,7 @@ Script outputs:
 
 Folder of Case.csv: *.csv* file containing the predicted results of all the tiled image data corresponding to each case. After this step, the scores will be sorted in descending order.
 
-Step 4: Run script: `Post_processing\Tile_Case_Combine_ver1.py`
+Step 4: Run the script `Post_processing\Tile_Case_Combine_ver1.py`
 
 1. Modify Line 9 in the script to set the cut-off ratio (threshold) of positive for carcinoma (P-CA) tiled images for classifying and prioritizing cases as “suspicious for carcinoma”:
 
@@ -536,7 +536,7 @@ Script outputs:
 
 External_.csv: *.csv* file containing the predicted results for case using external validation dataset. It includes the cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, the minimum number of P-CA tiles required to be classified as suspicious for positive, the actual number of P-CA tiles, and the predicted diagnosis label **("suspective positive" indicates suspicious for carcinoma, while "negative" indicates benign)**.
 
-Step 5: Run script: `Post_processing\Tile_Case_Stage2_generation.py`
+Step 5: Run the script `Post_processing\Tile_Case_Stage2_generation.py`
 
 1. Modify Line 9 in the script to specify the path after running Step 4:
 
@@ -586,7 +586,7 @@ Script outputs:
 
 External_.csv: *.csv* file containing the predicted results for the external dataset or retrospective case-control study dataset. It provides the prediction labels (positive, suspect positive, and negative), the predicted scores, and the number of tiled predictions classified as suspect positive.
 
-Step 2: Run the script: `Post_processing\Slide_Tile_Stage1_2_generation.py`
+Step 2: Run the script `Post_processing\Slide_Tile_Stage1_2_generation.py`
 
 1. Modify Line 6 in the script to set the cut-off ratio (threshold) of positive for carcinoma (P-CA) tiled images for classifying and prioritizing cases as “suspicious for carcinoma”:
 
@@ -686,7 +686,7 @@ By following these steps, you will be able to generate cancer probability heatma
 
 ## Network Running time
 
-The running time of the provided scripts with the provided data in the external dataset may vary based on different environments. The following running time information was measured on a system with the following specifications:
+The running time of the provided scripts with the provided data in the external dataset may vary based on different environments. The following running time information was measured on a system with the following compututational specifications:
 
 1. System: Intel® Core™ i9-9900K CPU at 3.6GHz
 2. RAM: 32GB
