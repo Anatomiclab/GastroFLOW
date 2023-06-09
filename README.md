@@ -1,6 +1,6 @@
 # Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images
 
-This repository contains the source code for our project where we developed a weakly supervised Artificial Intelligence (AI) system, namely Gastric Case Prioritization Workflow (GastroFLOW), to accelerate the diagnosis of gastric carcinoma by effectively classifying and prioritizing gastric biopsy whole slide images (WSIs).
+This repository contains the source code for our project "Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images" where we developed a weakly supervised Artificial Intelligence (AI) system, namely Gastric Case Prioritization Workflow (GastroFLOW), to accelerate the diagnosis of gastric carcinoma by effectively classifying and prioritizing gastric biopsy whole slide images (WSIs).
 
 GastroFLOW builds upon the Gastric Carcinoma classification Network (GCNet), an ensemble of high-performing Multi-Layer Perceptron (MLP) networks designed to reduce prediction variance and enhance generalization. GCNet employs a majority voting scheme for robust WSI classification.
 
@@ -516,7 +516,7 @@ Step 3: Run the script `Post_processing\Tile_Case_Sort.py`
 
 1. Modify Line 15 in the script to specify the path after running Step 2:
 
-Line 15: `for filename in glob.glob(r"case_split/*"):` **(Fill the immediate path in step 2)**
+Line 15: `for filename in glob.glob(r"case_split/*"):` **(Specify the immediate path in step 2)**
 
 2. Modify Line 12 and Line 13 in the script to specify the path for saving the results:
 
@@ -534,7 +534,7 @@ Line 9: `threshold=0.2`
 
 2. Modify Line 18 in the script to specify the path after running Step 3:
 
-Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):` **(Fill the immediate path in step 3)**
+Line 18: `for filename in glob.glob(r"case_split_Sorted/*"):` **(Specify the immediate path in step 3)**
 
 3. Modify Line 53 and Line 57 in the script to specify the path for saving the results:
 
@@ -548,11 +548,11 @@ Step 5: Run the script `Post_processing\Tile_Case_Stage2_generation.py`
 
 1. Modify Line 9 in the script to specify the path after running Step 4:
 
-Line 9: `csv_data=pd.read_csv(r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 4)**
+Line 9: `csv_data=pd.read_csv(r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv")` **(Specify the immediate path in step 4)**
 
 2. Modify Line 19 in the script to specify the path of the ground truth in the external dataset:
 
-Line 19: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")`  **(Fill the path of ground truth in external dataset)**
+Line 19: `csv_data=pd.read_csv(r"data/GroundTruth_External.csv")`  **(Specify the path of ground truth in external dataset)**
 
 3. Modify Line 78 in the script to specify the path for saving the results:
 
@@ -602,7 +602,7 @@ Line 6: `threshold=0.2`
 
 2. Modify Line 8 in the script to specify the path after running Step 1:
 
-Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/External_500_"+str(threshold)+".csv")` **(Fill the immediate path in step 1)**
+Line 8: `csv_data=pd.read_csv(r"Final_Tile_Stage1_2/External_500_"+str(threshold)+".csv")` **(Specify the immediate path in step 1)**
 
 3. Modify Line 18 in the script to specify the path of the ground truth in the external dataset or Retrospective Case-Control Study Dataset:
 
