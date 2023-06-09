@@ -59,7 +59,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 * [Generation of Cancer Probability Heatmap](#generation-of-cancer-probability-heatmap)
 
-* [Generation of computer-aided diagnosis (CAD) with contour for highlighting carcinoma regions](#generation-of-computer-aided-diagnosis-(cad)-with-contour-for-highlighting-carcinoma-regions)
+* [Generation of computer-aided diagnosis with contour for highlighting carcinoma regions](#generation-of-computer-aided-diagnosis-with-contour-for-highlighting-carcinoma-regions)
 
 [Running time](#running-time)
 
@@ -662,7 +662,7 @@ Script outputs:
 
 Heatmap.png: *.png* file containing the heatmap of the WSI image from yellow to black. **(Yellow color indicates relative high density of carcinoma cell, while black color indicates relative low density of carcinoma cell.)** 
 
-### Generation of computer-aided diagnosis (CAD) with contour for highlighting carcinoma regions
+### Generation of computer-aided diagnosis with contour for highlighting carcinoma regions
 
 Step 1. Run the script `Contour_Line\ContourLineOverlay.py`.
 
@@ -682,7 +682,7 @@ Script outputs:
 
 Contour Line.png: *.png* file containing the combination of grayscale WSI image with contour for highlighting carcinoma regions.
 
-By following these steps, you will be able to generate cancer probability heatmap and CAD with contour. 
+By following these steps, you will be able to generate cancer probability heatmap and computer-aided diagnosis with contour. 
 
 ## Running time
 
