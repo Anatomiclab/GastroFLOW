@@ -75,7 +75,7 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 ## Data used in this study
 
-* Training Data: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
+* Internal Data for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
 
 * Cross-Validation Data: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
 
