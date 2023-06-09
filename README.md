@@ -612,7 +612,7 @@ External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the e
 
 By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
-## Generation of Contour Line and Heatmap
+## Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap
 
 ### Data for generating contour line and heatmap
 
