@@ -614,6 +614,8 @@ By following these steps, you will be able to evaluate model performance from it
 
 ## Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap
 
+### Classification of carcinoma cells
+
 Cellular feature and WSI can be generated and exported from section **"Export WSI and extract cellular features from WSI"**
 
 You can generate your own cellular feature and export your WSI data to visualise localization of carcinoma cell and generate cancer probaility heatmap with using our GCNet or your trained MLP network.  
@@ -640,10 +642,7 @@ Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'`
  
 Script outputs:
 
-Predict_.csv: *.csv* file which contains the network output result based on the provided cellular features.
-
-
-
+Predict_.csv: *.csv* file containing the GCNet output result based on the provided cellular features. Carcinoma cells (that exhibit cancerous characteristics) are classified as "positive", while non-carcinoma cells (that do not exhibit cancerous characteristics) are classified as "negative"
 
 ### Generating contour line
 
