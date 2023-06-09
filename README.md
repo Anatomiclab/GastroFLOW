@@ -704,4 +704,4 @@ The running time for each stage of the system using the provided data is present
 | Post-Processing Time (GastroFLOW)  | 9.4012  |
 | Total Time (GCNet with WSI Data)  | 9.0774  |
 | Total Time (GCNet with Tile Data)  | 57.8692  |
-| Total Time (GastrolFlow)  | 32.942  |
+| Total Time (GastroFLOW)  | 32.942  |
