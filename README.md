@@ -117,7 +117,7 @@ Script Outputs:
 
 (WSI cellular features).txt: A .txt file containing the extracted cellular features for the WSI images.
 
-By following these steps, you will be able to export the desired WSI images and extract cellular features using the provided QuPath scripts.
+By following these steps, you will be able to export the desired WSI images and extract cellular features using the provided QuPath scripts, and exported `(WSI Images).png` and `(WSI cellular features).txt` can be used to generate cancer probability heatmap in the section **"Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap"**.
 
 ## WSI Data Generation
 
@@ -326,7 +326,7 @@ requireTile_.csv: A .csv file containing the cases' WSIs predicted as negative (
 
 Those lists contain the case ID, malignancy prediction scores computed from 11 MLP networks ensembled as GCNet, the case WSIs' prediction **("positive" indicates CA, while "negative" indicate non-CA)**, and the mean malignancy scores of 11 MLP networks ensembled as GCNet.
 
-By following these steps, you will be able to generate the cross-validation result using GCNet. To evaluate the cross-validation performance of GCNet, please refer to the "Post-Processing" section.
+By following these steps, you will be able to generate the cross-validation result using GCNet. To evaluate the cross-validation performance of GCNet, please refer to the **"Post-Processing"** section.
 
 ## External Validation of GCNet and GastroFLOW
 
@@ -410,7 +410,7 @@ requireTile_.csv: A .csv file containing the predictions of WSIs as negative (no
 
 External_tiledata_500.csv: A .csv file containing the predicted results of tile data.
 
-By following these steps, you will be able to generate external validation result using GCNet and GastroFLOW. To evaluate the external validation performance of GCNet and GastroFLOW , please refer to the "Post-Processing" section.
+By following these steps, you will be able to generate external validation result using GCNet and GastroFLOW. To evaluate the external validation performance of GCNet and GastroFLOW , please refer to the **"Post-Processing"** section.
 
  
 ## Post-Processing
@@ -564,7 +564,7 @@ Before proceeding the following steps, make sure to use `External_tiledata_500.c
 
 This can ensure only cases predicted as non-CA are reprocessed using their tiled image data, and those case can be reclassified as either suspicious for carcinoma or benign. 
 
-After generated Please follow the steps:
+After obtaining `External_stage2_test_PN_.csv` file, please follow the steps:
 
 Step 1: Run the script `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
@@ -614,35 +614,33 @@ By following these steps, you will be able to evaluate model performance from it
 
 ## Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap
 
-Sample data for validating the scripts is provided and can be downloaded from the provided [Link](Sample_Feature_For_Generating_Contour_Line.txt).
+Cellular feature and WSI can be generated and exported from section **"Export WSI and extract cellular features from WSI"**
 
-Please note that, we provide both WSI images and corresponding cellular features. Therefore, you could directly run the following steps.
+You can generate your own cellular feature and export your WSI data to visualise localization of carcinoma cell and generate cancer probaility heatmap with using our GCNet or your trained MLP network.  
 
-Sample of WSI images is shown below:
+For demostration, sample data for validating the scripts is provided and can be downloaded from the provided [Link](Sample_Feature_For_Generating_Contour_Line.txt), and `Sample_WSI.png`.
 
 ![Image](Sample_WSI.png)
 
+Please follow the steps below:
 
+Step 1: Run the script `Contour_Line/AppendingPreductionToCells.py`
 
-### Step before generating contour line and heatmap
+1. Modify Line 20 in the script to specify the path of the extracted cellular features:
 
-Before generating the maps, please run the script `Contour_Line\AppendingPreductionToCells.py` first.
+Line 20: `path=r'./Contour_Line/ExtractedData/'`
 
-**Modified Line(please fill the path for your WSI image and extracted cellular features.)**:
+2. Modify Line 25 in the script to specify the path of the training data used in model training:
 
-Line 20: `path=r'./Contour_Line/ExtractedData/'` **(Fill the path of the extracted cellular features)**
+Line 25: `ref_data = pd.read_csv("./trainingdata.csv") **(Specify the path of training data used in the model training)**
 
-**Modified Line for Code Running**: 
+3. Modify Line 48 in the script to specify the path for saving the network result:
 
-Line 25: `ref_data = pd.read_csv("./trainingdata.csv") #Fill the Training Data path`**(Fill the path of training data used in the model training)**
-
-**Modified Line(please fill the path for saving the results.)**:
-
-Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'` **(Fill the path for saving the network result)**
+Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'` 
  
-**Script outputs**:
+Script outputs:
 
-* **Predict_.csv**: *.csv* file which contains the network output result based on the provided cellular features.
+Predict_.csv: *.csv* file which contains the network output result based on the provided cellular features.
 
 
 
