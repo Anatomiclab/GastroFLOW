@@ -9,23 +9,19 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 ## Content
 
-[Data for Cross-Validation, External Validation](#data-for-cross-validation-external-validation)
+[Overview of the datasets presented in this study](#overview-of-the-datasets-presented-in-this-study)
 
-[Data Statistics for Cross-Validation, External Validation](#data-statistics-for-cross-validation-external-validation)
+[Data used in this studyn](#data-used-in-this-study)
 
 [Python Environment Setup](#python-environment-setup)
 
 [Export WSI and extract cellular features from WSI](#export-wsi-and-extract-cellular-features-from-wsi)
 
-* [Export the WSI](#export-the-wsi)
+[WSI Data Generation](#wsi-data-generation)
 
-* [Extract the Cellular Features](#extract-the-cellular-features)
+[Tiled Image Data Generation](#tiled-image-data-generation)
 
-[Generation of WSI data](#generation-of-wsi-data)
-
-[Generation of downsampled WSI and its tiled image data for training and validation](#generation-of-downsampled-wsi-and-its-tiled-image-data-for-training-and-validation)
-
-[Machine Learning Algorithms](#machine-learning-algorithms)
+[Cross-Validation and External Validation of Machine Learning Algorithms](#cross-validation-and-external-validation-of-machine-learning-algorithms)
 
 * [Cross-Validation](#cross-validation)
 
@@ -69,24 +65,23 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 [Running time](#running-time)
 
-## Data for Model training, cross-Validation, external Validation, and retrospectective study
+## Overview of the datasets presented in this study
 
-* Training Data: [Training Data](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
-
-* Cross-Validation Data: [Internal Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
-
-* External Validation Data: [External Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
-
-* Retrospective Case-Control Study Dataset: [Retrospective Set](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
-
-
-## Data Statistics for Cross-Validation, External Validation
-
-| Dataset | Benign  | Malignant  | Benign to Malignant ratio  | Cases  | WSIs  |
+| Dataset |Cases | Non-carcinoma | Carcinoma | Benign to Malignant ratio | WSIs  |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Internal Data  | 407(62.71%) | 242(37.29%) | 1.68:1 | 649 | 2064 |
-| External Data  | 222(71.15%) | 90(28.85%) | 2.46:1 | 312 | 739 |
-| Retrospective Case  | 60(66.67%) | 30(33.33%) | 2:1 | 90 | 113 |
+| Internal dataset  | 649 | 407 (62.71%) | 242 (37.29%) | 1.68:1 | 2064 |
+| External validation dataset  | 312 | 222 (71.15%) | 90 (28.85%) | 2.46:1 | 739 |
+| Retrospective case-control study dataset | 90 |60 (66.67%) | 30(33.33%) | 2:1 | 113 |
+
+## Data used in this study
+
+* Training Data: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
+
+* Cross-Validation Data: [Internal Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
+
+* External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
+
+* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
 
 ## Python Environment Setup **(please update the environment,especially the talos)**
 
@@ -567,7 +562,7 @@ Before proceeding the following steps, make sure to use `External_tiledata_500.c
 
 This can ensure only cases predicted as non-CA are reprocessed using their tiled image data, and those case can be reclassified as either suspicious for carcinoma or benign. 
 
-Please follow the steps:
+After generated Please follow the steps:
 
 Step 1: Run the script `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
@@ -616,7 +611,6 @@ External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the e
 By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Generation of Contour Line and Heatmap
-
 
 ### Data for generating contour line and heatmap
 
