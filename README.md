@@ -53,15 +53,13 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 * [GastroFLOW](#gastroflow)
 
-[Generation of Contour Line and Heatmap](#generation-of-contour-line-and-heatmap)
+[Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap](#localization-of-carcinoma-cells-and-generation-of-cancer-probability-heatmap)
 
-* [Data for generating contour line and heatmap](#data-for-generating-contour-line-and-heatmap)
+* [Classification of carcinoma cells](#classification-of-carcinoma-cells)
 
-* [Step before generating contour line and heatmap](#step-before-generating-contour-line-and-heatmap)
+* [Generation of Cancer Probability Heatmap](#generation-of-cancer-probability-heatmap)
 
-* [Generating contour line](#generating-contour-line)
-
-* [Generating Heatmap](#generating-heatmap)
+* [Generation of computer-aided diagnosis (CAD) with contour for highlighting carcinoma regions](#generation-of-computer-aided-diagnosis-(cad)-with-contour-for-highlighting-carcinoma-regions)
 
 [Running time](#running-time)
 
@@ -642,52 +640,49 @@ Line 48: `name='./PredictedData/'+filename[:-4]+'.csv'`
  
 Script outputs:
 
-Predict_.csv: *.csv* file containing the GCNet output result based on the provided cellular features. Carcinoma cells (that exhibit cancerous characteristics) are classified as "positive", while non-carcinoma cells (that do not exhibit cancerous characteristics) are classified as "negative"
+Predict_.csv: *.csv* file containing the GCNet's output of each cell from cases WSI. Carcinoma cells (that exhibit cancerous characteristics) are classified as "positive", while non-carcinoma cells (that do not exhibit cancerous characteristics) are classified as "negative"
 
-### Generating contour line
+### Generation of Cancer Probability Heatmap
 
-Run the script `Contour_Line\ContourLineOverlay.py`.
+Step 1: Run the script `Contour_Line\HeatMap.py`.
 
-**Modified Line(please fill the path for your WSI image.)**:
+1. Modify Line 65 in the script to specify the path of the exported WSI images:
 
-Line 64: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')` **(Fill the path of the extracted WSI images)**
+Line 65: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")`
 
-**Modified Line(please fill the path after running the step before generation.)**:
+2. Modify Line 15 in the script to specify the path of GCNet's output of each cell from cases WSI after running the previous step:
 
-Line 12: `path=r'./PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
+Line 15: `path=r'./Contour_Line/PredictedData/'`
 
-**Modified Line(please fill the path for saving the results.)**:
+3. Modify Line 81 in the script to specify the path for saving the images with heatmap:
 
-Line 96: `img2.save('./ExportImage2/'+file.replace('csv','png'))` **(Fill the path for saving the images with contour lines)**
+Line 81: `img2.save('./ExportHeatmap/'+file.replace('csv','png'))` 
 
-**Script outputs**:
+Script outputs:
 
-* **Contour Line.png**: *.png* file which contains the combination of grayscale WSI image and contour lines.
+Heatmap.png: *.png* file containing the heatmap of the WSI image from yellow to black. **(Yellow color indicates relative high density of carcinoma cell, while black color indicates relative low density of carcinoma cell.)** 
 
+### Generation of computer-aided diagnosis (CAD) with contour for highlighting carcinoma regions
 
+Step 1. Run the script `Contour_Line\ContourLineOverlay.py`.
 
-### Generating Heatmap
+1. Modify Line 64 in the script to specify the path of the exported WSI images:
 
-Run the script `Contour_Line\HeatMap.py`.
+Line 64: `img2 = Image.open(r'./Contour_Line/original/'+file.replace('csv','png')).convert('L').convert('RGB')` 
 
-**Modified Line(please fill the path for your WSI image.)**:
+2. Modify Line 12 in the script to specify the path of the GCNet's output of each cell from cases WSI after running the previous step:
 
-Line 65: `img2 = Image.open(r'./original/'+file.replace('csv','png')).convert("RGBA")` **(Fill the path of the extracted WSI images)**
+Line 12: `path=r'./PredictedData/'` 
 
-**Modified Line(please fill the path after running the step before generation.)**:
+3. Modify Line 96 in the script to specify the path for saving the images with contour for highlighting carcinoma regions:
 
-Line 15: `path=r'./Contour_Line/PredictedData/'` **(Fill the path of the network result in step before generating contour line and heatmap)**
+Line 96: `img2.save('./ExportImage2/'+file.replace('csv','png'))` 
 
-**Modified Line(please fill the path for saving the results.)**:
+Script outputs:
 
-Line 81: `img2.save('./ExportHeatmap/'+file.replace('csv','png'))` **(Fill the path for saving the images with heatmap)**
+Contour Line.png: *.png* file containing the combination of grayscale WSI image with contour for highlighting carcinoma regions.
 
-**Script outputs**:
-
-* **Heatmap.png**: *.png* file which contains the combination of grayscale WSI image and heatmap.
-
-
-
+By following these steps, you will be able to generate cancer probability heatmap and CAD with contour. 
 
 ## Running time
 
