@@ -1,10 +1,10 @@
 # Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images
 
-This repository provides scripts (Gastric Carcinoma classification Network "GCNet" and Gastric-specific Prioritization Workflow "GastroFLOW") for the article "Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images".
+This repository contains the source code for our project where we developed a weakly supervised Artificial Intelligence (AI) system, namely Gastric Case Prioritization Workflow (GastroFLOW), to accelerate the diagnosis of gastric carcinoma by effectively classifying and prioritizing gastric biopsy whole slide images (WSIs).
 
-GCNet is the Gastric Carcinoma classification Network developed in the study. It is an ensemble of optimized Multilayer Perceptron (MLP) neural networks trained on downsampled cellular features extracted from gastric biopsy whole slide images (WSIs). GCNet is designed to classify WSIs as either carcinoma (CA) or non-carcinoma (non-CA) cases. The top-performing MLP networks, based on Area Under the Curve (AUC) values, are selected and ensembled together. A majority voting scheme is used to classify WSIs based on the sum of votes from the MLP-based networks. The average of the MLP network outputs is used to calculate the mean case malignancy score, which is a measure of the probability of a case being CA. This score is used to prioritize cases for further review.
+GastroFLOW builds upon the Gastric Carcinoma classification Network (GCNet), an ensemble of high-performing Multi-Layer Perceptron (MLP) networks designed to reduce prediction variance and enhance generalization. GCNet employs a majority voting scheme for robust WSI classification.
 
-GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow developed in the study. It integrates GCNet and additional processing steps to enhance the triage ability for CA cases, especially those with low tumor area content. GastroFLOW involves the tiling of non-CA WSIs into smaller image tiles and re-evaluation using GCNet. Tiled images with a mean malignancy prediction score above a certain threshold are considered positive for carcinoma (P-CA). Cases are then assigned a grading based on the original GCNet prediction and the P-CA prediction from the tiled images. Cases graded as CA or suspicious for carcinoma are prioritized for further review, while those graded as benign are deemed lower risk. GastroFLOW aims to improve the detection and prioritization of CA cases, particularly those with low tumor content.
+GastroFLOW leverages the capabilities of GCNet and enhances its performance by introducing an optimized thresholding strategy for identifying and prioritizing WSIs with low tumor area content. Additionally, GastroFLOW generates a tumor probability heatmap as a Computer-Aided Diagnosis (CAD) tool at the WSI level, highlighting suspected gastric cancer regions.
 
 
 ## Content
@@ -75,9 +75,9 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 ## Data used in this study
 
-* Internal Data for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
+* Internal Dataset for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
 
-* Cross-Validation Data: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
+* Internal Dataset for cross-validation: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
 
 * External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
 
