@@ -624,7 +624,7 @@ For demostration, sample data for validating the scripts is provided and can be 
 
 Please follow the steps below:
 
-Step 1: Run the script `Contour_Line/AppendingPreductionToCells.py`
+Step 1: Run the script `Contour_Line/AppendingPredictionToCells.py`
 
 1. Modify Line 20 in the script to specify the path of the extracted cellular features:
 
