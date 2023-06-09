@@ -561,13 +561,13 @@ External_stage2_test_PN_.csv: *.csv* file containing the triage list for the ext
 
 By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
-#### GastrolFlow
+#### GastroFLOW
 
 Before proceeding the following steps, make sure to use `External_tiledata_500.csv` generated from `Validation_stage1_2.py` to run the step "GCNet with Tiled Image Data" to generate `External_stage2_test_PN_.csv` file. 
 
 This can ensure only cases predicted as non-CA are reprocessed using their tiled image data, and those case can be reclassified as either suspicious for carcinoma or benign. 
 
-Then, please follow the steps:
+Please follow the steps:
 
 Step 1: Run the script `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
@@ -611,15 +611,11 @@ Line 82: `final.to_csv(r"stage1_2_result/External_stage1_2_test_PN_"+str(thresho
 
 Script outputs:
 
-External_.csv: *.csv* file containing the triage list for the external test data based on WSI and tiled data. It includes predicted scores, labels, ground-truth labels, and items for the confusion matrix (True Positive, False Positive, True Negative, False Negative).
+External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted daignosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
-To generate the triage list of cases, use Excel to sort the predictions by the prediction label (Positive, Suspect Positive, and Negative) and the prediction score.
-
-
-
+By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Generation of Contour Line and Heatmap
-
 
 
 ### Data for generating contour line and heatmap
