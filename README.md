@@ -11,7 +11,9 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 
 [Overview of the datasets presented in this study](#overview-of-the-datasets-presented-in-this-study)
 
-[Data used in this studyn](#data-used-in-this-study)
+[Data used in this study](#data-used-in-this-study)
+
+[Hardware Specification](#hardware-specification)
 
 [Python Environment Setup](#python-environment-setup)
 
@@ -80,6 +82,12 @@ GastroFLOW, on the other hand, is the Gastric Case Prioritization Workflow devel
 * External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
 
 * Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
+
+## Hardware Specification 
+
+1. System: Intel® Core™ i9-9900K CPU at 3.6GHz
+2. RAM: 32GB
+3. GPU: NVIDIA GeForce RTX 3080
 
 ## Python Environment Setup **(please update the environment,especially the talos)**
 
@@ -686,11 +694,7 @@ By following these steps, you will be able to generate cancer probability heatma
 
 ## Network Running time
 
-The running time of the provided scripts with the provided data in the external dataset may vary based on different environments. The following running time information was measured on a system with the following compututational specifications:
-
-1. System: Intel® Core™ i9-9900K CPU at 3.6GHz
-2. RAM: 32GB
-3. GPU: NVIDIA GeForce RTX 3080
+The running time of the provided scripts with the provided data in the external dataset may vary based on different environments.
 
 The running time for each stage of the system using the provided data is presented in the table below:
 
