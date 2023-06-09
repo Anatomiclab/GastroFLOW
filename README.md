@@ -614,11 +614,7 @@ By following these steps, you will be able to evaluate model performance from it
 
 ## Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap
 
-### Data for generating contour line and heatmap
-
-We provide the sample data for validating the scripts.
-
-The data could be downloaded at [Link](Sample_Feature_For_Generating_Contour_Line.txt).
+Sample data for validating the scripts is provided and can be downloaded from the provided [Link](Sample_Feature_For_Generating_Contour_Line.txt).
 
 Please note that, we provide both WSI images and corresponding cellular features. Therefore, you could directly run the following steps.
 
