@@ -2,7 +2,7 @@
 
 This repository contains the source code for our project "Accelerating gastric carcinoma diagnosis with a weakly supervised artificial intelligence-based system by prioritizing gastric biopsy whole slide images" where we developed a weakly supervised Artificial Intelligence (AI) system, namely Gastric Case Prioritization Workflow (GastroFLOW), to accelerate the diagnosis of gastric carcinoma by effectively classifying and prioritizing gastric biopsy whole slide images (WSIs).
 
-GastroFLOW builds upon the Gastric Carcinoma classification Network (GCNet), an ensemble of high-performing Multi-Layer Perceptron (MLP) networks designed to reduce prediction variance and enhance generalization. GCNet employs a majority voting scheme for robust WSI classification.
+GastroFLOW builds upon the Gastric Carcinoma Classification Network (GCNet), an ensemble of high-performing Multi-Layer Perceptron (MLP) networks designed to reduce prediction variance and enhance generalization. GCNet employs a majority voting scheme for robust WSI classification.
 
 GastroFLOW leverages the capabilities of GCNet and enhances its performance by introducing an optimized thresholding strategy for identifying and prioritizing WSIs with low tumor area content. Additionally, GastroFLOW generates a tumor probability heatmap as a Computer-Aided Diagnosis (CAD) tool at the WSI level, highlighting suspected gastric cancer regions.
 
@@ -149,7 +149,7 @@ By following these steps, you will be able to generate the WSI data using the pr
 
 To generate tiled image data for model training and validation, follow the steps below:
 
-Step 1: Open the script `QuPath_Script\stage_2.py`
+Step 1: Run the script `QuPath_Script\stage_2.py`
 1. Open the script `stage_2.py` located in the `QuPath_Script` directory.
 2. Modify Line 9 in the script to specify the path where the cellular features of the WSIs generated from QuPath are stored:
 
@@ -189,13 +189,15 @@ To perform cross-validation using machine learning algorithms after downloading 
 
 Step 1: Run the script `machinelearn_internal.py`
 
-1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually. The fold of cross-validation is moditied through the "Cross10" while the number of "Cross" refers to the fold number:
 
 Line 111: `Train_data_path="801010/"` **(Specify the root path of the internal data)**
 
 Line 116: `data = pd.read_csv(Train_data_path+'train_cross10.csv')` **(Specify the file name of the training data)**
 
 Line 133: `data2 = pd.read_csv(Train_data_path+'test_cross10.csv')` **(Specify the file name of the testing data)**
+
+
 
 2. Modify Line 112 in the script to specify the path for saving the results:
 
@@ -207,7 +209,7 @@ Script output:
 
 Step 2: Run the script `Machine_learning_internal_generation.py`
 
-1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually. The fold of cross-validation is moditied through the "Cross10" while the number of "Cross" refers to the fold number:
 
 Line 4: `csv_data=pd.read_csv(r"Internal/K-SVM.csv")` **(Specify the path of the predicted results from Step 1)**
 
@@ -312,13 +314,12 @@ To cross-validate GCNet, follow these steps:
 
 Step 1: Run the script `Validation_internal.py`
 
-1. Modify the following lines in the script to specify the path after downloading the internal data. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines in the script to specify the path after downloading the internal data. Note that the cross-validation fold needs to be modified manually. The fold of cross-validation is moditied through the "Cross10" while the number of "Cross" refers to the fold number:
 
 Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")` **(Specify the file name of the training data)**
 
 Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Specify the file name of the testing data)**
 
-(The fold is modifiled through the “Cross10.csv”. The file “train_cross10.csv” and “test_cross10.csv” means the running of Fold 10.)
 
 2. Modify the following lines to specify the path for saving the results:
 
@@ -616,7 +617,7 @@ Line 82: `final.to_csv(r"stage1_2_result/External_stage1_2_test_PN_"+str(thresho
 
 Script outputs:
 
-External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted diagnosis labels **("2" indicates CA, "1" indicates Suspect CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
+External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GastroFLOW's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted diagnosis labels **("2" indicates CA, "1" indicates suspicious for carcinoma, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
 By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using GastroFLOW, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
