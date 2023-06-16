@@ -229,7 +229,7 @@ This section provides instructions for running machine learning algorithms on th
 
 Step 1: Run the script `machinelearn_external_score.py`
 
-1. Modify the following lines in the script to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines in the script to specify the data paths:
 
 Line 116: `data = pd.read_csv('trainingdata.csv')` **(Specify the path of the training data)**
 
@@ -249,7 +249,7 @@ Script Outputs:
 
 Step 2: Run the script `Machine_learning_external_generation.py`
 
-1. Modify the following lines to specify the data paths. Note that the cross-validation fold needs to be modified manually:
+1. Modify the following lines to specify the data paths:
 
 Line 4: `csv_data=pd.read_csv(r"SVM--linear/report_pos_.csv")` **(Specify the path of the results for the case WSIs predicted as positive (CA) by the machine learning models)**
 
@@ -281,7 +281,7 @@ Line 72: `data = pd.read_csv("trainingdata.csv")` **(Specify the path of the tra
 
 Script Output:
 
-.csv : A .csv file that contains hyperparameters settings tested along with its performance metrics for training MLP networks. 
+Random Number.csv : A .csv file that contains hyperparameters settings tested along with its performance metrics for training MLP networks. 
 
 By following these steps, you will be able to select the optimized hyperparameters for MLP network training. To train MLP network, please refer to the following section "**MLP Network Training**".
 
@@ -312,11 +312,13 @@ To cross-validate GCNet, follow these steps:
 
 Step 1: Run the script `Validation_internal.py`
 
-1. Modify the following lines in the script to specify the path after downloading the internal data:
+1. Modify the following lines in the script to specify the path after downloading the internal data. Note that the cross-validation fold needs to be modified manually:
 
 Line 26: `ref_data = pd.read_csv("801010/train_cross10.csv")` **(Specify the file name of the training data)**
 
 Line 44: `data = pd.read_csv("801010/test_cross10.csv")` **(Specify the file name of the testing data)**
+
+(The fold is modifiled through the “Cross10.csv”. The file “train_cross10.csv” and “test_cross10.csv” means the running of Fold 10.)
 
 2. Modify the following lines to specify the path for saving the results:
 
@@ -472,7 +474,7 @@ Line 120: `final.to_csv(r"stage1_result/External_stage1_test_PN.csv")`
 
 Script outputs:
 
-`External_stage1_test_PN.csv`: *.csv* file containing predicted results of WSI data by GCNet. The file includes cases ID, GCNet's predicted scores (malignancy prediction scores), predicted daignosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
+`External_stage1_test_PN.csv`: *.csv* file containing predicted results of WSI data by GCNet. The file includes cases ID, GCNet's predicted scores (malignancy prediction scores), predicted diagnosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
 To generate triage list from `External_stage1_test_PN.csv`, it can use Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
@@ -482,7 +484,7 @@ Please follow the steps below:
 
 Step 1: Run the script `Post_processing\Tile_Calc_Avg_score.py`
 
-1. Modify Line 10 in the script to specify the folder path after running the network prediction:
+1. Modify Line 10 in the script to specify the result folder path after running the network prediction:
 
 Line 10: `folder_path=r"Network_result//"` 
 
@@ -496,7 +498,7 @@ Line 42: `final.to_csv(r"avg_score//"+"External_tiledata_500.csv")` **("avg_scor
 
 Script outputs:
 
-avgscore.csv: *.csv* file containing the predicted result for each tiled image data. The file includes tile image name, GCNet's predicted scores (malignancy prediction scores), and number of MLP networks from GCNet classify tile image is positive to carcinoma (P-CA).
+avgscore.csv: *.csv* file containing the predicted result for each tiled image data after averaged the prediction score of all MLP models. The file includes tile image name, GCNet's predicted scores averaged from MLP models (malignancy prediction scores), and number of MLP networks from GCNet classify tile image is positive to carcinoma (P-CA).
 
 Step 2: Run the script `Post_processing\Tile_Case_split_ver2.py`
 
@@ -560,9 +562,9 @@ Line 78: `final.to_csv(r"stage2_result/External_stage2_test_PN_"+str(threshold)+
 
 Script outputs:
 
-External_stage2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted daignosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
+External_stage2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted diagnosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
-By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
+By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using GCNet, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 #### GastroFLOW
 
@@ -578,11 +580,11 @@ Step 1: Run the script `Post_processing\Slide_Tile_Filter_Temporary_Solution.py`
 
 Line 7: `stage1_csv=pd.read_csv(r"Network/External_requireTile_.csv")` 
 
-2. Modify Line 10 in the script to specify the path of the result for the WSIs predicted CA from external dataset or retrospective case-control study datase:
+2. Modify Line 10 in the script to specify the path of the result for the WSIs predicted CA from external dataset or retrospective case-control study dataset:
 
 Line 10: `stage1_csv_pos=pd.read_csv(r"Network/External_report_pos_.csv")`
 
-3. Modify Line 20 in the script to specify the path of the predicted result for the tiled Image Data from external dataset or retrospective case-control study datase:
+3. Modify Line 20 in the script to specify the path of the predicted result for the tiled Image Data from external dataset or retrospective case-control study dataset:
 
 Line 20: `filename=r"Final_Tile_Stage2/External_500_"+str(threshold)+".csv"` 
 
@@ -614,9 +616,9 @@ Line 82: `final.to_csv(r"stage1_2_result/External_stage1_2_test_PN_"+str(thresho
 
 Script outputs:
 
-External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted daignosis labels **("1" indicates CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
+External_stage1_2_test_PN_.csv: *.csv* file containing the triage list for the external test data based on tiled data. It includes cases ID, GCNet's predicted scores (malignancy prediction scores) of the top 20% **(tiled images probability threshold)** tile images in each WSI, predicted diagnosis labels **("2" indicates CA, "1" indicates Suspect CA, while "0" indicates non-CA)**, ground-truth labels **("1" indicates CA, while "0" indicates non-CA)**, and classification outcome (True Positive "TP", True Negative "TN", False Positive "FP", False Negative "FN").
 
-By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using different machine learning models, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
+By following these steps, you will be able to evaluate model performance from its confusion matrix, obtain the malignancy prediction scores used for calculating the model's area under the receiver operating curve and generate triage list for cases WSIs. To assess percentage of skipped non-carcinoma cases using GastroFLOW, `External_stage2_test_PN_.csv` can generate triage list using Microsoft Excel by sorting predicted labels (CA and non-CA) first, followed by descending order sorting of malignancy prediction scores.
 
 ## Localization of Carcinoma Cells and Generation of Cancer Probability Heatmap
 
@@ -624,9 +626,9 @@ By following these steps, you will be able to evaluate model performance from it
 
 Cellular feature and WSI can be generated and exported from section **"Export WSI and extract cellular features from WSI"**
 
-You can generate your own cellular feature and export your WSI data to visualise localization of carcinoma cell and generate cancer probaility heatmap with using our GCNet or your trained MLP network.  
+You can generate your own cellular feature and export your WSI data to visualise localization of carcinoma cell and generate cancer probability heatmap with using our GCNet or your trained MLP network.  
 
-For demostration, sample data for validating the scripts is provided and can be downloaded from the provided [Link](Sample_Feature_For_Generating_Contour_Line.txt), and `Sample_WSI.png`.
+For demonstration, sample data for validating the scripts is provided and can be downloaded from the provided [Link](Sample_Feature_For_Generating_Contour_Line.txt), and `Sample_WSI.png`.
 
 ![Image](Sample_WSI.png)
 
