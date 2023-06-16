@@ -91,7 +91,7 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 
 ## Python Environment Setup **(please update the environment,especially the talos)**
 
-To reproduce the Python environment used in the project, please use the environment file is named `environment_tf2.yml` and is based on the Anaconda environment.
+To reproduce the Python environment used in the project, please use the environment file is named `environment_update.yml` and is based on the Anaconda environment.
 
 By following this step, you will be able to set up the Python environment with the required dependencies and packages used in the project.
 
