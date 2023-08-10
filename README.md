@@ -11,7 +11,7 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 
 [Overview of the datasets presented in this study](#overview-of-the-datasets-presented-in-this-study)
 
-[Data used in this study](#data-used-in-this-study)
+<!---[Data used in this study](#data-used-in-this-study)-->
 
 [Hardware Specification](#hardware-specification)
 
@@ -73,7 +73,7 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 | External validation dataset  | 312 | 222 (71.15%) | 90 (28.85%) | 2.46:1 | 739 |
 | Retrospective case-control study dataset | 90 |60 (66.67%) | 30(33.33%) | 2:1 | 113 |
 
-## Data used in this study
+<!---## Data used in this study
 
 * Internal Dataset for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
 
@@ -81,7 +81,7 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 
 * External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
 
-* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)
+* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)-->
 
 ## Hardware Specification 
 
@@ -89,7 +89,7 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 2. RAM: 32GB
 3. GPU: NVIDIA GeForce RTX 3080
 
-## Python Environment Setup **(please update the environment,especially the talos)**
+## Python Environment Setup
 
 To reproduce the Python environment used in the project, please use the environment file is named `environment_update.yml` and is based on the Anaconda environment.
 
