@@ -75,13 +75,13 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 
 ## Data used in this study
 
-* Internal Dataset for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/trainingdata.csv?d=w9c337a0d028e40fb8ae406287c2d21a8&csf=1&web=1&e=qp8DfL)
+* Internal Dataset for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagB3J_ZdYHXnbc2lBKIK-u-3w?e=keKv4F)
 
-* Internal Dataset for cross-validation: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/Cross-Validation%20Data.zip?csf=1&web=1&e=qLQb0e)
+* Internal Dataset for cross-validation: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BqNTrEZ9dCdBXl4AXuv8Pig?e=1IW1QD)
 
-* External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/External%20Validation%20Data(New).zip?csf=1&web=1&e=6v6N0l)
+* External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBRY8WgfmiClJj_4tiwR5J-g?e=Gm443B)
 
-* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/Retrospective%20Case-Control%20Study%20Dataset.zip?csf=1&web=1&e=3fW7IB)
+* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBeQ2Hym0Re_gmEpZq_O_YWw?e=WKFEZK)
 
 ## Hardware Specification 
 
