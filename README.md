@@ -73,15 +73,15 @@ GastroFLOW leverages the capabilities of GCNet and enhances its performance by i
 | External validation dataset  | 312 | 222 (71.15%) | 90 (28.85%) | 2.46:1 | 739 |
 | Retrospective case-control study dataset | 90 |60 (66.67%) | 30(33.33%) | 2:1 | 113 |
 
-<!---## Data used in this study
+## Data used in this study
 
-* Internal Dataset for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/g/personal/21118855r_connect_polyu_hk/EQ16M5yOAvtAiuQGKHwtIagBaHGgOwICKB6DLU8fUc2usQ?e=NmtRhD)
+* Internal Dataset for model training: [Training Dataset](https://connectpolyu-my.sharepoint.com/:x:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/trainingdata.csv?d=w9c337a0d028e40fb8ae406287c2d21a8&csf=1&web=1&e=qp8DfL)
 
-* Internal Dataset for cross-validation: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYlJePFwtM1GpSknK0adq18BDO7zwOF63QHHfGkmQqa9Xw)
+* Internal Dataset for cross-validation: [Cross-Validation Data](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/Cross-Validation%20Data.zip?csf=1&web=1&e=qLQb0e)
 
-* External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EV7M2OkvBV5OlJQCqXtC_vgBlvTacytjn1yn9ptzf5gqfg)
+* External Validation Data: [External Dataset](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/External%20Validation%20Data(New).zip?csf=1&web=1&e=6v6N0l)
 
-* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21118855r_connect_polyu_hk/EYtw2btVoQNOgcdiw3gCu4oBOayIsqlA6Ek0gQzljDWotA)-->
+* Retrospective Case-Control Study Dataset: [Retrospective Case-Control Study Dataset](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21118855r_connect_polyu_hk/Documents/Gastric%20Flow%20Github/Retrospective%20Case-Control%20Study%20Dataset.zip?csf=1&web=1&e=3fW7IB)
 
 ## Hardware Specification 
 
